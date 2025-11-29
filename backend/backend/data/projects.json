@@ -85,13 +85,19 @@
     "frontend_url": "http://localhost:40882"
   },
   {
-    "id": "33835c97-0ba2-46ac-b12a-ba156538e9b4",
+    "id": "c0df7a89-446d-4908-93d3-9af2c673d574",
     "name": "project-dashboard",
     "path": "D:\\projects\\project-dashboard",
     "type": "generic",
     "tags": [
-      "python",
+      "next.js",
+      "tailwind",
+      "javascript",
+      "react",
       "git",
+      "typescript",
+      "node",
+      "python",
       "fastapi"
     ],
     "description": null,
@@ -144,6 +150,94 @@
       }
     ],
     "vscode_workspace_file": "D:\\projects\\project-dashboard\\project-dashboard.code-workspace",
-    "frontend_url": null
+    "frontend_url": "http://localhost:37452"
+  },
+  {
+    "id": "6848ec30-00d4-472e-b022-f569ac7e449f",
+    "name": "news-aggregator",
+    "path": "D:\\projects\\news-aggregator",
+    "type": "docker",
+    "tags": [
+      "git",
+      "docker"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\projects\\news-aggregator\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\news-aggregator\\news-aggregator.code-workspace",
+    "frontend_url": "http://localhost:3883"
+  },
+  {
+    "id": "2658322d-e0c5-4668-a105-a78334793ea8",
+    "name": "inbox-processor",
+    "path": "D:\\projects\\inbox-processor",
+    "type": "docker",
+    "tags": [
+      "tailwind",
+      "javascript",
+      "react",
+      "git",
+      "typescript",
+      "docker",
+      "node",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DESIGN_DOC.md",
+        "path": "D:\\projects\\inbox-processor\\DESIGN_DOC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATIVE_API_DOCS.md",
+        "path": "D:\\projects\\inbox-processor\\docs\\GENERATIVE_API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GMAIL_FETCHER_API_DOCS.md",
+        "path": "D:\\projects\\inbox-processor\\docs\\GMAIL_FETCHER_API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PMF_API_DOCS.md",
+        "path": "D:\\projects\\inbox-processor\\docs\\PMF_API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PMF_INTEGRATION.md",
+        "path": "D:\\projects\\inbox-processor\\docs\\PMF_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\projects\\inbox-processor\\docs\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:48337/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:48337/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:48337/openapi.json",
+        "type": "link"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\inbox-processor\\inbox-processor.code-workspace",
+    "frontend_url": "http://localhost:48338"
   }
 ]
