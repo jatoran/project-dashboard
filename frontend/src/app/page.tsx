@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Project } from "@/types";
-import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy } from "lucide-react";
+import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy, Check } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 
 export default function Home() {
@@ -11,6 +11,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [viewingDoc, setViewingDoc] = useState<{path: string, name: string} | null>(null);
+  const [copiedDocContentPath, setCopiedDocContentPath] = useState<string | null>(null); // To track which doc's content was copied
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -29,6 +30,20 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  const handleCopyDocContent = async (filePath: string) => {
+    try {
+        const res = await fetch(`/api/files/content?path=${encodeURIComponent(filePath)}`);
+        if (!res.ok) throw new Error("Failed to load file content for copying.");
+        const data = await res.json();
+        await navigator.clipboard.writeText(data.content);
+        setCopiedDocContentPath(filePath);
+        setTimeout(() => setCopiedDocContentPath(null), 2000); // Reset after 2 seconds
+    } catch (err) {
+        console.error("Error copying doc content:", err);
+        setError("Failed to copy document content."); // Set error state in main component
+    }
+};
 
   useEffect(() => {
     fetchProjects();
@@ -216,11 +231,11 @@ export default function Home() {
                              <span className="font-mono truncate">{doc.name}</span>
                            </button>
                            <button
-                             onClick={() => navigator.clipboard.writeText(doc.path)}
+                             onClick={() => handleCopyDocContent(doc.path)}
                              className="text-slate-600 hover:text-slate-400 p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                             title="Copy path"
+                             title="Copy content"
                            >
-                             <Copy size={10} />
+                             {copiedDocContentPath === doc.path ? <Check size={10} className="text-green-400" /> : <Copy size={10} />}
                            </button>
                         </div>
                     ) : (

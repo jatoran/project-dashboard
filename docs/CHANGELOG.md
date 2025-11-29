@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.1] - 2025-11-29
+### Features
+- **Documentation Hub:**
+    - The copy button next to Markdown files in the project card now copies the *content* of the file to the clipboard, consistent with the viewer modal.
+
 ## [1.2.0] - 2025-11-29
 ### Features
 - **Enhanced Tagging:**

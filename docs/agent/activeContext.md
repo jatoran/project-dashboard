@@ -18,6 +18,7 @@ Completing Phase 1 (Core Dashboard) and transitioning to maintenance/Phase 2.
 - **New Features:** 
     - Markdown docs viewing in modal, path copying.
     - **Multi-Tagging:** Intelligent scanning for Frameworks (React, Next.js, FastAPI, Django, etc.) and Infrastructure (Docker), displaying top tags instead of a single type.
+    - **Copy Document Content:** Copy button next to Markdown files now copies the file's content (consistent with viewer modal).
 
 ## Active Decisions
 - **Path Handling:** Input is expected to be Windows paths (`D:\projects\...`). WSL paths are supported via manual conversion logic in the launcher if needed, but `D:` is preferred.
