@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2025-11-29
+### Features
+- **Documentation Hub:**
+    - Recursively scans for `.md` files in root and `docs/` folders.
+    - **In-App Viewer:** Opens Markdown files in a modal with syntax highlighting (via `react-markdown`).
+    - **Quick Actions:** Copy file path button next to each document.
+
 ## [1.0.0] - 2025-11-29
 ### Features
 - **Project Dashboard:** Centralized UI to manage local projects.

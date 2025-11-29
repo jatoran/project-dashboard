@@ -60,14 +60,36 @@ class ProjectScanner:
             git_status = "Clean"
 
         # --- Phase 2: Static File Docs ---
-        for doc_file in ["README.md", "openapi.json", "swagger.json"]:
+        # Scan for Markdown files in root
+        try:
+            for f in os.listdir(path):
+                if f.lower().endswith('.md'):
+                    docs.append({"name": f, "path": str(path / f), "type": "markdown"})
+        except: pass
+
+        # Scan for Markdown files in docs/ (recursive)
+        docs_path = path / "docs"
+        if docs_path.exists():
+            for root, _, files in os.walk(str(docs_path)):
+                for f in files:
+                    if f.lower().endswith('.md'):
+                        # Create a display name relative to docs/ folder
+                        rel_dir = os.path.relpath(root, str(docs_path))
+                        if rel_dir == ".":
+                            disp_name = f
+                        else:
+                            disp_name = f"{rel_dir}/{f}".replace("\\", "/")
+                        
+                        docs.append({
+                            "name": disp_name, 
+                            "path": str(Path(root) / f), 
+                            "type": "markdown"
+                        })
+
+        # Scan for API definitions
+        for doc_file in ["openapi.json", "swagger.json"]:
             if (path / doc_file).exists():
-                doc_type = "file"
-                if doc_file == "openapi.json":
-                    doc_type = "openapi"
-                elif doc_file == "swagger.json":
-                    doc_type = "swagger"
-                
+                doc_type = "openapi" if doc_file == "openapi.json" else "swagger"
                 docs.append({"name": doc_file, "path": str(path / doc_file), "type": doc_type})
 
         # --- Phase 3: API Port Detection & Dynamic Docs ---

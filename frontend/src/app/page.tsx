@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { Project } from "@/types";
-import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink } from "lucide-react";
+import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy } from "lucide-react";
+import DocViewer from "@/components/DocViewer";
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [newPath, setNewPath] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [viewingDoc, setViewingDoc] = useState<{path: string, name: string} | null>(null);
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -190,6 +192,23 @@ export default function Home() {
                          <ExternalLink size={12} />
                          <span className="font-mono">{doc.name}</span>
                        </button>
+                    ) : doc.type === 'markdown' ? (
+                        <div className="flex items-center justify-between w-full">
+                           <button 
+                             onClick={() => setViewingDoc({path: doc.path, name: doc.name})}
+                             className="flex items-center gap-1 text-blue-400 hover:text-blue-300 hover:underline truncate"
+                           >
+                             <FileText size={12} />
+                             <span className="font-mono truncate">{doc.name}</span>
+                           </button>
+                           <button
+                             onClick={() => navigator.clipboard.writeText(doc.path)}
+                             className="text-slate-600 hover:text-slate-400 p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                             title="Copy path"
+                           >
+                             <Copy size={10} />
+                           </button>
+                        </div>
                     ) : (
                       <>
                         <FileText size={12} />
@@ -242,6 +261,13 @@ export default function Home() {
           ))}
         </div>
       </div>
+      
+      <DocViewer 
+        isOpen={!!viewingDoc} 
+        onClose={() => setViewingDoc(null)} 
+        filePath={viewingDoc?.path ?? null}
+        fileName={viewingDoc?.name ?? null}
+      />
     </main>
   );
 }

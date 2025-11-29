@@ -9,12 +9,13 @@ Completing Phase 1 (Core Dashboard) and transitioning to maintenance/Phase 2.
     - Backend: FastAPI Service (Port 37453) running natively on Windows.
     - **Smart Scanner:** Implemented multi-stage heuristic detection for project types, FastAPI presence, and API ports (via Docker Compose, Markdown, Frontend Configs).
     - **Launchers:** Robust `os.startfile` for Explorer, `code` for VS Code (with Workspace support), and `wt.exe` logic for WSL (handling directory navigation).
-    - **Docs:** Auto-generated Swagger/ReDoc links for detected APIs.
+    - **Docs:** Auto-generated Swagger/ReDoc links. Added **Markdown Scanner** (recursive) and **In-App Viewer**.
 
 ## System Status
 - **Architecture:** Hybrid. Frontend (Next.js) proxies to Backend (FastAPI).
 - **Runtime:** STRICTLY Windows Native (PowerShell) for execution, interacting with WSL data via file shares or mapped drives (`D:\...`).
 - **Data:** Stored in `backend/data/projects.json`.
+- **New Features:** Markdown docs viewing in modal, path copying.
 
 ## Active Decisions
 - **Path Handling:** Input is expected to be Windows paths (`D:\projects\...`). WSL paths are supported via manual conversion logic in the launcher if needed, but `D:` is preferred.
