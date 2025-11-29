@@ -20,7 +20,8 @@ class ProjectScanner:
         docs = []
 
         # --- Phase 1: Tagging & Type Detection ---
-        # Check Node
+        
+        # 1a. Check Root Node
         if (path / "package.json").exists():
             project_type = "node" # Default to node if present
             tags.add("node")
@@ -41,6 +42,25 @@ class ProjectScanner:
 
             if (path / "tsconfig.json").exists():
                 tags.add("typescript")
+
+        # 1b. Check Subdirectory Node (frontend/client/web/ui/app)
+        # If root didn't give us much, or even if it did, we scan subdirs for frontend frameworks
+        potential_subdirs = ['frontend', 'client', 'web', 'ui', 'app']
+        for d in potential_subdirs:
+            sub_pkg = path / d / "package.json"
+            if sub_pkg.exists():
+                tags.add("node") # It implies node usage
+                tags.add("javascript")
+                try:
+                    pkg = json.loads(sub_pkg.read_text(errors='ignore'))
+                    deps = {**pkg.get('dependencies', {}), **pkg.get('devDependencies', {})}
+                    
+                    if "typescript" in deps: tags.add("typescript")
+                    if "react" in deps: tags.add("react")
+                    if "next" in deps: tags.add("next.js")
+                    if "vue" in deps: tags.add("vue")
+                    if "tailwindcss" in deps: tags.add("tailwind")
+                except: pass
         
         # Check Python
         has_python = False
@@ -261,23 +281,32 @@ class ProjectScanner:
                              break
                      except: pass
 
-        # 5b. Check Node scripts
-        if not frontend_url and (project_type == "node" or "node" in tags or "javascript" in tags):
-            detected_fe_port = None
-            if (path / "package.json").exists():
-                    pkg = json.loads((path / "package.json").read_text(errors='ignore'))
-                    scripts = pkg.get("scripts", {})
-                    for script_cmd in scripts.values():
-                        # Look for -p XXXX, --port XXXX, -p=XXXX, --port=XXXX, PORT=XXXX
-                        port_match = re.search(r"(?:-p|--port)[=\s]+(\d{4,5})", script_cmd)
-                        if not port_match:
-                            port_match = re.search(r"PORT=(\d{4,5})", script_cmd)
-                        
-                        if port_match:
-                            detected_fe_port = port_match.group(1)
-                            break
+        # 5b. Check Node scripts (Root + Subdirectories)
+        if not frontend_url:
+            files_to_check = [path / "package.json"]
+            for d in ['frontend', 'client', 'web', 'ui', 'app']:
+                files_to_check.append(path / d / "package.json")
 
-            if not detected_fe_port:
+            detected_fe_port = None
+            
+            for pkg_path in files_to_check:
+                if pkg_path.exists():
+                    try:
+                        pkg = json.loads(pkg_path.read_text(errors='ignore'))
+                        scripts = pkg.get("scripts", {})
+                        for script_cmd in scripts.values():
+                            # Look for -p XXXX, --port XXXX, -p=XXXX, --port=XXXX, PORT=XXXX
+                            port_match = re.search(r"(?:-p|--port)[=\s]+(\d{4,5})", script_cmd)
+                            if not port_match:
+                                port_match = re.search(r"PORT=(\d{4,5})", script_cmd)
+                            
+                            if port_match:
+                                detected_fe_port = port_match.group(1)
+                                break
+                    except: pass
+                if detected_fe_port: break
+
+            if not detected_fe_port and (project_type == "node" or "node" in tags or "javascript" in tags):
                 # Default based on framework tags
                 if "next.js" in tags: detected_fe_port = "3000"
                 elif "react" in tags: detected_fe_port = "3000" # CRA default

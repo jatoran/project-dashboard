@@ -20,6 +20,7 @@ Completing Phase 1 (Core Dashboard) and transitioning to maintenance/Phase 2.
     - **Multi-Tagging:** Intelligent scanning for Frameworks (React, Next.js, FastAPI, Django, etc.) and Infrastructure (Docker), displaying top tags instead of a single type.
     - **Copy Document Content:** Copy button next to Markdown files now copies the file's content (consistent with viewer modal).
     - **Frontend Monitor:** Auto-detects frontend ports (Node scripts, Docker Compose, Vite config, Markdown docs) and provides a real-time "App" status indicator with a launch link.
+    - **Monorepo Support:** Scanner now recursively checks subdirectories (`frontend`, `client`, `web`, etc.) for `package.json` configurations to accurately tag projects and detect ports in nested structures.
     - **UI Refinement:** Fixed 5-column action grid to ensure consistent button layout. Code, Terminal, WSL, and Explorer are always visible, with App appearing in the 5th slot when available.
 
 ## Active Decisions

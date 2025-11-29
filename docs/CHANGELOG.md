@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.3] - 2025-11-29
+### Features
+- **Nested Project Scanning:**
+    - Added deep scanning support for monorepo-style structures.
+    - Recursively checks `frontend/`, `client/`, `web/`, `ui/`, `app/` subdirectories for `package.json` to detect tags (React, Next.js, etc.) and frontend ports if they are missing from the root.
+
 ## [1.3.2] - 2025-11-29
 ### Features
 - **UI Layout Standardization:**
