@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5] - 2025-11-29
+### Bug Fixes
+- **Copy Button Usability:**
+    - Increased touch target size and added clearer hover states.
+    - Added `pointer-events-none` to internal icons to prevent click capture issues.
+    - Re-implemented `preventDefault` to ensure reliable event handling in complex layouts.
+
 ## [1.3.4] - 2025-11-29
 ### UX Improvements
 - **Copy Features:**

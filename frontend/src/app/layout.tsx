@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Project Dashboard",
-  description: "Mission Control for Local Projects",
+  description: "Project Cashboard for Local Projects",
 };
 
 export default function RootLayout({

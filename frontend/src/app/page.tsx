@@ -32,7 +32,47 @@ export default function Home() {
     }
   };
 
-  const handleCopyDocContent = async (filePath: string) => { /* ... */ };
+  const handleCopyDocContent = async (filePath: string) => {
+    try {
+        // Define the fetch logic as a promise returning a string
+        const fetchText = async () => {
+            const res = await fetch(`/api/files/content?path=${encodeURIComponent(filePath)}`);
+            if (!res.ok) throw new Error("Failed to load file content");
+            const data = await res.json();
+            return data.content as string;
+        };
+
+        // Modern Async Clipboard API (ClipboardItem takes a Promise)
+        // This keeps the "user gesture" active during the fetch
+        if (typeof ClipboardItem !== "undefined") {
+            try {
+                const text = new Blob([await fetchText()], { type: 'text/plain' });
+                const item = new ClipboardItem({ "text/plain": text });
+                await navigator.clipboard.write([item]);
+                
+                // Success state
+                setCopiedDocContentPath(filePath);
+                setTimeout(() => setCopiedDocContentPath(null), 2000);
+                return;
+            } catch (clipboardErr) {
+                console.warn("ClipboardItem failed, falling back to writeText", clipboardErr);
+                // Fallthrough to writeText
+            }
+        }
+
+        // Fallback: Fetch first, then writeText (might fail in strict browsers)
+        const content = await fetchText();
+        await navigator.clipboard.writeText(content);
+        
+        setCopiedDocContentPath(filePath);
+        setTimeout(() => setCopiedDocContentPath(null), 2000);
+
+    } catch (err: any) {
+        console.error("Error copying doc content:", err);
+        alert(`Failed to copy: ${err.message || err}`);
+        setError("Failed to copy document content.");
+    }
+  };
 
   const handleCopyProjectPath = async (path: string) => {
     try {
@@ -158,7 +198,7 @@ export default function Home() {
             <div className="w-10 h-10 bg-indigo-500 rounded-lg flex items-center justify-center">
               <Terminal className="text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Mission Control</h1>
+            <h1 className="text-2xl font-bold text-white tracking-tight">Project Dashboard</h1>
           </div>
           <button onClick={fetchProjects} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
             <RefreshCw size={20} className="text-slate-400" />
@@ -260,23 +300,28 @@ export default function Home() {
                          <span className="font-mono">{doc.name}</span>
                        </button>
                     ) : doc.type === 'markdown' ? (
-                        <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center justify-between w-full gap-2">
                            <button 
                              onClick={() => setViewingDoc({path: doc.path, name: doc.name})}
-                             className="flex items-center gap-1 text-blue-400 hover:text-blue-300 hover:underline truncate"
+                             className="flex items-center gap-1 text-blue-400 hover:text-blue-300 hover:underline truncate flex-1 min-w-0 text-left"
                            >
-                             <FileText size={12} />
+                             <FileText size={12} className="shrink-0" />
                              <span className="font-mono truncate">{doc.name}</span>
                            </button>
                            <button
                              onClick={(e) => {
                                e.stopPropagation();
+                               console.log("Copy button clicked for:", doc.path);
                                handleCopyDocContent(doc.path);
                              }}
-                             className="text-slate-600 hover:text-slate-400 p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                             className="text-slate-500 hover:text-white hover:bg-slate-800 rounded p-1.5 transition-all z-10 shrink-0"
                              title="Copy content"
                            >
-                             {copiedDocContentPath === doc.path ? <Check size={10} className="text-green-400" /> : <Copy size={10} />}
+                             {copiedDocContentPath === doc.path ? (
+                               <Check size={14} className="text-green-400 pointer-events-none" />
+                             ) : (
+                               <Copy size={14} className="pointer-events-none" />
+                             )}
                            </button>
                         </div>
                     ) : (

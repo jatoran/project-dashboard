@@ -174,7 +174,7 @@
     "frontend_url": "http://localhost:3883"
   },
   {
-    "id": "e0557c99-2c87-4ded-b384-02443b57cefe",
+    "id": "ed6bb016-f274-460e-bdf2-ac3e9f6052ff",
     "name": "inbox-processor",
     "path": "D:\\projects\\inbox-processor",
     "type": "docker",
@@ -239,5 +239,64 @@
     ],
     "vscode_workspace_file": "D:\\projects\\inbox-processor\\inbox-processor.code-workspace",
     "frontend_url": "http://localhost:48338"
+  },
+  {
+    "id": "19c1234f-41e7-4b26-99fe-49a9458b0f2f",
+    "name": "search-gateway",
+    "path": "D:\\projects\\search-gateway",
+    "type": "python",
+    "tags": [
+      "git",
+      "javascript",
+      "docker",
+      "next.js",
+      "typescript",
+      "node",
+      "tailwind",
+      "fastapi",
+      "react",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "D:\\projects\\search-gateway\\README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "SEARCH_GATEWAY_SPEC.md",
+        "path": "D:\\projects\\search-gateway\\SEARCH_GATEWAY_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_OVERVIEW.md",
+        "path": "D:\\projects\\search-gateway\\docs\\TECHNICAL_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "USAGE.md",
+        "path": "D:\\projects\\search-gateway\\docs\\USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:7083/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:7083/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:7083/openapi.json",
+        "type": "link"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\search-gateway\\search-gateway.code-workspace",
+    "frontend_url": "http://localhost:4000"
   }
 ]

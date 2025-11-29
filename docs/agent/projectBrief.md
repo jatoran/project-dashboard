@@ -1,7 +1,7 @@
 # Project Brief
 
 ## Vision
-A "Mission Control" dashboard for a hybrid Windows/WSL development environment. The application serves as a centralized, read-only index for projects, allowing for quick navigation, documentation retrieval, and workspace launching.
+A "Project Dashboard" dashboard for a hybrid Windows/WSL development environment. The application serves as a centralized, read-only index for projects, allowing for quick navigation, documentation retrieval, and workspace launching.
 
 ## Core Requirements (Phase 1)
 1.  **Centralized UI:** A clean, filterable interface to list projects.
