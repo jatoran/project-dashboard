@@ -19,6 +19,14 @@ def add_project(request: CreateProjectRequest):
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+@router.delete("/projects/{project_id}")
+def delete_project(project_id: str):
+    try:
+        store.remove_project(project_id)
+        return {"status": "success", "message": f"Project {project_id} removed"}
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
 @router.post("/launch")
 def launch_project(request: LaunchRequest):
     try:

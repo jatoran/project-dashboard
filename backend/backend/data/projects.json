@@ -1,8 +1,8 @@
 [
   {
-    "id": "58c55ac5-191e-4bbc-830c-5feb417c5ba9",
+    "id": "923323b3-2a36-48d1-887f-0a99c65fae96",
     "name": "gmail-fetcher",
-    "path": "D:\\Projects\\gmail-fetcher",
+    "path": "D:\\projects\\gmail-fetcher",
     "type": "docker",
     "tags": [
       "docker",
@@ -10,6 +10,20 @@
     ],
     "description": null,
     "git_status": "Clean",
-    "docs": []
+    "docs": [],
+    "vscode_workspace_file": "D:\\projects\\gmail-fetcher\\gmail-fetcher.code-workspace"
+  },
+  {
+    "id": "e5bf1104-7975-4c73-8cd4-ba086b8510d0",
+    "name": "ant-incremental",
+    "path": "D:\\PROJECTS\\[Old Inactive Projects\\ant-incremental",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "vscode_workspace_file": null
   }
 ]

@@ -39,6 +39,14 @@ class ProjectStore:
         self._save(projects)
         return project
 
+    def remove_project(self, project_id: str):
+        projects = self.get_all()
+        initial_len = len(projects)
+        projects = [p for p in projects if p.id != project_id]
+        if len(projects) == initial_len:
+            raise ValueError(f"Project with ID {project_id} not found.")
+        self._save(projects)
+
     def _save(self, projects: List[Project]):
         with open(DATA_FILE, "w") as f:
             json.dump([p.dict() for p in projects], f, indent=2)

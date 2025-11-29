@@ -34,9 +34,16 @@ class ProjectScanner:
             tags.append("docker")
 
         # Detect Docs
+        # We want to identify specific API docs to render special buttons
         for doc_file in ["README.md", "openapi.json", "swagger.json"]:
             if (path / doc_file).exists():
-                docs.append({"name": doc_file, "path": str(path / doc_file)})
+                doc_type = "file"
+                if doc_file == "openapi.json":
+                    doc_type = "openapi"
+                elif doc_file == "swagger.json":
+                    doc_type = "swagger"
+                
+                docs.append({"name": doc_file, "path": str(path / doc_file), "type": doc_type})
 
         # Basic Git Check (Simplified)
         git_status = None
@@ -45,6 +52,14 @@ class ProjectScanner:
             # Could add subprocess call to 'git status' here later
             git_status = "Clean" 
 
+        # Detect VS Code Workspace
+        vscode_workspace_file = None
+        for item in os.listdir(path):
+            if item.endswith(".code-workspace") and (path / item).is_file():
+                vscode_workspace_file = str(path / item)
+                print(f"Found Workspace: {vscode_workspace_file}")
+                break
+        
         return Project(
             id=str(uuid.uuid4()),
             name=name,
@@ -52,5 +67,6 @@ class ProjectScanner:
             type=project_type,
             tags=tags,
             docs=docs,
-            git_status=git_status
+            git_status=git_status,
+            vscode_workspace_file=vscode_workspace_file
         )
