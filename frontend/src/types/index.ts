@@ -5,6 +5,6 @@ export interface Project {
   type: 'node' | 'python' | 'rust' | 'docker' | 'generic';
   tags: string[];
   git_status?: string;
-  docs: { name: string; path: string; type?: 'openapi' | 'swagger' | 'file' }[];
+  docs: { name: string; path: string; type?: 'openapi' | 'swagger' | 'file' | 'link' }[];
   vscode_workspace_file?: string;
 }

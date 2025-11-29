@@ -2,9 +2,11 @@ import os
 import json
 import subprocess
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
 from backend.models import Project
 import uuid
+import re
+import yaml
 
 class ProjectScanner:
     def scan(self, path_str: str) -> Project:
@@ -14,27 +16,50 @@ class ProjectScanner:
 
         name = path.name
         project_type = "generic"
-        tags = []
+        tags = set() # Use set to avoid dupes
         docs = []
 
-        # Detect Type
+        # --- Phase 1: Tagging & Type Detection ---
+        # Check Node
         if (path / "package.json").exists():
-            project_type = "node"
-            tags.append("javascript")
+            project_type = "node" # Default to node if present
+            tags.add("javascript")
             if (path / "tsconfig.json").exists():
-                tags.append("typescript")
-        elif (path / "requirements.txt").exists() or (path / "pyproject.toml").exists():
-            project_type = "python"
-            tags.append("python")
-        elif (path / "Cargo.toml").exists():
-            project_type = "rust"
-            tags.append("rust")
-        elif (path / "docker-compose.yml").exists():
-            project_type = "docker"
-            tags.append("docker")
+                tags.add("typescript")
+        
+        # Check Python
+        has_python = False
+        if (path / "requirements.txt").exists() or (path / "pyproject.toml").exists():
+            project_type = "python" # Override if explicit python
+            tags.add("python")
+            has_python = True
+        else:
+            # Check common subdirs like 'backend'
+            if (path / "backend" / "requirements.txt").exists():
+                tags.add("python")
+                has_python = True
 
-        # Detect Docs
-        # We want to identify specific API docs to render special buttons
+        # Check Rust
+        if (path / "Cargo.toml").exists():
+            project_type = "rust"
+            tags.add("rust")
+
+        # Check Docker
+        has_docker = False
+        if (path / "docker-compose.yml").exists() or (path / "Dockerfile").exists():
+            has_docker = True
+            tags.add("docker")
+            # If purely docker at root, set type to docker
+            if project_type == "generic":
+                project_type = "docker"
+
+        # Check Git
+        git_status = None
+        if (path / ".git").exists():
+            tags.add("git")
+            git_status = "Clean"
+
+        # --- Phase 2: Static File Docs ---
         for doc_file in ["README.md", "openapi.json", "swagger.json"]:
             if (path / doc_file).exists():
                 doc_type = "file"
@@ -45,27 +70,137 @@ class ProjectScanner:
                 
                 docs.append({"name": doc_file, "path": str(path / doc_file), "type": doc_type})
 
-        # Basic Git Check (Simplified)
-        git_status = None
-        if (path / ".git").exists():
-            tags.append("git")
-            # Could add subprocess call to 'git status' here later
-            git_status = "Clean" 
+        # --- Phase 3: API Port Detection & Dynamic Docs ---
+        # We attempt to find a port if:
+        # 1. It's a Python project (FastAPI potential)
+        # 2. It's a Docker project (Exposed ports)
+        # 3. It's a Node project (Express/NestJS potential)
+        
+        detected_port = None
+        is_fastapi = False
 
-        # Detect VS Code Workspace
+        # 3a. Check for FastAPI signature anywhere
+        # Scan root and immediate subdirs for requirements.txt mentioning fastapi
+        search_paths = [path] + [p for p in path.iterdir() if p.is_dir() and p.name not in ['node_modules', '.git', '.venv', 'venv']]
+        
+        for search_path in search_paths:
+            req_file = search_path / "requirements.txt"
+            toml_file = search_path / "pyproject.toml"
+            
+            content = ""
+            if req_file.exists(): content += req_file.read_text(errors='ignore').lower()
+            if toml_file.exists(): content += toml_file.read_text(errors='ignore').lower()
+            
+            if "fastapi" in content:
+                is_fastapi = True
+                tags.add("fastapi")
+                break
+
+        # 3b. Strategy: Docker Compose (Best for Ports)
+        if not detected_port and (path / "docker-compose.yml").exists():
+            try:
+                content = (path / "docker-compose.yml").read_text(errors='ignore')
+                data = yaml.safe_load(content)
+                services = data.get('services', {})
+                
+                # Heuristic: Find "backend" service or any service exposing ports
+                target_svc = None
+                
+                # 1. Look for named services
+                for key in ['backend', 'api', 'server', 'app', 'web']:
+                    if key in services:
+                        target_svc = services[key]
+                        break
+                
+                # 2. If checking specifically for FastAPI/Python, prioritize that
+                if not target_svc and is_fastapi:
+                     # Try to find service building from Dockerfile.backend
+                     for _, svc in services.items():
+                         if 'build' in svc:
+                             build = svc['build']
+                             if isinstance(build, dict) and 'dockerfile' in build:
+                                 if 'backend' in build['dockerfile'].lower():
+                                     target_svc = svc
+                                     break
+
+                # Extract Port
+                if target_svc and 'ports' in target_svc:
+                    for p in target_svc['ports']:
+                        # "8001:8001" or "8001"
+                        p_str = str(p)
+                        if ':' in p_str:
+                            host = p_str.split(':')[0]
+                            detected_port = host
+                            break
+                        elif p_str.isdigit():
+                            detected_port = p_str
+                            break
+            except: pass
+
+        # 3c. Strategy: Markdown Scanning (Contextual)
+        if not detected_port:
+            md_files = [f for f in os.listdir(path) if f.endswith('.md')]
+            for md_file in md_files:
+                try:
+                    content = (path / md_file).read_text(errors='ignore')
+                    # Look for "Backend ... localhost:XXXX"
+                    patterns = [
+                        r"(?:backend|api|server|fastapi).*?localhost:(\d{4,5})",
+                        r"localhost:(\d{4,5}).*?(?:backend|api|server|fastapi|docs|swagger)",
+                        r"localhost:(\d{4,5})/docs"
+                    ]
+                    for pat in patterns:
+                        match = re.search(pat, content, re.IGNORECASE | re.DOTALL)
+                        if match:
+                            detected_port = match.group(1)
+                            # Ignore common frontend ports unless explicit
+                            if detected_port in ['3000', '4200', '5173']:
+                                detected_port = None 
+                                continue
+                            break
+                    if detected_port: break
+                except: pass
+
+        # 3d. Strategy: Frontend Configs (API_URL)
+        if not detected_port:
+             for root, _, files in os.walk(str(path)):
+                if 'node_modules' in root or '.git' in root: continue
+                for file in files:
+                    if file in ['.env', '.env.local', 'constants.ts', 'config.js']:
+                        try:
+                            content = (Path(root) / file).read_text(errors='ignore')
+                            match = re.search(r"(?:API|BACKEND|SERVER).*?localhost:(\d{4,5})", content, re.IGNORECASE)
+                            if match:
+                                detected_port = match.group(1)
+                                break
+                        except: pass
+                if detected_port: break
+
+        # --- Phase 4: Generate Links ---
+        # If we confirmed FastAPI OR we found a likely backend port, generate links
+        if is_fastapi or detected_port:
+            final_port = detected_port if detected_port else "8000"
+            
+            # Only add these if we suspect it's a swagger-enabled API (FastAPI strongly implies this)
+            # Or if the port was found via "API" context
+            if is_fastapi or (detected_port and "80" in detected_port): # 8000, 8080, 8001
+                docs.append({"name": "Swagger UI", "path": f"http://localhost:{final_port}/docs", "type": "link"})
+                docs.append({"name": "ReDoc", "path": f"http://localhost:{final_port}/redoc", "type": "link"})
+                docs.append({"name": "OpenAPI JSON", "path": f"http://localhost:{final_port}/openapi.json", "type": "link"})
+
+        # --- Phase 5: VS Code Workspace ---
         vscode_workspace_file = None
         for item in os.listdir(path):
             if item.endswith(".code-workspace") and (path / item).is_file():
                 vscode_workspace_file = str(path / item)
-                print(f"Found Workspace: {vscode_workspace_file}")
                 break
-        
+
         return Project(
             id=str(uuid.uuid4()),
             name=name,
             path=str(path.absolute()),
             type=project_type,
-            tags=tags,
+            tags=list(tags),
             docs=docs,
             git_status=git_status,
             vscode_workspace_file=vscode_workspace_file

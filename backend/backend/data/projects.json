@@ -1,29 +1,96 @@
 [
   {
-    "id": "923323b3-2a36-48d1-887f-0a99c65fae96",
+    "id": "ecd1d10b-6dbf-48f5-b24e-7f1b9a24681c",
+    "name": "personal-media-feed",
+    "path": "D:\\projects\\personal-media-feed",
+    "type": "python",
+    "tags": [
+      "fastapi",
+      "git",
+      "docker",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8001/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8001/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8001/openapi.json",
+        "type": "link"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\personal-media-feed\\personal-media-feed.code-workspace"
+  },
+  {
+    "id": "4b2ce683-ee7f-4f44-b79e-a9ba0025c791",
+    "name": "inbox-processor",
+    "path": "D:\\projects\\inbox-processor",
+    "type": "docker",
+    "tags": [
+      "git",
+      "fastapi",
+      "docker"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:48337/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:48337/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:48337/openapi.json",
+        "type": "link"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\inbox-processor\\inbox-processor.code-workspace"
+  },
+  {
+    "id": "feae4907-0c58-42c0-b3c2-4a3c283c4389",
     "name": "gmail-fetcher",
     "path": "D:\\projects\\gmail-fetcher",
     "type": "docker",
     "tags": [
-      "docker",
-      "git"
+      "git",
+      "fastapi",
+      "docker"
     ],
     "description": null,
     "git_status": "Clean",
-    "docs": [],
+    "docs": [
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:40881/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:40881/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:40881/openapi.json",
+        "type": "link"
+      }
+    ],
     "vscode_workspace_file": "D:\\projects\\gmail-fetcher\\gmail-fetcher.code-workspace"
-  },
-  {
-    "id": "e5bf1104-7975-4c73-8cd4-ba086b8510d0",
-    "name": "ant-incremental",
-    "path": "D:\\PROJECTS\\[Old Inactive Projects\\ant-incremental",
-    "type": "generic",
-    "tags": [
-      "git"
-    ],
-    "description": null,
-    "git_status": "Clean",
-    "docs": [],
-    "vscode_workspace_file": null
   }
 ]

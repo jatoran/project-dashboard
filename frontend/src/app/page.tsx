@@ -172,7 +172,17 @@ export default function Home() {
               <div className="space-y-2 mb-6">
                 {project.docs.map((doc) => (
                   <div key={doc.name} className="flex items-center gap-2 text-xs text-slate-400">
-                    {doc.type === 'openapi' || doc.type === 'swagger' ? (
+                    {doc.type === 'link' ? (
+                       <a 
+                         href={doc.path}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 hover:underline"
+                       >
+                         <Link size={12} />
+                         <span className="font-mono">{doc.name}</span>
+                       </a>
+                    ) : doc.type === 'openapi' || doc.type === 'swagger' ? (
                        <button 
                          onClick={() => launch(doc.path, 'vscode')} 
                          className="flex items-center gap-1 text-indigo-400 hover:text-indigo-300 hover:underline"
