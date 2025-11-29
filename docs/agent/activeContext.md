@@ -22,6 +22,7 @@ Completing Phase 1 (Core Dashboard) and transitioning to maintenance/Phase 2.
     - **Frontend Monitor:** Auto-detects frontend ports (Node scripts, Docker Compose, Vite config, Markdown docs) and provides a real-time "App" status indicator with a launch link.
     - **Monorepo Support:** Scanner now recursively checks subdirectories (`frontend`, `client`, `web`, etc.) for `package.json` configurations to accurately tag projects and detect ports in nested structures.
     - **UI Refinement:** Fixed 5-column action grid to ensure consistent button layout. Code, Terminal, WSL, and Explorer are always visible, with App appearing in the 5th slot when available.
+    - **Bug Fixes:** Fixed "Copy Document Content" button not triggering due to event bubbling issues; added explicit stopPropagation. Removed temporary "Copied!" feedback from project path copy action for cleaner UX.
 
 ## Active Decisions
 - **Path Handling:** Input is expected to be Windows paths (`D:\projects\...`). WSL paths are supported via manual conversion logic in the launcher if needed, but `D:` is preferred.

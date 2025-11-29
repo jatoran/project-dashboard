@@ -174,7 +174,7 @@
     "frontend_url": "http://localhost:3883"
   },
   {
-    "id": "2658322d-e0c5-4668-a105-a78334793ea8",
+    "id": "e0557c99-2c87-4ded-b384-02443b57cefe",
     "name": "inbox-processor",
     "path": "D:\\projects\\inbox-processor",
     "type": "docker",

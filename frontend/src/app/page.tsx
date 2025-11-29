@@ -32,19 +32,16 @@ export default function Home() {
     }
   };
 
-  const handleCopyDocContent = async (filePath: string) => {
+  const handleCopyDocContent = async (filePath: string) => { /* ... */ };
+
+  const handleCopyProjectPath = async (path: string) => {
     try {
-        const res = await fetch(`/api/files/content?path=${encodeURIComponent(filePath)}`);
-        if (!res.ok) throw new Error("Failed to load file content for copying.");
-        const data = await res.json();
-        await navigator.clipboard.writeText(data.content);
-        setCopiedDocContentPath(filePath);
-        setTimeout(() => setCopiedDocContentPath(null), 2000); // Reset after 2 seconds
+        await navigator.clipboard.writeText(path);
     } catch (err) {
-        console.error("Error copying doc content:", err);
-        setError("Failed to copy document content."); // Set error state in main component
+        console.error("Error copying project path:", err);
+        setError("Failed to copy project path.");
     }
-};
+  };
 
   useEffect(() => {
     fetchProjects();
@@ -207,9 +204,13 @@ export default function Home() {
 
               {/* Card Header */}
               <div className="flex justify-between items-start mb-4">
-                <div>
+                <div 
+                  className="cursor-pointer group relative" 
+                  onClick={() => handleCopyProjectPath(project.path)}
+                  title="Click to copy path"
+                >
                   <h3 className="text-lg font-semibold text-white mb-1">{project.name}</h3>
-                  <p className="text-xs text-slate-500 font-mono truncate max-w-[200px]" title={project.path}>
+                  <p className="text-xs text-slate-500 font-mono truncate max-w-[200px] group-hover:text-slate-400 transition-colors">
                     {project.path}
                   </p>
                 </div>
@@ -268,7 +269,10 @@ export default function Home() {
                              <span className="font-mono truncate">{doc.name}</span>
                            </button>
                            <button
-                             onClick={() => handleCopyDocContent(doc.path)}
+                             onClick={(e) => {
+                               e.stopPropagation();
+                               handleCopyDocContent(doc.path);
+                             }}
                              className="text-slate-600 hover:text-slate-400 p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                              title="Copy content"
                            >

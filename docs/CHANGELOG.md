@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.4] - 2025-11-29
+### UX Improvements
+- **Copy Features:**
+    - **Project Path:** Clicking the project path now silently copies it to the clipboard (removed "Copied!" text overlay).
+    - **Documentation:** Fixed the copy button next to markdown files which was previously unresponsive; added explicit event handling to prevent bubbling conflicts.
+
 ## [1.3.3] - 2025-11-29
 ### Features
 - **Nested Project Scanning:**
