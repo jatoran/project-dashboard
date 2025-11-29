@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0] - 2025-11-29
+### Features
+- **Enhanced Tagging:**
+    - Replaced single "Project Type" with a multi-tag system.
+    - Detects specific frameworks: React, Next.js, Vue, Express, NestJS, Tailwind.
+    - Detects Python libs: FastAPI, Django, Flask, Pandas, PyTorch.
+    - Detects Rust crates: Actix, Tokio, Axum.
+    - Surfaces "Docker" as a tag alongside languages.
+    - UI displays up to 3 primary tags with color-coding.
+
 ## [1.1.0] - 2025-11-29
 ### Features
 - **Documentation Hub:**

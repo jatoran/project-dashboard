@@ -161,13 +161,27 @@ export default function Home() {
                     {project.path}
                   </p>
                 </div>
-                <span className={`px-2 py-1 rounded text-xs font-medium uppercase tracking-wider ${
-                  project.type === 'node' ? 'bg-green-900/30 text-green-400 border border-green-900' :
-                  project.type === 'python' ? 'bg-yellow-900/30 text-yellow-400 border border-yellow-900' :
-                  'bg-slate-800 text-slate-400 border border-slate-700'
-                }`}>
-                  {project.type}
-                </span>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1 justify-end max-w-[50%]">
+                   {project.tags.slice(0, 3).map(tag => (
+                      <span key={tag} className={`px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider border ${
+                        tag === 'node' || tag === 'javascript' || tag === 'typescript' ? 'bg-yellow-900/20 text-yellow-400 border-yellow-900/50' :
+                        tag === 'python' || tag === 'django' || tag === 'flask' ? 'bg-blue-900/20 text-blue-400 border-blue-900/50' :
+                        tag === 'react' || tag === 'next.js' || tag === 'vue' ? 'bg-cyan-900/20 text-cyan-400 border-cyan-900/50' :
+                        tag === 'docker' ? 'bg-sky-900/20 text-sky-400 border-sky-900/50' :
+                        tag === 'rust' ? 'bg-orange-900/20 text-orange-400 border-orange-900/50' :
+                        tag === 'fastapi' ? 'bg-teal-900/20 text-teal-400 border-teal-900/50' :
+                        'bg-slate-800 text-slate-400 border-slate-700'
+                      }`}>
+                        {tag}
+                      </span>
+                   ))}
+                   {project.tags.length > 3 && (
+                     <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-500 border border-slate-700">
+                       +{project.tags.length - 3}
+                     </span>
+                   )}
+                </div>
               </div>
 
               {/* Docs / Metadata */}

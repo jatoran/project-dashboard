@@ -96,7 +96,6 @@ Documentation is a first-class citizen.
       1. Detection: Determine the active environment before executing commands or resolving paths.
       2. Pathing: Be mindful of path separators (`/` vs `\`). Use platform-agnostic path normalization libraries (e.g., Node.js `path.join()`, Python `os.path`) when handling file paths. Ensure correct translation between WSL paths (e.g., `/mnt/c/...`) and Windows paths (e.g., `C:\...`) when required.
       3. Execution: Ensure shell scripts (`.sh`) are compatible with WSL. Provide equivalent batch (`.bat`) or PowerShell (`.ps1`) scripts if native Windows execution is necessary, or preferably use cross-platform scripts (e.g., Node.js scripts).
-      4. Line Endings: Prefer LF. Ensure Git handles conversions correctly via `.gitattributes`.
     </rules>
   </environment_handling>
 

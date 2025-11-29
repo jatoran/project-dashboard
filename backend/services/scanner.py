@@ -23,16 +23,45 @@ class ProjectScanner:
         # Check Node
         if (path / "package.json").exists():
             project_type = "node" # Default to node if present
+            tags.add("node")
             tags.add("javascript")
+            
+            try:
+                pkg = json.loads((path / "package.json").read_text(errors='ignore'))
+                deps = {**pkg.get('dependencies', {}), **pkg.get('devDependencies', {})}
+                
+                if "typescript" in deps: tags.add("typescript")
+                if "react" in deps: tags.add("react")
+                if "next" in deps: tags.add("next.js")
+                if "vue" in deps: tags.add("vue")
+                if "express" in deps: tags.add("express")
+                if "@nestjs/core" in deps: tags.add("nestjs")
+                if "tailwindcss" in deps: tags.add("tailwind")
+            except: pass
+
             if (path / "tsconfig.json").exists():
                 tags.add("typescript")
         
         # Check Python
         has_python = False
-        if (path / "requirements.txt").exists() or (path / "pyproject.toml").exists():
+        python_indicators = ["requirements.txt", "pyproject.toml", "Pipfile", "setup.py"]
+        if any((path / f).exists() for f in python_indicators):
             project_type = "python" # Override if explicit python
             tags.add("python")
             has_python = True
+            
+            # Scan for frameworks
+            content = ""
+            for f in python_indicators:
+                if (path / f).exists():
+                    content += (path / f).read_text(errors='ignore').lower()
+            
+            if "fastapi" in content: tags.add("fastapi")
+            if "django" in content: tags.add("django")
+            if "flask" in content: tags.add("flask")
+            if "pandas" in content: tags.add("pandas")
+            if "torch" in content: tags.add("pytorch")
+
         else:
             # Check common subdirs like 'backend'
             if (path / "backend" / "requirements.txt").exists():
@@ -43,6 +72,12 @@ class ProjectScanner:
         if (path / "Cargo.toml").exists():
             project_type = "rust"
             tags.add("rust")
+            try:
+                content = (path / "Cargo.toml").read_text(errors='ignore')
+                if "actix" in content: tags.add("actix")
+                if "tokio" in content: tags.add("tokio")
+                if "axum" in content: tags.add("axum")
+            except: pass
 
         # Check Docker
         has_docker = False
