@@ -1,0 +1,15 @@
+[
+  {
+    "id": "58c55ac5-191e-4bbc-830c-5feb417c5ba9",
+    "name": "gmail-fetcher",
+    "path": "D:\\Projects\\gmail-fetcher",
+    "type": "docker",
+    "tags": [
+      "docker",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": []
+  }
+]
