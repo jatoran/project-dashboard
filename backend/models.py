@@ -11,6 +11,7 @@ class Project(BaseModel):
     git_status: Optional[str] = None
     docs: List[Dict[str, str]] = [] # [{'name': 'Swagger', 'path': 'http://...', 'type': 'link'}]
     vscode_workspace_file: Optional[str] = None
+    frontend_url: Optional[str] = None
 
 class CreateProjectRequest(BaseModel):
     path: str

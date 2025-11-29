@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.3.2] - 2025-11-29
+### Features
+- **UI Layout Standardization:**
+    - Migrated project card actions to a fixed 5-column grid.
+    - **Consistent Buttons:** "Code", "Terminal", "WSL", and "Explorer" are now always visible and aligned.
+    - **Conditional App Button:** The "App" launch button now occupies the 5th column only when a frontend URL is detected, preventing layout shifts.
+
+## [1.3.1] - 2025-11-29
+### Features
+- **Enhanced Frontend Detection:**
+    - **Vite Config:** Scans `vite.config.ts/js` for explicit `server.port` settings.
+    - **Markdown Context:** Smarter scanning of `.md` files for URLs specifically associated with "Frontend", "UI", or "Client" labels.
+    - **Docker Compose:** Improved service name matching (frontend, client, web, ui, app) and extended port validation logic (supports high ports >1024, ignores common DB ports).
+
+## [1.3.0] - 2025-11-29
+### Features
+- **Frontend Monitoring:**
+    - **Auto-Detection:** Scans `package.json` scripts and `docker-compose.yml` for frontend ports (3000, 4200, 5173, etc.).
+    - **Live Status:** Polls the detected frontend URL every 30 seconds to check if the app is running (via HTTP HEAD request).
+    - **Launch Button:** Dedicated "App" button in the project card that links to the frontend, with a color-coded status dot (Green=Up, Red=Down).
+
 ## [1.2.1] - 2025-11-29
 ### Features
 - **Documentation Hub:**

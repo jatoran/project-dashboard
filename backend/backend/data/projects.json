@@ -1,55 +1,14 @@
 [
   {
-    "id": "2858ea16-3f17-49ef-a749-8a595dfb0f64",
-    "name": "gmail-fetcher",
-    "path": "D:\\projects\\gmail-fetcher",
-    "type": "docker",
-    "tags": [
-      "fastapi",
-      "git",
-      "docker"
-    ],
-    "description": null,
-    "git_status": "Clean",
-    "docs": [
-      {
-        "name": "API_DOCS.md",
-        "path": "D:\\projects\\gmail-fetcher\\API_DOCS.md",
-        "type": "markdown"
-      },
-      {
-        "name": "TECHNICAL_DOCS.md",
-        "path": "D:\\projects\\gmail-fetcher\\TECHNICAL_DOCS.md",
-        "type": "markdown"
-      },
-      {
-        "name": "Swagger UI",
-        "path": "http://localhost:40881/docs",
-        "type": "link"
-      },
-      {
-        "name": "ReDoc",
-        "path": "http://localhost:40881/redoc",
-        "type": "link"
-      },
-      {
-        "name": "OpenAPI JSON",
-        "path": "http://localhost:40881/openapi.json",
-        "type": "link"
-      }
-    ],
-    "vscode_workspace_file": "D:\\projects\\gmail-fetcher\\gmail-fetcher.code-workspace"
-  },
-  {
-    "id": "86233dc0-cd99-437a-94a7-0c3827fff3e4",
+    "id": "61f9257e-81da-4734-a77c-a302bc548514",
     "name": "personal-media-feed",
     "path": "D:\\projects\\personal-media-feed",
     "type": "python",
     "tags": [
-      "fastapi",
+      "python",
       "git",
       "docker",
-      "python"
+      "fastapi"
     ],
     "description": null,
     "git_status": "Clean",
@@ -80,17 +39,60 @@
         "type": "link"
       }
     ],
-    "vscode_workspace_file": "D:\\projects\\personal-media-feed\\personal-media-feed.code-workspace"
+    "vscode_workspace_file": "D:\\projects\\personal-media-feed\\personal-media-feed.code-workspace",
+    "frontend_url": "http://localhost:5173"
   },
   {
-    "id": "486bb4fe-70d6-4ef8-992d-5bc4d0f6b863",
+    "id": "658c0f20-ec5c-42af-94db-c963e462fd55",
+    "name": "gmail-fetcher",
+    "path": "D:\\projects\\gmail-fetcher",
+    "type": "docker",
+    "tags": [
+      "docker",
+      "fastapi",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "API_DOCS.md",
+        "path": "D:\\projects\\gmail-fetcher\\API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\projects\\gmail-fetcher\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:40881/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:40881/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:40881/openapi.json",
+        "type": "link"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\gmail-fetcher\\gmail-fetcher.code-workspace",
+    "frontend_url": "http://localhost:40882"
+  },
+  {
+    "id": "8b1488da-a0fb-487f-9737-d103c99248df",
     "name": "project-dashboard",
     "path": "D:\\projects\\project-dashboard",
     "type": "generic",
     "tags": [
-      "fastapi",
+      "python",
       "git",
-      "python"
+      "fastapi"
     ],
     "description": null,
     "git_status": "Clean",
@@ -141,6 +143,7 @@
         "type": "link"
       }
     ],
-    "vscode_workspace_file": "D:\\projects\\project-dashboard\\project-dashboard.code-workspace"
+    "vscode_workspace_file": "D:\\projects\\project-dashboard\\project-dashboard.code-workspace",
+    "frontend_url": null
   }
 ]

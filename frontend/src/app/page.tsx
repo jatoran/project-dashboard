@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Project } from "@/types";
-import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy, Check } from "lucide-react";
+import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy, Check, Globe } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [viewingDoc, setViewingDoc] = useState<{path: string, name: string} | null>(null);
   const [copiedDocContentPath, setCopiedDocContentPath] = useState<string | null>(null); // To track which doc's content was copied
+  const [statuses, setStatuses] = useState<Record<string, boolean | null>>({});
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -48,6 +49,42 @@ export default function Home() {
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  // Polling Logic
+  useEffect(() => {
+    if (projects.length === 0) return;
+
+    const checkStatuses = async () => {
+      const newStatuses: Record<string, boolean | null> = {};
+      
+      // Create a list of promises to check all projects in parallel
+      const checks = projects.map(async (project) => {
+        if (!project.frontend_url) return;
+        
+        try {
+            const res = await fetch(`/api/monitor/status?url=${encodeURIComponent(project.frontend_url)}`);
+            if (res.ok) {
+                const data = await res.json();
+                newStatuses[project.id] = data.is_up;
+            } else {
+                newStatuses[project.id] = false;
+            }
+        } catch {
+            newStatuses[project.id] = false;
+        }
+      });
+
+      await Promise.all(checks);
+      setStatuses(prev => ({ ...prev, ...newStatuses }));
+    };
+
+    // Check immediately
+    checkStatuses();
+
+    // Then poll every 30s
+    const interval = setInterval(checkStatuses, 30000);
+    return () => clearInterval(interval);
+  }, [projects]);
 
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -255,10 +292,11 @@ export default function Home() {
               </div>
 
               {/* Actions */}
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-5 gap-2">
                 <button 
                   onClick={() => launch(project.vscode_workspace_file || project.path, 'vscode')}
                   className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-indigo-600/20 hover:text-indigo-400 text-slate-400 transition-all border border-transparent hover:border-indigo-500/30"
+                  title="Open in VS Code"
                 >
                   <Code2 size={18} />
                   <span className="text-[10px] font-medium">Code</span>
@@ -266,13 +304,15 @@ export default function Home() {
                 <button 
                   onClick={() => launch(project.path, 'terminal')}
                   className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-emerald-600/20 hover:text-emerald-400 text-slate-400 transition-all border border-transparent hover:border-emerald-500/30"
+                  title="Open Terminal"
                 >
                   <Terminal size={18} />
-                  <span className="text-[10px] font-medium">Terminal</span>
+                  <span className="text-[10px] font-medium">Term</span>
                 </button>
                 <button 
                   onClick={() => launch(project.path, 'wsl')}
                   className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-orange-600/20 hover:text-orange-400 text-slate-400 transition-all border border-transparent hover:border-orange-500/30"
+                  title="Open WSL Terminal"
                 >
                   <Command size={18} />
                   <span className="text-[10px] font-medium">WSL</span>
@@ -280,10 +320,32 @@ export default function Home() {
                 <button 
                   onClick={() => launch(project.path, 'explorer')}
                   className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-blue-600/20 hover:text-blue-400 text-slate-400 transition-all border border-transparent hover:border-blue-500/30"
+                  title="Open File Explorer"
                 >
                   <Folder size={18} />
-                  <span className="text-[10px] font-medium">Explorer</span>
+                  <span className="text-[10px] font-medium">Files</span>
                 </button>
+
+                 {/* App Button - Only renders if URL exists, but takes up 5th slot */}
+                 {project.frontend_url ? (
+                     <a 
+                       href={project.frontend_url}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-cyan-600/20 hover:text-cyan-400 text-slate-400 transition-all border border-transparent hover:border-cyan-500/30 relative"
+                       title="Open Web App"
+                     >
+                        <div className={`absolute top-1 right-1 w-1.5 h-1.5 rounded-full ${
+                            statuses[project.id] === true ? "bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.6)]" : 
+                            statuses[project.id] === false ? "bg-red-500" : 
+                            "bg-slate-600"
+                        }`} />
+                        <Globe size={18} />
+                        <span className="text-[10px] font-medium">App</span>
+                     </a>
+                ) : (
+                    <div className="bg-slate-900/20 rounded-lg border border-transparent border-slate-800/20"></div>
+                )}
               </div>
 
             </div>

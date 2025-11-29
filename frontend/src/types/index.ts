@@ -7,4 +7,5 @@ export interface Project {
   git_status?: string;
   docs: { name: string; path: string; type?: 'openapi' | 'swagger' | 'file' | 'link' | 'markdown' }[];
   vscode_workspace_file?: string;
+  frontend_url?: string;
 }

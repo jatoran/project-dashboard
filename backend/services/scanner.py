@@ -245,7 +245,97 @@ class ProjectScanner:
                 docs.append({"name": "ReDoc", "path": f"http://localhost:{final_port}/redoc", "type": "link"})
                 docs.append({"name": "OpenAPI JSON", "path": f"http://localhost:{final_port}/openapi.json", "type": "link"})
 
-        # --- Phase 5: VS Code Workspace ---
+        # --- Phase 5: Frontend URL Detection ---
+        frontend_url = None
+        
+        # 5a. Check Vite Config (Common in React/Vue)
+        if not frontend_url:
+             for cfg in ["vite.config.ts", "vite.config.js"]:
+                 if (path / cfg).exists():
+                     try:
+                         content = (path / cfg).read_text(errors='ignore')
+                         # Look for port: XXXX in server config
+                         match = re.search(r"port:\s*(\d{4})", content)
+                         if match:
+                             frontend_url = f"http://localhost:{match.group(1)}"
+                             break
+                     except: pass
+
+        # 5b. Check Node scripts
+        if not frontend_url and (project_type == "node" or "node" in tags or "javascript" in tags):
+            detected_fe_port = None
+            if (path / "package.json").exists():
+                    pkg = json.loads((path / "package.json").read_text(errors='ignore'))
+                    scripts = pkg.get("scripts", {})
+                    for script_cmd in scripts.values():
+                        # Look for -p XXXX, --port XXXX, -p=XXXX, --port=XXXX, PORT=XXXX
+                        port_match = re.search(r"(?:-p|--port)[=\s]+(\d{4,5})", script_cmd)
+                        if not port_match:
+                            port_match = re.search(r"PORT=(\d{4,5})", script_cmd)
+                        
+                        if port_match:
+                            detected_fe_port = port_match.group(1)
+                            break
+
+            if not detected_fe_port:
+                # Default based on framework tags
+                if "next.js" in tags: detected_fe_port = "3000"
+                elif "react" in tags: detected_fe_port = "3000" # CRA default
+                elif "vite" in tags or "vue" in tags: detected_fe_port = "5173"
+                elif "angular" in tags: detected_fe_port = "4200"
+            
+            if detected_fe_port:
+                frontend_url = f"http://localhost:{detected_fe_port}"
+        
+        # 5c. Check Docker Compose (Most reliable for high ports)
+        if has_docker and (path / "docker-compose.yml").exists():
+             try:
+                content = (path / "docker-compose.yml").read_text(errors='ignore')
+                data = yaml.safe_load(content)
+                services = data.get('services', {})
+                
+                # Priority 1: Explicit service name match
+                target_svc = None
+                for key in services.keys():
+                    if key.lower() in ['frontend', 'client', 'ui', 'web', 'app']:
+                         target_svc = services[key]
+                         break
+                
+                if target_svc and 'ports' in target_svc:
+                    for p in target_svc['ports']:
+                        p_str = str(p)
+                        if ':' in p_str:
+                            host_port = p_str.split(':')[0]
+                            # Valid range check (avoid MySQL 3306, Postgres 5432, Redis 6379)
+                            if host_port.isdigit():
+                                port_num = int(host_port)
+                                if port_num > 1024 and port_num not in [3306, 5432, 6379, 8080, 8000, 27017]:
+                                     frontend_url = f"http://localhost:{port_num}"
+                                     break
+             except: pass
+
+        # 5d. Check Markdown Documentation (Contextual fallback)
+        if not frontend_url:
+            md_files = [f for f in os.listdir(path) if f.endswith('.md')]
+            for md_file in md_files:
+                try:
+                    content = (path / md_file).read_text(errors='ignore')
+                    # Look for "Frontend: http://localhost:XXXX"
+                    patterns = [
+                        r"(?:frontend|client|ui).*?http://localhost:(\d{4,5})",
+                        r"http://localhost:(\d{4,5}).*?(?:frontend|client|ui)",
+                        r"Access Frontend: `?http://localhost:(\d{4,5})`?",
+                        r"(?:Frontend|UI|Client)\s+\(Port\s+(\d{4,5})\)" # New pattern for "Frontend (Port XXXX)"
+                    ]
+                    for pat in patterns:
+                        match = re.search(pat, content, re.IGNORECASE | re.DOTALL)
+                        if match:
+                            frontend_url = f"http://localhost:{match.group(1)}"
+                            break
+                    if frontend_url: break
+                except: pass
+
+        # --- Phase 6: VS Code Workspace ---
         vscode_workspace_file = None
         for item in os.listdir(path):
             if item.endswith(".code-workspace") and (path / item).is_file():
@@ -260,5 +350,6 @@ class ProjectScanner:
             tags=list(tags),
             docs=docs,
             git_status=git_status,
-            vscode_workspace_file=vscode_workspace_file
+            vscode_workspace_file=vscode_workspace_file,
+            frontend_url=frontend_url
         )
