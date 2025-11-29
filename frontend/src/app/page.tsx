@@ -34,42 +34,14 @@ export default function Home() {
 
   const handleCopyDocContent = async (filePath: string) => {
     try {
-        // Define the fetch logic as a promise returning a string
-        const fetchText = async () => {
-            const res = await fetch(`/api/files/content?path=${encodeURIComponent(filePath)}`);
-            if (!res.ok) throw new Error("Failed to load file content");
-            const data = await res.json();
-            return data.content as string;
-        };
-
-        // Modern Async Clipboard API (ClipboardItem takes a Promise)
-        // This keeps the "user gesture" active during the fetch
-        if (typeof ClipboardItem !== "undefined") {
-            try {
-                const text = new Blob([await fetchText()], { type: 'text/plain' });
-                const item = new ClipboardItem({ "text/plain": text });
-                await navigator.clipboard.write([item]);
-                
-                // Success state
-                setCopiedDocContentPath(filePath);
-                setTimeout(() => setCopiedDocContentPath(null), 2000);
-                return;
-            } catch (clipboardErr) {
-                console.warn("ClipboardItem failed, falling back to writeText", clipboardErr);
-                // Fallthrough to writeText
-            }
-        }
-
-        // Fallback: Fetch first, then writeText (might fail in strict browsers)
-        const content = await fetchText();
-        await navigator.clipboard.writeText(content);
-        
+        const res = await fetch(`/api/files/content?path=${encodeURIComponent(filePath)}`);
+        if (!res.ok) throw new Error("Failed to load file content for copying.");
+        const data = await res.json();
+        await navigator.clipboard.writeText(data.content);
         setCopiedDocContentPath(filePath);
         setTimeout(() => setCopiedDocContentPath(null), 2000);
-
     } catch (err: any) {
         console.error("Error copying doc content:", err);
-        alert(`Failed to copy: ${err.message || err}`);
         setError("Failed to copy document content.");
     }
   };
@@ -311,7 +283,6 @@ export default function Home() {
                            <button
                              onClick={(e) => {
                                e.stopPropagation();
-                               console.log("Copy button clicked for:", doc.path);
                                handleCopyDocContent(doc.path);
                              }}
                              className="text-slate-500 hover:text-white hover:bg-slate-800 rounded p-1.5 transition-all z-10 shrink-0"
