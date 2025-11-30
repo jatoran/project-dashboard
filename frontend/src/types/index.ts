@@ -9,3 +9,11 @@ export interface Project {
   vscode_workspace_file?: string;
   frontend_url?: string;
 }
+
+export interface HomepageService {
+  name: string;
+  links: string[];
+  icons: string[];
+  metrics: { label: string; value: string }[];
+  snippet: string;
+}

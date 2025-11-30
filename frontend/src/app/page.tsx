@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Project } from "@/types";
+import { Project, HomepageService } from "@/types";
 import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy, Check, Globe } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 
@@ -13,6 +13,8 @@ export default function Home() {
   const [viewingDoc, setViewingDoc] = useState<{path: string, name: string} | null>(null);
   const [copiedDocContentPath, setCopiedDocContentPath] = useState<string | null>(null); // To track which doc's content was copied
   const [statuses, setStatuses] = useState<Record<string, boolean | null>>({});
+  const [homepageServices, setHomepageServices] = useState<HomepageService[]>([]);
+  const [homepageLoading, setHomepageLoading] = useState(false);
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -59,6 +61,21 @@ export default function Home() {
     fetchProjects();
   }, []);
 
+  const fetchHomepage = async () => {
+    setHomepageLoading(true);
+    try {
+      const res = await fetch("/api/homepage");
+      if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+      const data = await res.json();
+      setHomepageServices(data.services || []);
+    } catch (err: any) {
+      console.error("Failed to fetch homepage data", err);
+      setError(err.message || "Failed to fetch homepage data.");
+    } finally {
+      setHomepageLoading(false);
+    }
+  };
+
   // Polling Logic
   useEffect(() => {
     if (projects.length === 0) return;
@@ -89,10 +106,15 @@ export default function Home() {
 
     // Check immediately
     checkStatuses();
+    fetchHomepage();
 
     // Then poll every 30s
     const interval = setInterval(checkStatuses, 30000);
-    return () => clearInterval(interval);
+    const homepageInterval = setInterval(fetchHomepage, 60000);
+    return () => {
+      clearInterval(interval);
+      clearInterval(homepageInterval);
+    };
   }, [projects]);
 
   const handleAdd = async (e: React.FormEvent) => {
@@ -370,6 +392,67 @@ export default function Home() {
 
             </div>
           ))}
+        </div>
+        
+        {/* Home Dashboard Snapshot */}
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Globe size={18} className="text-indigo-400" />
+              <h2 className="text-lg font-semibold text-white">Home Dashboard</h2>
+            </div>
+            {homepageLoading && <span className="text-xs text-slate-400">Refreshing…</span>}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {homepageServices.map((svc) => (
+              <div key={svc.name} className="p-4 rounded-lg border border-slate-800 bg-slate-950/50">
+                <div className="flex items-center gap-3 mb-3">
+                  {svc.icons.slice(0, 1).map((icon) => (
+                    <img
+                      key={icon}
+                      src={icon}
+                      alt={svc.name}
+                      className="w-8 h-8 object-contain bg-slate-800 rounded-md p-1"
+                    />
+                  ))}
+                  <div>
+                    <div className="text-white font-semibold">{svc.name}</div>
+                    <div className="text-xs text-slate-500 truncate max-w-[260px]">{svc.snippet}</div>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 text-xs text-slate-300 mb-3">
+                  {svc.metrics.length === 0 ? (
+                    <span className="px-2 py-1 rounded bg-slate-800 text-slate-400">No metrics parsed</span>
+                  ) : (
+                    svc.metrics.map((m) => (
+                      <span key={`${svc.name}-${m.label}-${m.value}`} className="px-2 py-1 rounded bg-slate-800 text-slate-200">
+                        <span className="font-semibold">{m.value}</span> {m.label}
+                      </span>
+                    ))
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {svc.links.slice(0, 3).map((href, idx) => (
+                    <a
+                      key={`${svc.name}-link-${idx}`}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs px-2 py-1 rounded bg-indigo-900/30 text-indigo-300 hover:text-white hover:bg-indigo-800/40 transition-colors"
+                    >
+                      {idx === 0 ? "Open" : `Link ${idx + 1}`}
+                    </a>
+                  ))}
+                  {svc.links.length === 0 && (
+                    <span className="text-xs text-slate-500">No links</span>
+                  )}
+                </div>
+              </div>
+            ))}
+            {homepageServices.length === 0 && !homepageLoading && (
+              <div className="text-slate-500 text-sm">No Home dashboard data yet.</div>
+            )}
+          </div>
         </div>
       </div>
       
