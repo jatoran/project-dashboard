@@ -337,55 +337,6 @@
     "frontend_url": null
   },
   {
-    "id": "1724dc89-9747-47b0-8385-bdf9a7b78710",
-    "name": "host-status-agent",
-    "path": "d:\\projects\\host-status-agent",
-    "type": "python",
-    "tags": [
-      "git",
-      "python",
-      "fastapi"
-    ],
-    "description": null,
-    "git_status": "Clean",
-    "docs": [
-      {
-        "name": "USAGE.md",
-        "path": "d:\\projects\\host-status-agent\\USAGE.md",
-        "type": "markdown"
-      },
-      {
-        "name": "PROJECT_SPEC.md",
-        "path": "d:\\projects\\host-status-agent\\docs\\PROJECT_SPEC.md",
-        "type": "markdown"
-      },
-      {
-        "name": "TECHNICAL_DOCS.md",
-        "path": "d:\\projects\\host-status-agent\\docs\\TECHNICAL_DOCS.md",
-        "type": "markdown"
-      },
-      {
-        "name": "Swagger UI",
-        "path": "http://localhost:8000/docs",
-        "type": "link"
-      },
-      {
-        "name": "ReDoc",
-        "path": "http://localhost:8000/redoc",
-        "type": "link"
-      },
-      {
-        "name": "OpenAPI JSON",
-        "path": "http://localhost:8000/openapi.json",
-        "type": "link"
-      }
-    ],
-    "custom_links": [],
-    "custom_docs": [],
-    "vscode_workspace_file": "d:\\projects\\host-status-agent\\host-status-agent.code-workspace",
-    "frontend_url": null
-  },
-  {
     "id": "cea68619-e278-41b4-acb5-3091ca397204",
     "name": "news-aggregator",
     "path": "D:\\Projects\\news-aggregator",
@@ -478,6 +429,201 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/ai_timeline/ai_timeline.code-workspace",
+    "frontend_url": null
+  },
+  {
+    "id": "d8cbdabb-12fc-4eae-85ad-fddd5ecc3ea9",
+    "name": "odyssos",
+    "path": "/mnt/d/projects/odyssos",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null
+  },
+  {
+    "id": "cd9ad8d4-dfb1-4594-9b27-8d6fe4a00c9f",
+    "name": "jar-persona-research-manager",
+    "path": "/mnt/d/projects/jar-persona-research-manager",
+    "type": "static-web",
+    "tags": [
+      "python",
+      "git",
+      "html",
+      "javascript",
+      "fastapi",
+      "css"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/jar-persona-research-manager/AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "APPS_REFACTOR_PLAN.md",
+        "path": "/mnt/d/projects/jar-persona-research-manager/APPS_REFACTOR_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "/mnt/d/projects/jar-persona-research-manager/CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/jar-persona-research-manager/DOCUMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "MAPPING_WORKFLOW.md",
+        "path": "/mnt/d/projects/jar-persona-research-manager/MAPPING_WORKFLOW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PERSONA_REFERENCE.md",
+        "path": "/mnt/d/projects/jar-persona-research-manager/PERSONA_REFERENCE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/jar-persona-research-manager/jar-persona-research-manager.code-workspace",
+    "frontend_url": "http://localhost:8000"
+  },
+  {
+    "id": "645adb68-dd29-432e-9b89-4d5ac8550f5c",
+    "name": "metrics_dashboard",
+    "path": "/mnt/d/projects/metrics_dashboard",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/metrics_dashboard/metrics_dashboard.code-workspace",
+    "frontend_url": null
+  },
+  {
+    "id": "e9653b79-2b57-4906-9ee0-2b6607d92431",
+    "name": "generative-api-gateway",
+    "path": "/mnt/d/projects/generative-api-gateway",
+    "type": "python",
+    "tags": [
+      "python",
+      "git",
+      "docker",
+      "fastapi",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/generative-api-gateway/README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API_DOCS.md",
+        "path": "/mnt/d/projects/generative-api-gateway/docs/API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "SPEC_DESIGN_DOC.md",
+        "path": "/mnt/d/projects/generative-api-gateway/docs/SPEC_DESIGN_DOC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/generative-api-gateway/docs/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8190/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8190/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8190/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/generative-api-gateway/generative-api-gateway.code-workspace",
+    "frontend_url": "http://localhost:4310"
+  },
+  {
+    "id": "caebe81b-7dcf-45f6-83d9-c40e3e58d63d",
+    "name": "host-status-agent",
+    "path": "/mnt/d/projects/host-status-agent",
+    "type": "python",
+    "tags": [
+      "python",
+      "fastapi",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "USAGE.md",
+        "path": "/mnt/d/projects/host-status-agent/USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/host-status-agent/docs/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/host-status-agent/host-status-agent.code-workspace",
     "frontend_url": null
   }
 ]
