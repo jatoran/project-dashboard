@@ -14,6 +14,9 @@ class Project(BaseModel):
     custom_docs: List[Dict[str, str]] = [] # [{'name': 'Notes', 'path': '/path/to/notes.md'}]
     vscode_workspace_file: Optional[str] = None
     frontend_url: Optional[str] = None
+    backend_port: Optional[str] = None
+    frontend_port_override: Optional[str] = None
+    backend_port_override: Optional[str] = None
 
 class CreateProjectRequest(BaseModel):
     path: str
@@ -29,3 +32,7 @@ class AddLinkRequest(BaseModel):
 class AddDocRequest(BaseModel):
     name: str
     path: str
+
+class PortOverrideRequest(BaseModel):
+    frontend_port: Optional[str] = None
+    backend_port: Optional[str] = None

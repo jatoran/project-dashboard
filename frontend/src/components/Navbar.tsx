@@ -11,9 +11,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
 
   const tabs = [
     { id: 'projects', label: 'Projects', icon: LayoutGrid },
-    { id: 'dashboard', label: 'Dashboard', icon: Activity },
+    { id: 'dashboard', label: 'Proxmox Dashboard', icon: Activity },
     { id: 'scrutiny', label: 'Scrutiny Drives', icon: HardDrive },
-    { id: 'host', label: 'Host Services', icon: Server },
+    { id: 'host', label: 'PC Monitoring', icon: Server },
   ];
 
   const handleTabClick = (id: string) => {

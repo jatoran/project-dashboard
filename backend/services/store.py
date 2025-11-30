@@ -89,6 +89,16 @@ class ProjectStore:
                 return p
         raise ValueError("Project not found")
 
+    def update_ports(self, project_id: str, frontend_port: str | None, backend_port: str | None) -> Project:
+        projects = self.get_all()
+        for p in projects:
+            if p.id == project_id:
+                p.frontend_port_override = frontend_port or None
+                p.backend_port_override = backend_port or None
+                self._save(projects)
+                return p
+        raise ValueError("Project not found")
+
     def remove_custom_doc(self, project_id: str, name: str) -> Project:
         projects = self.get_all()
         for p in projects:

@@ -6,7 +6,7 @@ interface ProjectCardProps {
   status: boolean | null;
   onClick: () => void;
   onLaunch: (path: string, type: string) => void;
-  formatUrl: (url: string) => string;
+  formatUrl: (url: string, project?: Project) => string;
 }
 
 export default function ProjectCard({ project, status, onClick, onLaunch, formatUrl }: ProjectCardProps) {
@@ -92,7 +92,7 @@ export default function ProjectCard({ project, status, onClick, onLaunch, format
                 </button>
                 {project.frontend_url && (
                      <a 
-                        href={formatUrl(project.frontend_url)}
+                        href={formatUrl(project.frontend_url, project)}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}

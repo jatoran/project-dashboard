@@ -10,6 +10,9 @@ export interface Project {
   custom_docs?: { name: string; path: string }[];
   vscode_workspace_file?: string;
   frontend_url?: string;
+  backend_port?: string | null;
+  frontend_port_override?: string | null;
+  backend_port_override?: string | null;
 }
 
 export interface HomepageService {
@@ -39,4 +42,42 @@ export interface HostServiceStatus {
 export interface HostStatusResponse {
   timestamp: string;
   services: HostServiceStatus[];
+}
+
+export interface HardwareMetricSnapshot {
+  timestamp?: string;
+  metrics?: Record<string, unknown>;
+  cpu?: { temp_c?: number; load_pct?: number; clock_mhz?: number };
+  gpu?: { temp_c?: number; load_pct?: number; clock_mhz?: number };
+  ram?: { used_gb?: number; load_pct?: number };
+  board?: { vrm_temp_c?: number; mobo_temp_c?: number };
+  fans?: { id?: string; name?: string; rpm?: number }[];
+  drives?: {
+    id?: string;
+    name?: string;
+    temp_c?: number;
+    used_pct?: number;
+    read_rate_mbps?: number;
+    write_rate_mbps?: number;
+  }[];
+  network?: Record<
+    string,
+    {
+      upload_rate_mbps?: number;
+      download_rate_mbps?: number;
+      data_uploaded_gb?: number;
+      data_downloaded_gb?: number;
+    }
+  >;
+}
+
+export interface HardwareHistoryResponse {
+  latest?: HardwareMetricSnapshot;
+  history?: HardwareMetricSnapshot[];
+}
+
+export interface HostLogsResponse {
+  service: string;
+  lines: string[];
+  raw?: string;
 }

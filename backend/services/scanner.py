@@ -432,5 +432,6 @@ class ProjectScanner:
             docs=docs,
             git_status=git_status,
             vscode_workspace_file=vscode_workspace_file,
-            frontend_url=frontend_url
+            frontend_url=frontend_url,
+            backend_port=detected_port
         )

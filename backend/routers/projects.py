@@ -2,7 +2,7 @@ import os
 import requests
 from fastapi import APIRouter, HTTPException
 from typing import List
-from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest
+from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest, PortOverrideRequest
 from backend.services.store import ProjectStore
 from backend.services.launcher import Launcher
 from backend.utils.path_utils import linux_to_windows
@@ -42,6 +42,13 @@ def add_custom_doc(project_id: str, request: AddDocRequest):
 def remove_custom_doc(project_id: str, name: str):
     try:
         return store.remove_custom_doc(project_id, name)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+@router.post("/projects/{project_id}/ports", response_model=Project)
+def update_ports(project_id: str, request: PortOverrideRequest):
+    try:
+        return store.update_ports(project_id, request.frontend_port, request.backend_port)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 

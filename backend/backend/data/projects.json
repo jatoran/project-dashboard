@@ -42,7 +42,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\personal-media-feed\\personal-media-feed.code-workspace",
-    "frontend_url": "http://localhost:5173"
+    "frontend_url": "http://localhost:5173",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "658c0f20-ec5c-42af-94db-c963e462fd55",
@@ -86,7 +89,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\gmail-fetcher\\gmail-fetcher.code-workspace",
-    "frontend_url": "http://localhost:40882"
+    "frontend_url": "http://localhost:40882",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "c0df7a89-446d-4908-93d3-9af2c673d574",
@@ -156,7 +162,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\project-dashboard\\project-dashboard.code-workspace",
-    "frontend_url": "http://localhost:37452"
+    "frontend_url": "http://localhost:37452",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "ed6bb016-f274-460e-bdf2-ac3e9f6052ff",
@@ -225,7 +234,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\inbox-processor\\inbox-processor.code-workspace",
-    "frontend_url": "http://localhost:48338"
+    "frontend_url": "http://localhost:48338",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "19c1234f-41e7-4b26-99fe-49a9458b0f2f",
@@ -291,7 +303,10 @@
       }
     ],
     "vscode_workspace_file": "D:\\projects\\search-gateway\\search-gateway.code-workspace",
-    "frontend_url": "http://localhost:4000"
+    "frontend_url": "http://localhost:4000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "a600566f-5d08-4482-9fe8-c1ee0bc1c0f1",
@@ -314,7 +329,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\Projects\\slideshow-maker-v2\\slideshow-maker-v2.code-workspace",
-    "frontend_url": null
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "eeeb1a12-2cd3-4c61-ac15-bd84f23bb983",
@@ -334,7 +352,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\adambandel.com\\valadezfamily\\valadezfamily.code-workspace",
-    "frontend_url": null
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "cea68619-e278-41b4-acb5-3091ca397204",
@@ -357,7 +378,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\Projects\\news-aggregator\\news-aggregator.code-workspace",
-    "frontend_url": "http://localhost:3883"
+    "frontend_url": "http://localhost:3883",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "5f236612-fc60-4253-97dd-6b3f5fc95520",
@@ -411,7 +435,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/task-windows/task-windows.code-workspace",
-    "frontend_url": "http://localhost:48012"
+    "frontend_url": "http://localhost:48012",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "c13aee18-8e0f-4c93-973b-f1bd6ba1ab1f",
@@ -429,7 +456,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/ai_timeline/ai_timeline.code-workspace",
-    "frontend_url": null
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "d8cbdabb-12fc-4eae-85ad-fddd5ecc3ea9",
@@ -443,7 +473,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": null,
-    "frontend_url": null
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "cd9ad8d4-dfb1-4594-9b27-8d6fe4a00c9f",
@@ -510,7 +543,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/jar-persona-research-manager/jar-persona-research-manager.code-workspace",
-    "frontend_url": "http://localhost:8000"
+    "frontend_url": "http://localhost:8000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "645adb68-dd29-432e-9b89-4d5ac8550f5c",
@@ -524,7 +560,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/metrics_dashboard/metrics_dashboard.code-workspace",
-    "frontend_url": null
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "e9653b79-2b57-4906-9ee0-2b6607d92431",
@@ -580,7 +619,10 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/generative-api-gateway/generative-api-gateway.code-workspace",
-    "frontend_url": "http://localhost:4310"
+    "frontend_url": "http://localhost:4310",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   },
   {
     "id": "caebe81b-7dcf-45f6-83d9-c40e3e58d63d",
@@ -624,6 +666,9 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/host-status-agent/host-status-agent.code-workspace",
-    "frontend_url": null
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": "9876"
   }
 ]

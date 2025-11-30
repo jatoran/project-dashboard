@@ -1,6 +1,6 @@
 import { Project } from "@/types";
 import { X, Terminal, Code2, Command, Folder, Globe, Link, ExternalLink, FileText, Copy, Check, Plus, Trash2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 interface ProjectModalProps {
   project: Project;
@@ -10,7 +10,7 @@ interface ProjectModalProps {
   onViewDoc: (doc: {path: string, name: string}) => void;
   onUpdate: (updatedProject: Project) => void;
   onDelete: () => void;
-  formatUrl: (url: string) => string;
+  formatUrl: (url: string, project?: Project) => string;
   status: boolean | null;
 }
 
@@ -18,6 +18,15 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
   const [copiedPath, setCopiedPath] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [frontendPort, setFrontendPort] = useState("");
+  const [backendPort, setBackendPort] = useState("");
+  const detectedFrontendPort = useMemo(() => {
+    try {
+      return project.frontend_url ? new URL(project.frontend_url).port || "" : "";
+    } catch {
+      return "";
+    }
+  }, [project.frontend_url]);
 
   // Custom Link State
   const [isAddingLink, setIsAddingLink] = useState(false);
@@ -38,6 +47,11 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
     return () => window.removeEventListener('keydown', handleEsc);
   }, [isOpen, onClose]);
 
+  useEffect(() => {
+    setFrontendPort(project.frontend_port_override || detectedFrontendPort || "");
+    setBackendPort(project.backend_port_override || project.backend_port || "");
+  }, [project, detectedFrontendPort]);
+
   if (!isOpen) return null;
 
   const handleCopyPath = async () => {
@@ -49,6 +63,24 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
   };
 
   // --- API Actions ---
+
+  const savePorts = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/projects/${project.id}/ports`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          frontend_port: frontendPort || null,
+          backend_port: backendPort || null,
+        }),
+      });
+      if (res.ok) {
+        onUpdate(await res.json());
+      }
+    } catch (e) { console.error(e); }
+    finally { setLoading(false); }
+  };
 
   const addLink = async () => {
     if (!newLinkName || !newLinkUrl) return;
@@ -152,7 +184,7 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
                          </div>
                     </div>
                     <a 
-                       href={formatUrl(project.frontend_url)}
+                       href={formatUrl(project.frontend_url, project)}
                        target="_blank"
                        rel="noopener noreferrer"
                        className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
@@ -162,6 +194,46 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
                     </a>
                 </div>
             )}
+
+            <div className="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-sm text-slate-400 font-medium uppercase tracking-wider">Port Overrides</div>
+                  <div className="text-xs text-slate-500">Leave blank to use detected ports.</div>
+                </div>
+                <button
+                  onClick={savePorts}
+                  disabled={loading}
+                  className="text-xs bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white px-3 py-1.5 rounded-md font-medium"
+                >
+                  Save
+                </button>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <label className="space-y-1 text-sm text-slate-300">
+                  <span className="text-xs text-slate-500">Frontend Port</span>
+                  <input
+                    type="number"
+                    value={frontendPort}
+                    onChange={(e) => setFrontendPort(e.target.value)}
+                    placeholder={project.frontend_port_override ? "" : (detectedFrontendPort || "")}
+                    className="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-200"
+                  />
+                  <span className="text-[11px] text-slate-500">Detected: {detectedFrontendPort || "none"}</span>
+                </label>
+                <label className="space-y-1 text-sm text-slate-300">
+                  <span className="text-xs text-slate-500">Backend Port</span>
+                  <input
+                    type="number"
+                    value={backendPort}
+                    onChange={(e) => setBackendPort(e.target.value)}
+                    placeholder={project.backend_port || ""}
+                    className="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-200"
+                  />
+                  <span className="text-[11px] text-slate-500">Detected: {project.backend_port || "none"}</span>
+                </label>
+              </div>
+            </div>
 
             {/* Tags */}
             <div>
@@ -231,7 +303,7 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
                         <div key={link.name} className="flex items-center justify-between p-3 bg-slate-900 rounded border border-slate-800 hover:border-slate-700 transition-colors">
                              <div className="flex items-center gap-3">
                                  <Link size={16} className="text-indigo-400 shrink-0"/>
-                                 <a href={formatUrl(link.url)} target="_blank" rel="noreferrer" className="text-sm text-indigo-300 hover:text-white hover:underline font-medium">{link.name}</a>
+                                 <a href={formatUrl(link.url, project)} target="_blank" rel="noreferrer" className="text-sm text-indigo-300 hover:text-white hover:underline font-medium">{link.name}</a>
                              </div>
                              <button onClick={() => removeLink(link.name)} className="text-slate-600 hover:text-red-400 p-1">
                                  <Trash2 size={14} />
@@ -307,7 +379,7 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
                                 </div>
                                 
                                 {doc.type === 'link' ? (
-                                   <a href={formatUrl(doc.path)} target="_blank" rel="noreferrer" className="text-xs text-cyan-400 hover:underline">Open Link</a>
+                                   <a href={formatUrl(doc.path, project)} target="_blank" rel="noreferrer" className="text-xs text-cyan-400 hover:underline">Open Link</a>
                                 ) : doc.type === 'markdown' ? (
                                     <button onClick={() => onViewDoc(doc)} className="text-xs text-blue-400 hover:underline">View Doc</button>
                                 ) : (
