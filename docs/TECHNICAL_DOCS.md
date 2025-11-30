@@ -48,6 +48,12 @@ The dashboard now mirrors your self-hosted Homepage (gethomepage.dev) status til
 - On Windows, the gateway must use the Proactor event loop; the gateway code already enforces this. Keep uvicorn reload off for Playwright stability.
 - HTML parsing is block-based per service to avoid bleeding metrics/links across services.
 
+## Host Status Agent Integration
+- The app can display host service status from an external Host Status Agent (local HTTP API).
+- Backend proxy: `GET /api/host-status` hits `HOST_STATUS_URL` (default `http://127.0.0.1:9876/status`) and returns JSON.
+- Frontend polls `/api/host-status` on load and every 60s, showing a “Host Services” section with state badges and details.
+- Expected agent response shape: `{ timestamp, services: [{ name, state, details }] }` where `state` can be `running`, `degraded`, `stopped`, `not found`, `unknown`, etc.
+
 ## Scanner Heuristics
 The `ProjectScanner` uses a waterfall approach to guess configuration without running the code.
 

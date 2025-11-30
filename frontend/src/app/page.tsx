@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Project, HomepageService, ScrutinyDrive } from "@/types";
+import { Project, HomepageService, ScrutinyDrive, HostServiceStatus } from "@/types";
 import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy, Check, Globe } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 
@@ -17,6 +17,9 @@ export default function Home() {
   const [homepageLoading, setHomepageLoading] = useState(false);
   const [drives, setDrives] = useState<ScrutinyDrive[]>([]);
   const [drivesLoading, setDrivesLoading] = useState(false);
+  const [hostServices, setHostServices] = useState<HostServiceStatus[]>([]);
+  const [hostTimestamp, setHostTimestamp] = useState<string | null>(null);
+  const [hostLoading, setHostLoading] = useState(false);
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -93,6 +96,22 @@ export default function Home() {
     }
   };
 
+  const fetchHostStatus = async () => {
+    setHostLoading(true);
+    try {
+      const res = await fetch("/api/host-status");
+      if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+      const data = await res.json();
+      setHostServices(data.services || []);
+      setHostTimestamp(data.timestamp || null);
+    } catch (err: any) {
+      console.error("Failed to fetch host status", err);
+      setError(err.message || "Failed to fetch host status.");
+    } finally {
+      setHostLoading(false);
+    }
+  };
+
   // Polling Logic
   useEffect(() => {
     if (projects.length === 0) return;
@@ -125,15 +144,18 @@ export default function Home() {
     checkStatuses();
     fetchHomepage();
     fetchDrives();
+    fetchHostStatus();
 
     // Then poll every 30s
     const interval = setInterval(checkStatuses, 30000);
     const homepageInterval = setInterval(fetchHomepage, 60000);
     const drivesInterval = setInterval(fetchDrives, 600000); // 10 minutes
+    const hostInterval = setInterval(fetchHostStatus, 60000); // 60 seconds
     return () => {
       clearInterval(interval);
       clearInterval(homepageInterval);
       clearInterval(drivesInterval);
+      clearInterval(hostInterval);
     };
   }, [projects]);
 
@@ -509,6 +531,50 @@ export default function Home() {
                   <span className="px-2 py-1 rounded bg-slate-800">Capacity: {d.capacity}</span>
                   <span className="px-2 py-1 rounded bg-slate-800">Powered On: {d.powered_on}</span>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Host Services */}
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Globe size={18} className="text-cyan-400" />
+              <h2 className="text-lg font-semibold text-white">Host Services</h2>
+            </div>
+            {hostLoading && <span className="text-xs text-slate-400">Refreshing…</span>}
+          </div>
+          {hostTimestamp && (
+            <div className="text-xs text-slate-500">Last updated: {new Date(hostTimestamp).toLocaleString()}</div>
+          )}
+          {hostServices.length === 0 && !hostLoading && (
+            <div className="text-slate-500 text-sm">No host status data yet.</div>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {hostServices.map((svc) => (
+              <div key={svc.name} className="p-3 rounded-lg border border-slate-800 bg-slate-950/50 flex items-center justify-between">
+                <div>
+                  <div className="text-white font-semibold">{svc.name}</div>
+                  <div className="text-xs text-slate-500 truncate max-w-[240px]">
+                    {svc.details && Object.keys(svc.details).length > 0
+                      ? JSON.stringify(svc.details)
+                      : "No details"}
+                  </div>
+                </div>
+                <span
+                  className={`text-[10px] px-2 py-1 rounded ${
+                    svc.state === "running"
+                      ? "bg-emerald-900/40 text-emerald-300"
+                      : svc.state === "degraded"
+                      ? "bg-amber-900/40 text-amber-300"
+                      : svc.state === "stopped" || svc.state === "not found"
+                      ? "bg-red-900/40 text-red-300"
+                      : "bg-slate-800 text-slate-300"
+                  }`}
+                >
+                  {svc.state}
+                </span>
               </div>
             ))}
           </div>

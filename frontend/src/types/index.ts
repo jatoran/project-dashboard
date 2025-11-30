@@ -27,3 +27,14 @@ export interface ScrutinyDrive {
   capacity: string;
   powered_on: string;
 }
+
+export interface HostServiceStatus {
+  name: string;
+  state: string;
+  details: Record<string, unknown>;
+}
+
+export interface HostStatusResponse {
+  timestamp: string;
+  services: HostServiceStatus[];
+}
