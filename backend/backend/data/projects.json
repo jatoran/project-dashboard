@@ -407,5 +407,77 @@
     "custom_docs": [],
     "vscode_workspace_file": "D:\\Projects\\news-aggregator\\news-aggregator.code-workspace",
     "frontend_url": "http://localhost:3883"
+  },
+  {
+    "id": "5f236612-fc60-4253-97dd-6b3f5fc95520",
+    "name": "task-windows",
+    "path": "/mnt/d/projects/task-windows",
+    "type": "node",
+    "tags": [
+      "git",
+      "docker",
+      "react",
+      "tailwind",
+      "typescript",
+      "javascript",
+      "node",
+      "next.js"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/task-windows/AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/task-windows/README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/task-windows/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:48012/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:48012/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:48012/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/task-windows/task-windows.code-workspace",
+    "frontend_url": "http://localhost:48012"
+  },
+  {
+    "id": "c13aee18-8e0f-4c93-973b-f1bd6ba1ab1f",
+    "name": "ai_timeline",
+    "path": "/mnt/d/projects/ai_timeline",
+    "type": "static-web",
+    "tags": [
+      "html",
+      "javascript",
+      "css"
+    ],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/ai_timeline/ai_timeline.code-workspace",
+    "frontend_url": null
   }
 ]

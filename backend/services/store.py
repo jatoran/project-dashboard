@@ -3,6 +3,7 @@ import os
 from typing import List
 from backend.models import Project
 from backend.services.scanner import ProjectScanner
+from backend.utils.path_utils import windows_to_linux, resolve_path_case
 
 DATA_FILE = "backend/data/projects.json"
 
@@ -20,19 +21,30 @@ class ProjectStore:
     def get_all(self) -> List[Project]:
         with open(DATA_FILE, "r") as f:
             data = json.load(f)
-        # Re-scan on load? For now, just return stored data.
-        # Better: Store paths, and scan on demand or cache.
-        # For Phase 1 MVP: We will store the FULL project object 
-        # but maybe re-scanning is safer to keep git status fresh.
-        # Let's just return what's there for speed, user can "refresh".
         return [Project(**p) for p in data]
 
     def add_project(self, path_str: str) -> Project:
-        project = self.scanner.scan(path_str)
+        print(f"[DEBUG] add_project received path: '{path_str}'")
+        
+        # Convert potential Windows path to Linux path for scanning/storage
+        linux_path_str = windows_to_linux(path_str)
+        print(f"[DEBUG] converted to linux path: '{linux_path_str}'")
+        
+        # Resolve case sensitivity (e.g. 'Projects' vs 'projects')
+        resolved_path = resolve_path_case(linux_path_str)
+        if resolved_path != linux_path_str:
+            print(f"[DEBUG] Resolved path case: '{linux_path_str}' -> '{resolved_path}'")
+            
+        try:
+            project = self.scanner.scan(resolved_path)
+        except Exception as e:
+            print(f"[ERROR] Scanner failed for path '{resolved_path}': {e}")
+            raise e
         
         projects = self.get_all()
         # Check duplicates
         if any(p.path == project.path for p in projects):
+            print(f"[DEBUG] Duplicate project found: {project.path}")
             raise ValueError("Project already exists")
             
         projects.append(project)

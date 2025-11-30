@@ -179,19 +179,19 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
             <div className="hidden md:block">
                 <h3 className="text-sm font-medium text-slate-500 uppercase tracking-wider mb-3">Developer Actions</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <button onClick={() => onLaunch(project.vscode_workspace_file || project.path, 'vscode')} className="action-btn">
+                    <button onClick={() => onLaunch(project.vscode_workspace_file || project.path, 'vscode')} className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-sm">
                         <Code2 size={20} className="text-blue-400"/>
                         <span>VS Code</span>
                     </button>
-                    <button onClick={() => onLaunch(project.path, 'terminal')} className="action-btn">
+                    <button onClick={() => onLaunch(project.path, 'terminal')} className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-sm">
                         <Terminal size={20} className="text-emerald-400"/>
                         <span>Terminal</span>
                     </button>
-                    <button onClick={() => onLaunch(project.path, 'wsl')} className="action-btn">
+                    <button onClick={() => onLaunch(project.path, 'wsl')} className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-sm">
                         <Command size={20} className="text-orange-400"/>
                         <span>WSL</span>
                     </button>
-                    <button onClick={() => onLaunch(project.path, 'explorer')} className="action-btn">
+                    <button onClick={() => onLaunch(project.path, 'explorer')} className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-sm">
                         <Folder size={20} className="text-yellow-400"/>
                         <span>Explorer</span>
                     </button>
@@ -349,11 +349,6 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
             </div>
         </div>
       </div>
-      <style jsx>{`
-        .action-btn {
-            @apply flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-sm;
-        }
-      `}</style>
     </div>
   );
 }

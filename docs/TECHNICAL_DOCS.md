@@ -1,8 +1,20 @@
 # Technical Documentation
 
 ## Deployment & Startup
-The application requires a split-terminal setup on Windows.
 
+### Docker Compose (Recommended)
+The application is designed to run as a containerized stack.
+
+```bash
+docker compose up -d --build
+```
+- **Frontend**: http://localhost:37452
+- **Backend**: http://localhost:37453
+- **Volume Mounts**:
+  - `../` (Host Projects Root) -> `/mnt/d/projects` (Container) - *Changed to relative path for better WSL2 compatibility*
+  - `./backend/backend/data` -> `/app/backend/data` (Persists project metadata)
+
+### Legacy Local Development
 **1. Backend (Port 37453)**
 ```powershell
 cd backend
@@ -17,10 +29,36 @@ cd frontend
 npm run dev
 ```
 
-*Automated via VS Code Task: "Run Task -> Start All"*
+## Host Status Agent Integration (The "Command Bridge")
+Since the dashboard runs in a Docker container, it cannot directly launch applications or read files on the Windows host. We solve this by delegating these tasks to the **Host Status Agent**, a lightweight HTTP service running directly on the host machine.
+
+### 1. Architecture
+- **Agent URL**: `http://host.docker.internal:9876` (Configured via `HOST_AGENT_URL`).
+- **Agent Mode**: The agent must run as a **User Process** (via `start_agent.bat` or startup task), not a Windows Service, to support visible GUI launching.
+
+### 2. Capabilities
+The dashboard backend proxies requests to the agent for:
+*   **Application Launching** (`POST /api/launch` -> Agent `/launch`):
+    *   Launches **VS Code**, **Windows Terminal**, **Explorer**, and **WSL** sessions directly on the host desktop.
+*   **File Content** (`GET /api/files/content` -> Agent `/files/content`):
+    *   Reads documentation files (e.g., `README.md`) from the host filesystem and serves them to the dashboard DocViewer.
+*   **Service Monitoring** (`GET /api/host-status` -> Agent `/status`):
+    *   Returns the status of critical host services (Docker, Tailscale, etc.).
+
+## Path Handling & Cross-Platform Logic
+The application bridges the gap between the Linux-based container environment and the Windows host filesystem.
+
+### Path Translation
+*   **Input (Adding Projects):** Windows paths (e.g., `D:\Projects\MyApp`) are automatically intercepted and converted to their WSL/Linux equivalent (e.g., `/mnt/d/Projects/MyApp`) before storage or scanning.
+*   **Output (Launching/Reading):** Stored Linux paths are converted back to Windows paths before being sent to the Host Agent.
+
+### Case Sensitivity Resolution
+Linux filesystems are case-sensitive, while Windows is not. To prevent errors when users input paths with incorrect casing (e.g., `D:\PROJECTS` vs `D:\projects`), the backend implements a **path resolution mechanism**:
+*   It walks the directory tree to find the exact on-disk casing for each path component.
+*   This ensures that `D:\PROJECTS\myApp` correctly resolves to `/mnt/d/projects/MyApp` if that is how it exists on the disk.
 
 ## Homepage Integration (Proxmox/Homepage Dashboard)
-The dashboard now mirrors your self-hosted Homepage (gethomepage.dev) status tiles.
+The dashboard mirrors your self-hosted Homepage (gethomepage.dev) status tiles.
 
 ### How It Works
 - **Backend endpoint**: `GET /api/homepage` (see `backend/routers/homepage.py`).
@@ -31,31 +69,25 @@ The dashboard now mirrors your self-hosted Homepage (gethomepage.dev) status til
   - Links and icons
   - Metrics (label/value pairs from the tile) and a short snippet
 - Supported services include Sonarr, Radarr, Bazarr, Prowlarr, Proxmox, PBS Backup, OMV NAS, Flaresolverr, qBittorrent, Plex, Beszel, Scrutiny. Unknown services are ignored.
-- Cache/circuit breakers are bypassed for this provider so each call is live.
-
-### Frontend Display
-- The Next.js page fetches `/api/homepage` on load and every 60 seconds.
-- A "Home Dashboard" section (below the projects grid) shows each service with its icon, snippet, metrics, and primary links.
 
 ### Required Env Vars
 - `GATEWAY_URL` (default `http://127.0.0.1:7083`)
 - `HOMEPAGE_URL` (default `http://192.168.50.193:3000`)
-- `GATEWAY_CLIENT_ID` (default `test_homepage_scrape`)
-- `GATEWAY_API_KEY` (if your gateway enforces API keys)
-
-### Notes
-- Playwright must be enabled in Search Gateway (`HEADLESS_ENABLE_PLAYWRIGHT=true`) with Chromium installed.
-- On Windows, the gateway must use the Proactor event loop; the gateway code already enforces this. Keep uvicorn reload off for Playwright stability.
-- HTML parsing is block-based per service to avoid bleeding metrics/links across services.
-
-## Host Status Agent Integration
-- The app can display host service status from an external Host Status Agent (local HTTP API).
-- Backend proxy: `GET /api/host-status` hits `HOST_STATUS_URL` (default `http://127.0.0.1:9876/status`) and returns JSON.
-- Frontend polls `/api/host-status` on load and every 60s, showing a “Host Services” section with state badges and details.
-- Expected agent response shape: `{ timestamp, services: [{ name, state, details }] }` where `state` can be `running`, `degraded`, `stopped`, `not found`, `unknown`, etc.
 
 ## Scanner Heuristics
 The `ProjectScanner` uses a waterfall approach to guess configuration without running the code.
+
+### Tech Stack Detection
+1.  **Node.js/JS Frameworks:** Checks `package.json` for React, Vue, Next.js, NestJS, Tailwind, etc.
+2.  **Python:** Checks `requirements.txt`, `pyproject.toml`, etc., for FastAPI, Django, Flask, Pandas, PyTorch.
+3.  **Rust:** Checks `Cargo.toml` for Actix, Tokio, Axum.
+4.  **Static Web:** Checks for `index.html` in root or `public/`, and scans for `.css` and `.js` assets to identify static sites.
+5.  **Other Languages:**
+    *   **Java:** `pom.xml`, `build.gradle`
+    *   **Go:** `go.mod`, `*.go`
+    *   **Ruby:** `Gemfile`, `*.rb`
+    *   **PHP:** `*.php`
+6.  **Docker:** Checks `docker-compose.yml` or `Dockerfile`.
 
 ### Port Detection Priority
 1.  **Docker Compose:** `services.*.ports`. Highly reliable.
@@ -63,17 +95,6 @@ The `ProjectScanner` uses a waterfall approach to guess configuration without ru
 3.  **Frontend Config:** `.env` or `constants.ts` matches for `API_URL`.
 4.  **Default:** `8000` (only if FastAPI is detected via `requirements.txt`).
 
-## Launcher Internals
-### WSL Navigation
-Windows Terminal (`wt.exe`) profiles often override start directories. To force a project path:
-1.  Convert Windows Path (`D:\Projects\App`) -> WSL Path (`/mnt/d/Projects/App`).
-2.  Construct Command:
-    ```bash
-    wt.exe wsl.exe -e bash -c "cd '/mnt/d/Projects/App' && exec bash"
-    ```
-    - `-e`: Execute command.
-    - `exec bash`: Replaces the temporary command process with a fresh, interactive shell so the window stays open.
-
 ## Known Issues / Quirks
-- **Case Sensitivity:** `wsl.localhost` paths are case-sensitive. Manual `/mnt/d` conversion is used to avoid `0x8007010b` errors.
-- **Focus Stealing:** Windows blocks background apps (Python) from bringing windows to front. Explorer opens in the background (flashing taskbar).
+- **Focus Stealing:** Windows blocks background apps from forcing windows to the foreground. Launched apps (Explorer, Terminal) may open in the background or flash in the taskbar.
+- **Docker Path Translation:** The backend handles path translation internally (via `path_utils.py`), minimizing the need for the Host Agent to guess.

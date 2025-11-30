@@ -107,6 +107,58 @@ class ProjectScanner:
             # If purely docker at root, set type to docker
             if project_type == "generic":
                 project_type = "docker"
+        
+        # --- Phase 1.5: Static Web & Basic File Detection (Fallback) ---
+        # If still generic (or generic-ish), check for raw source files
+        
+        # HTML/CSS/JS (Static Site)
+        has_html = False
+        if (path / "index.html").exists() or (path / "public" / "index.html").exists():
+            has_html = True
+            tags.add("html")
+            if project_type == "generic":
+                project_type = "static-web"
+        
+        # Check for CSS
+        # Scan root and common assets dirs
+        css_found = False
+        for d in ['.', 'styles', 'css', 'public', 'assets', 'src']:
+            if not (path / d).exists(): continue
+            if any(f.endswith('.css') for f in os.listdir(path / d) if os.path.isfile(path / d / f)):
+                css_found = True
+                break
+        if css_found:
+            tags.add("css")
+            
+        # Check for JS (if not already Node)
+        if "javascript" not in tags:
+             js_found = False
+             for d in ['.', 'scripts', 'js', 'public', 'assets', 'src']:
+                if not (path / d).exists(): continue
+                if any(f.endswith('.js') for f in os.listdir(path / d) if os.path.isfile(path / d / f)):
+                    js_found = True
+                    break
+             if js_found:
+                 tags.add("javascript")
+                 if project_type == "generic" and has_html:
+                      project_type = "static-web"
+
+        # Basic Language Detection for others
+        if (path / "pom.xml").exists() or (path / "build.gradle").exists():
+            tags.add("java")
+            if project_type == "generic": project_type = "java"
+
+        if (path / "go.mod").exists() or any(f.endswith('.go') for f in os.listdir(path) if os.path.isfile(path/f)):
+             tags.add("go")
+             if project_type == "generic": project_type = "go"
+             
+        if (path / "Gemfile").exists() or any(f.endswith('.rb') for f in os.listdir(path) if os.path.isfile(path/f)):
+             tags.add("ruby")
+             if project_type == "generic": project_type = "ruby"
+
+        if any(f.endswith('.php') for f in os.listdir(path) if os.path.isfile(path/f)):
+             tags.add("php")
+             if project_type == "generic": project_type = "php"
 
         # Check Git
         git_status = None

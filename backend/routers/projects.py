@@ -1,9 +1,11 @@
+import os
+import requests
 from fastapi import APIRouter, HTTPException
 from typing import List
-import os
 from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest
 from backend.services.store import ProjectStore
 from backend.services.launcher import Launcher
+from backend.utils.path_utils import linux_to_windows
 
 router = APIRouter()
 store = ProjectStore()
@@ -45,28 +47,41 @@ def remove_custom_doc(project_id: str, name: str):
 
 @router.get("/files/content")
 def get_file_content(path: str):
-    """Reads and returns the content of a file."""
-    if not os.path.exists(path):
-        raise HTTPException(status_code=404, detail="File not found")
-    
-    # Basic security: ensure it's a file
-    if not os.path.isfile(path):
-        raise HTTPException(status_code=400, detail="Path is not a file")
-        
-    # Try reading
+    """Reads and returns the content of a file via the host agent."""
+    host_agent_url = os.getenv("HOST_AGENT_URL", "http://host.docker.internal:9876")
+
+    if not host_agent_url:
+        raise HTTPException(status_code=501, detail="File content functionality disabled (HOST_AGENT_URL not set).")
+
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            content = f.read()
-        return {"content": content}
+        # The host agent expects Windows paths. The dashboard backend holds Linux paths.
+        # So we convert.
+        win_path = linux_to_windows(path)
+        
+        response = requests.get(f"{host_agent_url}/files/content", params={"path": win_path}, timeout=10)
+        response.raise_for_status() # Raise an exception for HTTP errors (4xx or 5xx)
+        
+        agent_response = response.json()
+        if response.status_code == 200 and "status" in agent_response and agent_response["status"] == "error":
+            raise HTTPException(status_code=404, detail=agent_response.get('message', 'File not found via agent'))
+        
+        return agent_response
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=502, detail=f"Failed to connect to host agent for file content: {e}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error reading file: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error during host agent file content fetch: {e}")
 
 @router.post("/projects", response_model=Project)
 def add_project(request: CreateProjectRequest):
+    print(f"[DEBUG] Router received add_project request: {request}")
     try:
         return store.add_project(request.path)
     except ValueError as e:
+        print(f"[ERROR] Router caught ValueError: {e}")
         raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        print(f"[ERROR] Router caught unexpected exception: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.delete("/projects/{project_id}")
 def delete_project(project_id: str):

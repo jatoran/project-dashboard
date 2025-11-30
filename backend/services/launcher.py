@@ -1,40 +1,35 @@
 import subprocess
 import os
 import shutil
+import requests
+from fastapi import HTTPException
+from backend.utils.path_utils import linux_to_windows
 
 class Launcher:
-    def launch(self, path: str, launch_type: str):
-        # We are running ON Windows now.
-        # path is already "D:\projects\..."
-        
-        if launch_type == "vscode":
-            # "code" should be in the PATH on Windows
-            subprocess.Popen(["code", path], shell=True)
-            
-        elif launch_type == "explorer":
-            # Standard Windows launch (respects default file manager)
-            os.startfile(path)
-            
-        elif launch_type == "terminal":
-            # wt.exe -d "D:\projects\..."
-            subprocess.Popen(["wt.exe", "-d", path], shell=True)
-
-        elif launch_type == "wsl":
-            # Manual conversion to WSL path
-            drive, tail = os.path.splitdrive(path) 
-            drive_letter = drive[0].lower()
-            wsl_path = f"/mnt/{drive_letter}{tail.replace('\\', '/')}"
-            
-            print(f"Launching WSL Force-CD: {wsl_path}")
-            
-            # wt.exe -p "Ubuntu" -- wsl.exe -e bash -c "cd 'path' && exec bash"
-            # We use 'exec bash' to keep the terminal open after cd.
-            # Note: We default to default profile if -p is omitted, but adding -p "Ubuntu" 
-            # helps if your default is PowerShell. 
-            # Let's omit -p to use your default WSL profile if set, or just 'wsl.exe' handles it.
-            
-            cmd = f'wt.exe wsl.exe -e bash -c "cd \'{wsl_path}\' && exec bash"'
-            subprocess.Popen(cmd, shell=True)
-            
+    def __init__(self):
+        self.host_agent_url = os.getenv("HOST_AGENT_URL", "http://host.docker.internal:9876")
+        if self.host_agent_url:
+            print(f"Launcher will use host agent at: {self.host_agent_url}")
         else:
-            raise ValueError(f"Unknown launch type: {launch_type}")
+            print("WARNING: HOST_AGENT_URL not set. Launch functionality will be disabled.")
+
+    def launch(self, path: str, launch_type: str):
+        if not self.host_agent_url:
+            raise HTTPException(status_code=501, detail="Launch functionality disabled (HOST_AGENT_URL not set).")
+
+        # The host agent expects Windows paths. The dashboard backend holds Linux paths (Project.path).
+        # So we convert Linux -> Windows.
+        win_path = linux_to_windows(path)
+
+        payload = {"path": win_path, "type": launch_type}
+        try:
+            response = requests.post(f"{self.host_agent_url}/launch", json=payload, timeout=5)
+            response.raise_for_status() # Raise an exception for HTTP errors (4xx or 5xx)
+            result = response.json()
+            if result.get("status") == "error":
+                raise HTTPException(status_code=500, detail=f"Host agent launch error: {result.get('message')}")
+            print(f"Successfully sent launch request to host agent: {launch_type} {path} -> {win_path}")
+        except requests.exceptions.RequestException as e:
+            raise HTTPException(status_code=502, detail=f"Failed to connect to host agent for launch: {e}")
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Unexpected error during host agent launch: {e}")
