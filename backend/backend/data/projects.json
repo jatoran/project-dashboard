@@ -319,5 +319,70 @@
     ],
     "vscode_workspace_file": "D:\\Projects\\slideshow-maker-v2\\slideshow-maker-v2.code-workspace",
     "frontend_url": null
+  },
+  {
+    "id": "eeeb1a12-2cd3-4c61-ac15-bd84f23bb983",
+    "name": "valadezfamily",
+    "path": "D:\\projects\\adambandel.com\\valadezfamily",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\projects\\adambandel.com\\valadezfamily\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "vscode_workspace_file": "D:\\projects\\adambandel.com\\valadezfamily\\valadezfamily.code-workspace",
+    "frontend_url": null
+  },
+  {
+    "id": "1724dc89-9747-47b0-8385-bdf9a7b78710",
+    "name": "host-status-agent",
+    "path": "d:\\projects\\host-status-agent",
+    "type": "python",
+    "tags": [
+      "git",
+      "python",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "USAGE.md",
+        "path": "d:\\projects\\host-status-agent\\USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PROJECT_SPEC.md",
+        "path": "d:\\projects\\host-status-agent\\docs\\PROJECT_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "d:\\projects\\host-status-agent\\docs\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "vscode_workspace_file": "d:\\projects\\host-status-agent\\host-status-agent.code-workspace",
+    "frontend_url": null
   }
 ]
