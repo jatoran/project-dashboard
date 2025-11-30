@@ -39,6 +39,8 @@
         "type": "link"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\personal-media-feed\\personal-media-feed.code-workspace",
     "frontend_url": "http://localhost:5173"
   },
@@ -81,6 +83,8 @@
         "type": "link"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\gmail-fetcher\\gmail-fetcher.code-workspace",
     "frontend_url": "http://localhost:40882"
   },
@@ -149,29 +153,10 @@
         "type": "link"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\project-dashboard\\project-dashboard.code-workspace",
     "frontend_url": "http://localhost:37452"
-  },
-  {
-    "id": "6848ec30-00d4-472e-b022-f569ac7e449f",
-    "name": "news-aggregator",
-    "path": "D:\\projects\\news-aggregator",
-    "type": "docker",
-    "tags": [
-      "git",
-      "docker"
-    ],
-    "description": null,
-    "git_status": "Clean",
-    "docs": [
-      {
-        "name": "DOCUMENTATION.md",
-        "path": "D:\\projects\\news-aggregator\\DOCUMENTATION.md",
-        "type": "markdown"
-      }
-    ],
-    "vscode_workspace_file": "D:\\projects\\news-aggregator\\news-aggregator.code-workspace",
-    "frontend_url": "http://localhost:3883"
   },
   {
     "id": "ed6bb016-f274-460e-bdf2-ac3e9f6052ff",
@@ -237,6 +222,8 @@
         "type": "link"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\inbox-processor\\inbox-processor.code-workspace",
     "frontend_url": "http://localhost:48338"
   },
@@ -296,6 +283,13 @@
         "type": "link"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [
+      {
+        "name": "Obsidian Doc",
+        "path": "D:\\Obsidian Vaults\\ADAM Vault\\200 - Projects\\201 - Active Projects\\search-gateway.md"
+      }
+    ],
     "vscode_workspace_file": "D:\\projects\\search-gateway\\search-gateway.code-workspace",
     "frontend_url": "http://localhost:4000"
   },
@@ -317,6 +311,8 @@
         "type": "markdown"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "D:\\Projects\\slideshow-maker-v2\\slideshow-maker-v2.code-workspace",
     "frontend_url": null
   },
@@ -335,6 +331,8 @@
         "type": "markdown"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "D:\\projects\\adambandel.com\\valadezfamily\\valadezfamily.code-workspace",
     "frontend_url": null
   },
@@ -382,7 +380,32 @@
         "type": "link"
       }
     ],
+    "custom_links": [],
+    "custom_docs": [],
     "vscode_workspace_file": "d:\\projects\\host-status-agent\\host-status-agent.code-workspace",
     "frontend_url": null
+  },
+  {
+    "id": "cea68619-e278-41b4-acb5-3091ca397204",
+    "name": "news-aggregator",
+    "path": "D:\\Projects\\news-aggregator",
+    "type": "docker",
+    "tags": [
+      "git",
+      "docker"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\Projects\\news-aggregator\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\Projects\\news-aggregator\\news-aggregator.code-workspace",
+    "frontend_url": "http://localhost:3883"
   }
 ]

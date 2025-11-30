@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
 import os
-from backend.models import Project, CreateProjectRequest, LaunchRequest
+from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest
 from backend.services.store import ProjectStore
 from backend.services.launcher import Launcher
 
@@ -12,6 +12,36 @@ launcher = Launcher()
 @router.get("/projects", response_model=List[Project])
 def get_projects():
     return store.get_all()
+
+# ... [keep existing endpoints] ...
+
+@router.post("/projects/{project_id}/links", response_model=Project)
+def add_custom_link(project_id: str, request: AddLinkRequest):
+    try:
+        return store.add_custom_link(project_id, request.name, request.url)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+@router.delete("/projects/{project_id}/links/{name}", response_model=Project)
+def remove_custom_link(project_id: str, name: str):
+    try:
+        return store.remove_custom_link(project_id, name)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+@router.post("/projects/{project_id}/custom-docs", response_model=Project)
+def add_custom_doc(project_id: str, request: AddDocRequest):
+    try:
+        return store.add_custom_doc(project_id, request.name, request.path)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+@router.delete("/projects/{project_id}/custom-docs/{name}", response_model=Project)
+def remove_custom_doc(project_id: str, name: str):
+    try:
+        return store.remove_custom_doc(project_id, name)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
 @router.get("/files/content")
 def get_file_content(path: str):

@@ -10,6 +10,8 @@ class Project(BaseModel):
     description: Optional[str] = None
     git_status: Optional[str] = None
     docs: List[Dict[str, str]] = [] # [{'name': 'Swagger', 'path': 'http://...', 'type': 'link'}]
+    custom_links: List[Dict[str, str]] = [] # [{'name': 'My Link', 'url': 'http://...'}]
+    custom_docs: List[Dict[str, str]] = [] # [{'name': 'Notes', 'path': '/path/to/notes.md'}]
     vscode_workspace_file: Optional[str] = None
     frontend_url: Optional[str] = None
 
@@ -19,3 +21,11 @@ class CreateProjectRequest(BaseModel):
 class LaunchRequest(BaseModel):
     project_path: str
     launch_type: str # 'vscode', 'explorer', 'terminal'
+
+class AddLinkRequest(BaseModel):
+    name: str
+    url: str
+
+class AddDocRequest(BaseModel):
+    name: str
+    path: str

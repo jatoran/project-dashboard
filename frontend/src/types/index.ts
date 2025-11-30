@@ -6,6 +6,8 @@ export interface Project {
   tags: string[];
   git_status?: string;
   docs: { name: string; path: string; type?: 'openapi' | 'swagger' | 'file' | 'link' | 'markdown' }[];
+  custom_links?: { name: string; url: string }[];
+  custom_docs?: { name: string; path: string }[];
   vscode_workspace_file?: string;
   frontend_url?: string;
 }

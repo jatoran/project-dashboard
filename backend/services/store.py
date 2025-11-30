@@ -47,6 +47,46 @@ class ProjectStore:
             raise ValueError(f"Project with ID {project_id} not found.")
         self._save(projects)
 
+    def add_custom_link(self, project_id: str, name: str, url: str) -> Project:
+        projects = self.get_all()
+        for p in projects:
+            if p.id == project_id:
+                if p.custom_links is None: p.custom_links = []
+                p.custom_links.append({"name": name, "url": url})
+                self._save(projects)
+                return p
+        raise ValueError("Project not found")
+
+    def remove_custom_link(self, project_id: str, name: str) -> Project:
+        projects = self.get_all()
+        for p in projects:
+            if p.id == project_id:
+                if p.custom_links:
+                    p.custom_links = [l for l in p.custom_links if l['name'] != name]
+                    self._save(projects)
+                return p
+        raise ValueError("Project not found")
+
+    def add_custom_doc(self, project_id: str, name: str, path: str) -> Project:
+        projects = self.get_all()
+        for p in projects:
+            if p.id == project_id:
+                if p.custom_docs is None: p.custom_docs = []
+                p.custom_docs.append({"name": name, "path": path})
+                self._save(projects)
+                return p
+        raise ValueError("Project not found")
+
+    def remove_custom_doc(self, project_id: str, name: str) -> Project:
+        projects = self.get_all()
+        for p in projects:
+            if p.id == project_id:
+                if p.custom_docs:
+                    p.custom_docs = [d for d in p.custom_docs if d['name'] != name]
+                    self._save(projects)
+                return p
+        raise ValueError("Project not found")
+
     def _save(self, projects: List[Project]):
         with open(DATA_FILE, "w") as f:
             json.dump([p.dict() for p in projects], f, indent=2)

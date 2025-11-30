@@ -128,6 +128,20 @@ export default function Home() {
     finally { setLoading(false); }
   };
 
+  const handleDelete = async (projectId: string) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/projects/${projectId}`, { method: "DELETE" });
+      if (res.ok) {
+        fetchProjects();
+      } else {
+        const err = await res.json();
+        setError(err.detail || "Failed to delete");
+      }
+    } catch (error: any) { setError(error.message); } 
+    finally { setLoading(false); }
+  };
+
   const launch = async (path: string, type: string) => {
     try {
       await fetch("/api/launch", {
@@ -387,6 +401,14 @@ export default function Home() {
             onClose={() => setSelectedProject(null)}
             onLaunch={launch}
             onViewDoc={setViewingDoc}
+            onUpdate={(updated) => {
+                setSelectedProject(updated);
+                setProjects(prev => prev.map(p => p.id === updated.id ? updated : p));
+            }}
+            onDelete={() => {
+                handleDelete(selectedProject.id);
+                setSelectedProject(null);
+            }}
             formatUrl={formatUrl}
             status={statuses[selectedProject.id] ?? null}
         />
