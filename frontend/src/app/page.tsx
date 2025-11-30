@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Project, HomepageService } from "@/types";
+import { Project, HomepageService, ScrutinyDrive } from "@/types";
 import { Folder, Terminal, Code2, FileText, Plus, RefreshCw, Trash2, Command, Link, ExternalLink, Copy, Check, Globe } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 
@@ -15,6 +15,8 @@ export default function Home() {
   const [statuses, setStatuses] = useState<Record<string, boolean | null>>({});
   const [homepageServices, setHomepageServices] = useState<HomepageService[]>([]);
   const [homepageLoading, setHomepageLoading] = useState(false);
+  const [drives, setDrives] = useState<ScrutinyDrive[]>([]);
+  const [drivesLoading, setDrivesLoading] = useState(false);
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -76,6 +78,21 @@ export default function Home() {
     }
   };
 
+  const fetchDrives = async () => {
+    setDrivesLoading(true);
+    try {
+      const res = await fetch("/api/scrutiny");
+      if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+      const data = await res.json();
+      setDrives(data.drives || []);
+    } catch (err: any) {
+      console.error("Failed to fetch drive data", err);
+      setError(err.message || "Failed to fetch drive data.");
+    } finally {
+      setDrivesLoading(false);
+    }
+  };
+
   // Polling Logic
   useEffect(() => {
     if (projects.length === 0) return;
@@ -107,13 +124,16 @@ export default function Home() {
     // Check immediately
     checkStatuses();
     fetchHomepage();
+    fetchDrives();
 
     // Then poll every 30s
     const interval = setInterval(checkStatuses, 30000);
     const homepageInterval = setInterval(fetchHomepage, 60000);
+    const drivesInterval = setInterval(fetchDrives, 600000); // 10 minutes
     return () => {
       clearInterval(interval);
       clearInterval(homepageInterval);
+      clearInterval(drivesInterval);
     };
   }, [projects]);
 
@@ -452,6 +472,45 @@ export default function Home() {
             {homepageServices.length === 0 && !homepageLoading && (
               <div className="text-slate-500 text-sm">No Home dashboard data yet.</div>
             )}
+          </div>
+        </div>
+
+        {/* Scrutiny Drives */}
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Globe size={18} className="text-emerald-400" />
+              <h2 className="text-lg font-semibold text-white">Scrutiny Drives</h2>
+            </div>
+            {drivesLoading && <span className="text-xs text-slate-400">Refreshing…</span>}
+          </div>
+          {drives.length === 0 && !drivesLoading && (
+            <div className="text-slate-500 text-sm">No drive data yet.</div>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {drives.map((d) => (
+              <div key={d.device} className="p-4 rounded-lg border border-slate-800 bg-slate-950/50">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-white font-semibold">{d.device}</div>
+                  <span
+                    className={`text-[10px] px-2 py-1 rounded ${
+                      d.status.toLowerCase() === "passed"
+                        ? "bg-emerald-900/40 text-emerald-300"
+                        : "bg-red-900/40 text-red-300"
+                    }`}
+                  >
+                    {d.status}
+                  </span>
+                </div>
+                <div className="text-xs text-slate-400 mb-1">{d.bus_model}</div>
+                <div className="text-xs text-slate-500 mb-3">Updated: {d.last_updated}</div>
+                <div className="flex flex-wrap gap-2 text-xs text-slate-200">
+                  <span className="px-2 py-1 rounded bg-slate-800">Temp: {d.temp}</span>
+                  <span className="px-2 py-1 rounded bg-slate-800">Capacity: {d.capacity}</span>
+                  <span className="px-2 py-1 rounded bg-slate-800">Powered On: {d.powered_on}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

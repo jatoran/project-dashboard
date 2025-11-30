@@ -17,3 +17,13 @@ export interface HomepageService {
   metrics: { label: string; value: string }[];
   snippet: string;
 }
+
+export interface ScrutinyDrive {
+  device: string;
+  bus_model: string;
+  last_updated: string;
+  status: string;
+  temp: string;
+  capacity: string;
+  powered_on: string;
+}
