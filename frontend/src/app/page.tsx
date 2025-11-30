@@ -44,7 +44,7 @@ export default function Home() {
         const res = await fetch(`/api/files/content?path=${encodeURIComponent(filePath)}`);
         if (!res.ok) throw new Error("Failed to load file content for copying.");
         const data = await res.json();
-        await navigator.clipboard.writeText(data.content);
+        await copyToClipboard(data.content);
         setCopiedDocContentPath(filePath);
         setTimeout(() => setCopiedDocContentPath(null), 2000);
     } catch (err: any) {
@@ -55,7 +55,7 @@ export default function Home() {
 
   const handleCopyProjectPath = async (path: string) => {
     try {
-        await navigator.clipboard.writeText(path);
+        await copyToClipboard(path);
     } catch (err) {
         console.error("Error copying project path:", err);
         setError("Failed to copy project path.");
@@ -158,6 +158,42 @@ export default function Home() {
       clearInterval(hostInterval);
     };
   }, [projects]);
+
+  // Helper to ensure links work across Tailscale/LAN
+  const formatUrl = (url: string) => {
+    if (typeof window === 'undefined' || !url) return url;
+    try {
+        const urlObj = new URL(url);
+        if (urlObj.hostname === 'localhost' || urlObj.hostname === '127.0.0.1') {
+            urlObj.hostname = window.location.hostname;
+            return urlObj.toString();
+        }
+        return url;
+    } catch {
+        return url;
+    }
+  };
+
+  const copyToClipboard = async (text: string) => {
+    if (!navigator.clipboard) {
+       // Fallback for non-secure contexts (HTTP)
+       const textArea = document.createElement("textarea");
+       textArea.value = text;
+       textArea.style.position = "fixed"; // Avoid scrolling to bottom
+       document.body.appendChild(textArea);
+       textArea.focus();
+       textArea.select();
+       try {
+         document.execCommand('copy');
+         document.body.removeChild(textArea);
+         return Promise.resolve();
+       } catch (err) {
+         document.body.removeChild(textArea);
+         return Promise.reject(err);
+       }
+    }
+    return navigator.clipboard.writeText(text);
+  };
 
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -319,7 +355,7 @@ export default function Home() {
                   <div key={doc.name} className="flex items-center gap-2 text-xs text-slate-400">
                     {doc.type === 'link' ? (
                        <a 
-                         href={doc.path}
+                         href={formatUrl(doc.path)}
                          target="_blank"
                          rel="noopener noreferrer"
                          className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 hover:underline"
@@ -376,10 +412,10 @@ export default function Home() {
               </div>
 
               {/* Actions */}
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
                 <button 
                   onClick={() => launch(project.vscode_workspace_file || project.path, 'vscode')}
-                  className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-indigo-600/20 hover:text-indigo-400 text-slate-400 transition-all border border-transparent hover:border-indigo-500/30"
+                  className="hidden md:flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-indigo-600/20 hover:text-indigo-400 text-slate-400 transition-all border border-transparent hover:border-indigo-500/30"
                   title="Open in VS Code"
                 >
                   <Code2 size={18} />
@@ -387,7 +423,7 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => launch(project.path, 'terminal')}
-                  className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-emerald-600/20 hover:text-emerald-400 text-slate-400 transition-all border border-transparent hover:border-emerald-500/30"
+                  className="hidden md:flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-emerald-600/20 hover:text-emerald-400 text-slate-400 transition-all border border-transparent hover:border-emerald-500/30"
                   title="Open Terminal"
                 >
                   <Terminal size={18} />
@@ -395,7 +431,7 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => launch(project.path, 'wsl')}
-                  className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-orange-600/20 hover:text-orange-400 text-slate-400 transition-all border border-transparent hover:border-orange-500/30"
+                  className="hidden md:flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-orange-600/20 hover:text-orange-400 text-slate-400 transition-all border border-transparent hover:border-orange-500/30"
                   title="Open WSL Terminal"
                 >
                   <Command size={18} />
@@ -403,7 +439,7 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => launch(project.path, 'explorer')}
-                  className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-blue-600/20 hover:text-blue-400 text-slate-400 transition-all border border-transparent hover:border-blue-500/30"
+                  className="hidden md:flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-blue-600/20 hover:text-blue-400 text-slate-400 transition-all border border-transparent hover:border-blue-500/30"
                   title="Open File Explorer"
                 >
                   <Folder size={18} />
@@ -413,10 +449,10 @@ export default function Home() {
                  {/* App Button - Only renders if URL exists, but takes up 5th slot */}
                  {project.frontend_url ? (
                      <a 
-                       href={project.frontend_url}
+                       href={formatUrl(project.frontend_url)}
                        target="_blank"
                        rel="noopener noreferrer"
-                       className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-cyan-600/20 hover:text-cyan-400 text-slate-400 transition-all border border-transparent hover:border-cyan-500/30 relative"
+                       className="col-span-1 flex flex-col items-center justify-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-cyan-600/20 hover:text-cyan-400 text-slate-400 transition-all border border-transparent hover:border-cyan-500/30 relative"
                        title="Open Web App"
                      >
                         <div className={`absolute top-1 right-1 w-1.5 h-1.5 rounded-full ${
@@ -428,7 +464,7 @@ export default function Home() {
                         <span className="text-[10px] font-medium">App</span>
                      </a>
                 ) : (
-                    <div className="bg-slate-900/20 rounded-lg border border-transparent border-slate-800/20"></div>
+                    <div className="hidden md:block bg-slate-900/20 rounded-lg border border-transparent border-slate-800/20"></div>
                 )}
               </div>
 
@@ -477,7 +513,7 @@ export default function Home() {
                   {svc.links.slice(0, 3).map((href, idx) => (
                     <a
                       key={`${svc.name}-link-${idx}`}
-                      href={href}
+                      href={formatUrl(href)}
                       target="_blank"
                       rel="noreferrer"
                       className="text-xs px-2 py-1 rounded bg-indigo-900/30 text-indigo-300 hover:text-white hover:bg-indigo-800/40 transition-colors"

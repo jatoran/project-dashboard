@@ -298,5 +298,26 @@
     ],
     "vscode_workspace_file": "D:\\projects\\search-gateway\\search-gateway.code-workspace",
     "frontend_url": "http://localhost:4000"
+  },
+  {
+    "id": "a600566f-5d08-4482-9fe8-c1ee0bc1c0f1",
+    "name": "slideshow-maker-v2",
+    "path": "D:\\Projects\\slideshow-maker-v2",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\Projects\\slideshow-maker-v2\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "vscode_workspace_file": "D:\\Projects\\slideshow-maker-v2\\slideshow-maker-v2.code-workspace",
+    "frontend_url": null
   }
 ]

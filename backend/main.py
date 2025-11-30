@@ -8,6 +8,7 @@ app = FastAPI(title="Gemini Project Dashboard")
 origins = [
     "http://localhost:37452",
     "http://127.0.0.1:37452",
+    "http://100.64.152.41:37452",
 ]
 
 app.add_middleware(

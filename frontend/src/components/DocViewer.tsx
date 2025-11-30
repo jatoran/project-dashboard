@@ -43,11 +43,35 @@ export default function DocViewer({ isOpen, onClose, filePath, fileName }: DocVi
     }
   };
 
-  const handleCopy = () => {
+  const copyToClipboard = async (text: string) => {
+    if (!navigator.clipboard) {
+       const textArea = document.createElement("textarea");
+       textArea.value = text;
+       textArea.style.position = "fixed"; 
+       document.body.appendChild(textArea);
+       textArea.focus();
+       textArea.select();
+       try {
+         document.execCommand('copy');
+         document.body.removeChild(textArea);
+         return Promise.resolve();
+       } catch (err) {
+         document.body.removeChild(textArea);
+         return Promise.reject(err);
+       }
+    }
+    return navigator.clipboard.writeText(text);
+  };
+
+  const handleCopy = async () => {
       if (content) {
-          navigator.clipboard.writeText(content);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
+          try {
+            await copyToClipboard(content);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+          } catch (err) {
+             console.error("Failed to copy:", err);
+          }
       }
   }
 
