@@ -670,5 +670,1510 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": "9876"
+  },
+  {
+    "id": "53a5c82d-2fd4-40a1-96a5-7594209b95d3",
+    "name": "transformer-learning",
+    "path": "/mnt/d/projects/transformer-learning",
+    "type": "python",
+    "tags": [
+      "python",
+      "pytorch",
+      "git",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/transformer-learning/AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_analysis_prompt.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_analysis_prompt.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DATA_CURATION_GOALS.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/DATA_CURATION_GOALS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DATA_CURATION_PIPELINE.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/DATA_CURATION_PIPELINE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DPO_SYNTHETIC_GENERATION.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/DPO_SYNTHETIC_GENERATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "FULL_PLAN_OVERVIEW.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/FULL_PLAN_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/anthropic_hh-rlhf_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/anthropic_hh-rlhf_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/bigcode_commitpackft_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/bigcode_commitpackft_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/codeparrot_clean_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/codeparrot_clean_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/helpsteer_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/helpsteer_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/megamath_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/megamath_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/metamathQA_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/metamathQA_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/oasst1_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/oasst1_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/open_orca_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/open_orca_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/orca_math_word_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/orca_math_word_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/orpo_dpo_mix_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/orpo_dpo_mix_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/pes2o_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/pes2o_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/philosophy_dialogue_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/philosophy_dialogue_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/pydpo_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/pydpo_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/redpajama_v2_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/redpajama_v2_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/refusal-xl_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/refusal-xl_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/stackexchange_pref_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/stackexchange_pref_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/starcoder_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/starcoder_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/swallow_code_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/swallow_code_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/truthful_qa_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/truthful_qa_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/truthy-dpo_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/truthy-dpo_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/ultra_fineweb_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/ultra_fineweb_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/webgpt_dataset_card.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_cards/webgpt_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/helpsteer_dpo.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/dpo/helpsteer_dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/orpo-dpo.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/dpo/orpo-dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/py_dpo,.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/dpo/py_dpo,.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/stackexchange_pref_dpo.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/dpo/stackexchange_pref_dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/webgpt_dpo.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/dpo/webgpt_dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/megamath.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/megamath.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/orca_math_pretrain.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/orca_math_pretrain.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/pes2o.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/pes2o.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/redpajama.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/redpajama.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/stack_exchange_pretrain.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/stack_exchange_pretrain.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/starcoderdata.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/starcoderdata.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/ultrafineweb.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/pretrain/ultrafineweb.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/anthropic_hhrlhf.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/anthropic_hhrlhf.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/commitpackft_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/commitpackft_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/helpsteer_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/helpsteer_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/meatamathqa_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/meatamathqa_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/oasst.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/oasst.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/open_orca_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/open_orca_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/orca_math_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/orca_math_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/philosophy.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/philosophy.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/py_dpo_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/py_dpo_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/refusal_xl.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/refusal_xl.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/stack_exchange_pref_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/stack_exchange_pref_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/truthfulqa_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/truthfulqa_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/webgpt_sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_filtering_todos/sft/webgpt_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_rationales/dpo.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_rationales/dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_rationales/pretrain.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_rationales/pretrain.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_rationales/sft.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/dataset_rationales/sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0a_dataset_ingestion.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/0a_dataset_ingestion.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0b_pipeline_prep.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/0b_pipeline_prep.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0c_smoke_testing.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/0c_smoke_testing.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0d_validation.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/0d_validation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0e_tokenizer_training.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/0e_tokenizer_training.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s00_validation.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s00_validation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s01_convert_to_parquet.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s01_convert_to_parquet.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s02_html_cleaning.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s02_html_cleaning.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s03_text_normalization.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s03_text_normalization.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s04a_pii_redaction.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s04a_pii_redaction.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s04_heuristic_cleaning.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s04_heuristic_cleaning.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s05a_compute_clean_metrics.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s05a_compute_clean_metrics.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s05_build_manifest.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s05_build_manifest.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s06_assign_splits.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s06_assign_splits.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s07_exact_deduplication.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s07_exact_deduplication.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s08_lang_filter.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s08_lang_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s09a_code_language_detection.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s09a_code_language_detection.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s09_compute_quality_signals.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s09_compute_quality_signals.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s10_metadata_filter.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s10_metadata_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s11_benchmark_decontamination.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s11_benchmark_decontamination.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s13_heuristic_scoring.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s13_heuristic_scoring.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s14_coarse_filter.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s14_coarse_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s15_near_deduplication.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s15_near_deduplication.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s16_ppl_tagging.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s16_ppl_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s17_toxicity_tagging.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s17_toxicity_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s18_final_quality_filter.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s18_final_quality_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s19_axis_tagging.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s19_axis_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s20_control_token_tagging.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s20_control_token_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s21_finalization.md",
+        "path": "/mnt/d/projects/transformer-learning/docs/TECHNICAL_DOCS/s21_finalization.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/transformer-learning/transformer-learning.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "a5da9fa3-0822-4d85-8984-28c288d3525d",
+    "name": "delphi-engine",
+    "path": "/mnt/d/projects/delphi-engine",
+    "type": "python",
+    "tags": [
+      "git",
+      "python",
+      "docker",
+      "pandas",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/delphi-engine/AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "UPDATE_PLAN.md",
+        "path": "/mnt/d/projects/delphi-engine/UPDATE_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "UPDATE_PLAN_2.md",
+        "path": "/mnt/d/projects/delphi-engine/UPDATE_PLAN_2.md",
+        "type": "markdown"
+      },
+      {
+        "name": "AGENTS_CHANGELOG.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/AGENTS_CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/API.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CONFIG.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/CONFIG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DATABASE.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/DATABASE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "data_bootstrap.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/data_bootstrap.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DEV_NOTES.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/DEV_NOTES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_OVERVIEW.md",
+        "path": "/mnt/d/projects/delphi-engine/docs/TECHNICAL_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8183/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8183/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8183/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/delphi-engine/delphi-engine.code-workspace",
+    "frontend_url": "http://localhost:8183",
+    "backend_port": "8183",
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "0ae4c5a8-0094-4030-a554-bce62ccb57e7",
+    "name": "adambandel.com",
+    "path": "/mnt/d/projects/adambandel.com",
+    "type": "static-web",
+    "tags": [
+      "git",
+      "html"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/adambandel.com/README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/adambandel.com/adambandel.com.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "07932ad0-7843-4842-a136-c9e3e35b32d0",
+    "name": "axiom",
+    "path": "/mnt/d/projects/axiom",
+    "type": "docker",
+    "tags": [
+      "docker",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/axiom/axiom.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "aeb6d834-90c4-461b-a282-5372e16588f4",
+    "name": "brihTK",
+    "path": "/mnt/d/projects/brihTK",
+    "type": "node",
+    "tags": [
+      "typescript",
+      "git",
+      "html",
+      "javascript",
+      "node",
+      "css"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "GAME_SPEC.md",
+        "path": "/mnt/d/projects/brihTK/GAME_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/brihTK/README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "9060fe43-3818-4afc-866d-61571397a805",
+    "name": "campaign-maker",
+    "path": "/mnt/d/projects/campaign-maker",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/campaign-maker/campaign-maker.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "4d232584-7bbf-44d9-9ec3-e2e5b150d564",
+    "name": "civ-evolver",
+    "path": "/mnt/d/projects/civ-evolver",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "18930787-d24f-4230-9279-99ef632db954",
+    "name": "cmr-grant-finder",
+    "path": "/mnt/d/projects/cmr-grant-finder",
+    "type": "python",
+    "tags": [
+      "typescript",
+      "git",
+      "python",
+      "javascript",
+      "node",
+      "react",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "TECHNICAL_OVERVIEW.md",
+        "path": "/mnt/d/projects/cmr-grant-finder/TECHNICAL_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "UPDATE_PLAN.md",
+        "path": "/mnt/d/projects/cmr-grant-finder/UPDATE_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/cmr-grant-finder/cmr-grant-finder.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "ac58f3ca-fe38-4a60-a1ac-bde56607175d",
+    "name": "code_context_builder",
+    "path": "/mnt/d/projects/code_context_builder",
+    "type": "node",
+    "tags": [
+      "typescript",
+      "git",
+      "html",
+      "javascript",
+      "node",
+      "react",
+      "css"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/code_context_builder/DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/code_context_builder/code_context_builder.code-workspace",
+    "frontend_url": "http://localhost:1420",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "f5f2c7f6-0a43-4830-b9a1-9d196c24fdb9",
+    "name": "dianabandel.com",
+    "path": "/mnt/d/projects/dianabandel.com",
+    "type": "static-web",
+    "tags": [
+      "css",
+      "git",
+      "javascript",
+      "html"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/dianabandel.com/dianabandel.com.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "750f0f5e-a38a-4eeb-9c8d-b09e98a81d4e",
+    "name": "gmail-fetcher",
+    "path": "/mnt/d/projects/gmail-fetcher",
+    "type": "docker",
+    "tags": [
+      "typescript",
+      "git",
+      "docker",
+      "javascript",
+      "node",
+      "react",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "API_DOCS.md",
+        "path": "/mnt/d/projects/gmail-fetcher/API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/gmail-fetcher/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:40881/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:40881/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:40881/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/gmail-fetcher/gmail-fetcher.code-workspace",
+    "frontend_url": "http://localhost:40882",
+    "backend_port": "40881",
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "b4e21775-7791-431b-b1d5-c60f805b89bf",
+    "name": "jar-calculator",
+    "path": "/mnt/d/projects/jar-calculator",
+    "type": "generic",
+    "tags": [
+      "git",
+      "javascript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/jar-calculator/jar-calculator.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "6c1d155f-7536-48e0-8bbb-ad176154d336",
+    "name": "jar-data-analysis",
+    "path": "/mnt/d/projects/jar-data-analysis",
+    "type": "python",
+    "tags": [
+      "python",
+      "git",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/jar-data-analysis/DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/jar-data-analysis/jar-data-analysis.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "22225c9e-c6e0-4fb8-a297-0f201d1c360c",
+    "name": "LCAV",
+    "path": "/mnt/d/projects/LCAV",
+    "type": "python",
+    "tags": [
+      "typescript",
+      "git",
+      "python",
+      "tailwind",
+      "javascript",
+      "node",
+      "react",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/LCAV/LCAV.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "4ccdb1b0-0f52-4fc0-9d24-8021f43a494d",
+    "name": "list-import-studio",
+    "path": "/mnt/d/projects/list-import-studio",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/list-import-studio/AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DEV_PLAN.md",
+        "path": "/mnt/d/projects/list-import-studio/DEV_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT_INFO.md",
+        "path": "/mnt/d/projects/list-import-studio/ENVIRONMENT_INFO.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PROJECT_STATUS.md",
+        "path": "/mnt/d/projects/list-import-studio/PROJECT_STATUS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "REFACTOR_PLAN.md",
+        "path": "/mnt/d/projects/list-import-studio/REFACTOR_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/list-import-studio/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/list-import-studio/list-import-studio.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "9967fb62-6522-479d-b281-3da0db5a42b0",
+    "name": "NODEX",
+    "path": "/mnt/d/projects/NODEX",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "OUTLINE.md",
+        "path": "/mnt/d/projects/NODEX/OUTLINE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "RESEARCH.md",
+        "path": "/mnt/d/projects/NODEX/RESEARCH.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/NODEX/NODEX.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "e8f4c1c5-6f56-4d99-a5bb-9b8267895033",
+    "name": "Note Widget App",
+    "path": "/mnt/d/projects/Note Widget App",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "93472d72-aeb8-4ee6-a2e8-2a27f077456a",
+    "name": "Odyssos",
+    "path": "/mnt/d/projects/Odyssos",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "e67957d1-04f5-4d6f-b1c7-87b6d331b8f8",
+    "name": "pdf-combiner",
+    "path": "/mnt/d/projects/pdf-combiner",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/pdf-combiner/pdf-combiner.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "e4901fce-dfc4-40a8-8405-d5962048d1f2",
+    "name": "ravel-rs",
+    "path": "/mnt/d/projects/ravel-rs",
+    "type": "rust",
+    "tags": [
+      "rust",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/ravel-rs/DOCUMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/ravel-rs/README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/ravel-rs/ravel-rs.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "07d9d0e8-e0e0-45c4-974d-660cfa8fe2e7",
+    "name": "predprey-neuralnet",
+    "path": "/mnt/d/projects/predprey-neuralnet",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/predprey-neuralnet/AGENTS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/predprey-neuralnet/predprey-neuralnet.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "e4cba222-6357-43d0-ab3d-d0878635d457",
+    "name": "singularity-timeline",
+    "path": "/mnt/d/projects/singularity-timeline",
+    "type": "node",
+    "tags": [
+      "typescript",
+      "git",
+      "html",
+      "javascript",
+      "node",
+      "react",
+      "css"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "_DEV_BLUEPRINT.md",
+        "path": "/mnt/d/projects/singularity-timeline/_DEV_BLUEPRINT.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/singularity-timeline/singularity-timeline.code-workspace",
+    "frontend_url": "http://localhost:5792",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "9823a2b3-7820-4c3f-83a0-ecfe5eea3f33",
+    "name": "Stocks - React",
+    "path": "/mnt/d/projects/Stocks - React",
+    "type": "python",
+    "tags": [
+      "typescript",
+      "git",
+      "python",
+      "tailwind",
+      "javascript",
+      "node",
+      "react",
+      "next.js"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/Stocks - React/DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/Stocks - React/Stocks - React.code-workspace",
+    "frontend_url": "http://localhost:3131",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "f9957a39-b7c5-4d6b-920d-7a1bfbd2a867",
+    "name": "studio-bella",
+    "path": "/mnt/d/projects/studio-bella",
+    "type": "static-web",
+    "tags": [
+      "git",
+      "html"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/studio-bella/Studio-bella.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "487e79df-3700-4308-9092-108e698f8f61",
+    "name": "tab-manager",
+    "path": "/mnt/d/projects/tab-manager",
+    "type": "generic",
+    "tags": [
+      "git",
+      "css"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/tab-manager/DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/tab-manager/tab-manager.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "c4efadf1-4561-472f-9ee9-18356b7c17cc",
+    "name": "transformer-learning-training",
+    "path": "/mnt/d/projects/transformer-learning-training",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/transformer-learning-training/README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT_INFO_old.md",
+        "path": "/mnt/d/projects/transformer-learning-training/docs/ENVIRONMENT_INFO_old.md",
+        "type": "markdown"
+      },
+      {
+        "name": "LOCAL_ENVIRONMENT_NOTES.md",
+        "path": "/mnt/d/projects/transformer-learning-training/docs/LOCAL_ENVIRONMENT_NOTES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "OPTUNA_GUIDE.md",
+        "path": "/mnt/d/projects/transformer-learning-training/docs/OPTUNA_GUIDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PLAN_new.md",
+        "path": "/mnt/d/projects/transformer-learning-training/docs/PLAN_new.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PLAN_old.md",
+        "path": "/mnt/d/projects/transformer-learning-training/docs/PLAN_old.md",
+        "type": "markdown"
+      },
+      {
+        "name": "RUNPOD_ENV_REBUILD_NOTES.md",
+        "path": "/mnt/d/projects/transformer-learning-training/docs/RUNPOD_ENV_REBUILD_NOTES.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/transformer-learning-training/transformer-learning-training.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "9205e699-298b-4747-b708-12bd43aac449",
+    "name": "video-editor",
+    "path": "/mnt/d/projects/video-editor",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/video-editor/DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/video-editor/video-editor.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "a1b2b95a-2941-4347-a16a-25a4787ae579",
+    "name": "wallpaper-boi",
+    "path": "/mnt/d/projects/wallpaper-boi",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/wallpaper-boi/wallpaper-boi.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "a45943ec-e8af-4bae-b6d9-c8f0ce3ee041",
+    "name": "yt-dlp",
+    "path": "/mnt/d/projects/yt-dlp",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/yt-dlp/yt-dlp.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "73fd4504-d434-4fc9-8836-6adb811bcf6e",
+    "name": "ytdb",
+    "path": "/mnt/d/projects/ytdb",
+    "type": "node",
+    "tags": [
+      "node",
+      "git",
+      "react",
+      "javascript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/ytdb/ytdb.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": "5181",
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "78e61fdd-89c0-4bd9-8e8a-ec31695d78d5",
+    "name": "agile-list-import-processor",
+    "path": "/mnt/d/projects/agile-list-import-processor",
+    "type": "python",
+    "tags": [
+      "python",
+      "git",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "/mnt/d/projects/agile-list-import-processor/DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/agile-list-import-processor/agile-list-import-processor.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "234cf638-c7b7-48b0-a126-ed22dae418ec",
+    "name": "anki-create-sync",
+    "path": "/mnt/d/projects/anki-create-sync",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "ANKICONNECT DOCUMENTATION.md",
+        "path": "/mnt/d/projects/anki-create-sync/ANKICONNECT DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/anki-create-sync/anki-create-sync.code-workspace",
+    "frontend_url": null,
+    "backend_port": "8765",
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "bb53ec8d-6606-4dbe-8001-9cda7533931b",
+    "name": "gallery-of-conceptual-lenses",
+    "path": "/mnt/d/projects/gallery-of-conceptual-lenses",
+    "type": "python",
+    "tags": [
+      "python",
+      "pytorch",
+      "git",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/gallery-of-conceptual-lenses/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/gallery-of-conceptual-lenses/gallery-of-conceptual-lenses.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "b84fa05d-6da4-4a62-aeb2-5bd282ea818f",
+    "name": "habit-ledger",
+    "path": "/mnt/d/projects/habit-ledger",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "19e3535a-7253-4866-8ff1-482727728902",
+    "name": "augur-engine",
+    "path": "/mnt/d/projects/augur-engine",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "ARCHITECTURE.md",
+        "path": "/mnt/d/projects/augur-engine/docs/ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ROADMAP.md",
+        "path": "/mnt/d/projects/augur-engine/docs/ROADMAP.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/augur-engine/augur-engine.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
+  },
+  {
+    "id": "13f03629-04cf-4bda-ab6c-4d1a17be52a3",
+    "name": "canada-districts-db",
+    "path": "/mnt/d/projects/canada-districts-db",
+    "type": "python",
+    "tags": [
+      "python",
+      "pandas",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "GEMINI.md",
+        "path": "/mnt/d/projects/canada-districts-db/GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/canada-districts-db/docs/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/canada-districts-db/canada-districts-db.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null
   }
 ]

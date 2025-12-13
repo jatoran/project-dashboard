@@ -18,11 +18,10 @@ export default function ProjectCard({ project, status, onClick, onLaunch, format
       {/* Status Indicator Dot (Absolute Top Right) */}
       <div className={`absolute top-4 right-4 w-2.5 h-2.5 rounded-full border border-slate-900/50 ${
         status === true ? "bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.6)]" : 
-        status === false ? "bg-red-500" : 
-        "bg-slate-700"
-      }`} />
+        "bg-slate-600"
+      }`} title={status === true ? "Online" : status === false ? "Offline" : "Unknown"} />
 
-      <div className="flex flex-col h-full justify-between space-y-4">
+      <div className="flex flex-col h-full justify-between space-y-3">
           
           {/* Top Section: Name & Path */}
           <div>
@@ -32,18 +31,6 @@ export default function ProjectCard({ project, status, onClick, onLaunch, format
             <p className="text-[10px] text-slate-500 font-mono truncate mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
                 {project.path}
             </p>
-          </div>
-
-          {/* Middle: Tags (Compact) */}
-          <div className="flex flex-wrap gap-1 h-[24px] overflow-hidden">
-             {project.tags.slice(0, 3).map(tag => (
-                <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
-                    {tag}
-                </span>
-             ))}
-             {project.tags.length > 3 && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-500 border border-slate-700">+{project.tags.length - 3}</span>
-             )}
           </div>
 
           {/* Bottom: Quick Info (Docs Count) & Primary Action */}
