@@ -1,5 +1,5 @@
 import { Project } from "@/types";
-import { X, Terminal, Code2, Command, Folder, Globe, Link, ExternalLink, FileText, Copy, Check, Plus, Trash2 } from "lucide-react";
+import { X, Terminal, Code2, Command, Folder, Globe, Link, ExternalLink, FileText, Copy, Check, Plus, Trash2, RefreshCw } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
 interface ProjectModalProps {
@@ -137,6 +137,17 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
     try {
       const res = await fetch(`/api/projects/${project.id}/custom-docs/${encodeURIComponent(name)}`, { method: 'DELETE' });
       if (res.ok) onUpdate(await res.json());
+    } catch (e) { console.error(e); }
+    finally { setLoading(false); }
+  };
+
+  const refreshProject = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/projects/${project.id}/refresh`, { method: 'POST' });
+      if (res.ok) {
+        onUpdate(await res.json());
+      }
     } catch (e) { console.error(e); }
     finally { setLoading(false); }
   };
@@ -416,12 +427,23 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
             </div>
           )}
 
-          {/* Danger Zone */}
-          <div className="pt-6 border-t border-slate-800/50 mt-4">
+          {/* Actions Zone */}
+          <div className="pt-6 border-t border-slate-800/50 mt-4 flex flex-col md:flex-row gap-3">
+            {/* Refresh Button */}
+            <button
+              onClick={refreshProject}
+              disabled={loading}
+              className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 hover:bg-indigo-900/20 px-4 py-2 rounded-lg transition-colors text-sm font-medium justify-center"
+            >
+              <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
+              Rescan Project
+            </button>
+
+            {/* Delete Button */}
             {!deleteConfirm ? (
               <button
                 onClick={() => setDeleteConfirm(true)}
-                className="flex items-center gap-2 text-red-400 hover:text-red-300 hover:bg-red-900/20 px-4 py-2 rounded-lg transition-colors text-sm font-medium w-full justify-center md:w-auto"
+                className="flex items-center gap-2 text-red-400 hover:text-red-300 hover:bg-red-900/20 px-4 py-2 rounded-lg transition-colors text-sm font-medium justify-center"
               >
                 <Trash2 size={16} />
                 Remove Project

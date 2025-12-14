@@ -8,6 +8,14 @@ import uuid
 import re
 import yaml
 
+# Directories to skip during scanning (massive performance improvement)
+SKIP_DIRS = {
+    'node_modules', '.git', '.venv', 'venv', '__pycache__', '.tox', 
+    '.pytest_cache', '.mypy_cache', 'dist', 'build', '.next', '.nuxt',
+    'target', 'vendor', '.cargo', 'coverage', '.coverage', 'htmlcov',
+    '.eggs', '*.egg-info', '.cache', '.parcel-cache', '.turbo',
+}
+
 class ProjectScanner:
     def scan(self, path_str: str) -> Project:
         path = Path(path_str)
@@ -290,10 +298,19 @@ class ProjectScanner:
                     if detected_port: break
                 except: pass
 
-        # 3d. Strategy: Frontend Configs (API_URL)
+        # 3d. Strategy: Frontend Configs (API_URL) - Limited depth search
         if not detected_port:
-             for root, _, files in os.walk(str(path)):
-                if 'node_modules' in root or '.git' in root: continue
+            # Only scan first 2 levels deep to avoid traversing huge directories
+            for root, dirs, files in os.walk(str(path)):
+                # Prune directories in-place (prevents os.walk from entering them)
+                dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+                
+                # Limit depth to 2 levels
+                depth = root.replace(str(path), '').count(os.sep)
+                if depth >= 2:
+                    dirs.clear()
+                    continue
+                
                 for file in files:
                     if file in ['.env', '.env.local', 'constants.ts', 'config.js']:
                         try:

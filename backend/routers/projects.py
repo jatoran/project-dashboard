@@ -2,7 +2,7 @@ import os
 import requests
 from fastapi import APIRouter, HTTPException
 from typing import List
-from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest, PortOverrideRequest
+from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest, PortOverrideRequest, ReorderRequest
 from backend.services.store import ProjectStore
 from backend.services.launcher import Launcher
 from backend.utils.path_utils import linux_to_windows
@@ -103,5 +103,23 @@ def launch_project(request: LaunchRequest):
     try:
         launcher.launch(request.project_path, request.launch_type)
         return {"status": "success", "message": f"Launched {request.launch_type}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/projects/reorder", response_model=List[Project])
+def reorder_projects(request: ReorderRequest):
+    """Update project positions based on provided order of IDs."""
+    try:
+        return store.reorder(request.order)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/projects/{project_id}/refresh", response_model=Project)
+def refresh_project(project_id: str):
+    """Rescan a project to update discovered docs and metadata."""
+    try:
+        return store.refresh_project(project_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

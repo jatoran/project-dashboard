@@ -5,6 +5,10 @@ from typing import List, Dict, Any
 import requests
 from fastapi import APIRouter, HTTPException
 
+from backend.services.cache import (
+    cache, CACHE_KEY_HOMEPAGE, TTL_HOMEPAGE
+)
+
 router = APIRouter()
 
 # Known services to extract from the Homepage dashboard.
@@ -85,8 +89,8 @@ def _parse_services(html: str) -> List[Dict[str, Any]]:
     return services
 
 
-@router.get("/homepage")
-def get_homepage_data():
+def _fetch_homepage_data() -> Dict[str, Any]:
+    """Fetch homepage data from external gateway (internal helper)."""
     gateway_url = os.getenv("GATEWAY_URL", "http://127.0.0.1:7083")
     homepage_url = os.getenv("HOMEPAGE_URL", "http://192.168.50.193:3000")
     client_id = os.getenv("GATEWAY_CLIENT_ID", "test_homepage_scrape")
@@ -150,3 +154,40 @@ def get_homepage_data():
     html_blob = " ".join(html_parts)
     services = _parse_services(html_blob)
     return {"services": services}
+
+
+@router.get("/homepage")
+def get_homepage_data():
+    """Get homepage data. Returns cached data if fresh."""
+    cached = cache.get(CACHE_KEY_HOMEPAGE)
+    if cached:
+        return {
+            "services": cached["data"]["services"],
+            "last_updated": cached["last_updated"],
+            "cached": True,
+        }
+    
+    # Fetch fresh data
+    data = _fetch_homepage_data()
+    timestamp = cache.set(CACHE_KEY_HOMEPAGE, data, TTL_HOMEPAGE)
+    
+    return {
+        "services": data["services"],
+        "last_updated": timestamp.isoformat(),
+        "cached": False,
+    }
+
+
+@router.post("/homepage/refresh")
+def refresh_homepage_data():
+    """Force refresh homepage data, bypassing cache."""
+    cache.invalidate(CACHE_KEY_HOMEPAGE)
+    data = _fetch_homepage_data()
+    timestamp = cache.set(CACHE_KEY_HOMEPAGE, data, TTL_HOMEPAGE)
+    
+    return {
+        "services": data["services"],
+        "last_updated": timestamp.isoformat(),
+        "cached": False,
+    }
+

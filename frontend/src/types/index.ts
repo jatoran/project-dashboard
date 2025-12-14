@@ -13,7 +13,10 @@ export interface Project {
   backend_port?: string | null;
   frontend_port_override?: string | null;
   backend_port_override?: string | null;
+  position?: number | null;
 }
+
+export type SortMode = 'custom' | 'name' | 'created' | 'modified';
 
 export interface HomepageService {
   name: string;
@@ -80,4 +83,10 @@ export interface HostLogsResponse {
   service: string;
   lines: string[];
   raw?: string;
+}
+
+export interface Platform {
+  id: string;
+  name: string;
+  url: string;
 }

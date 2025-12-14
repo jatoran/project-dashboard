@@ -1,12 +1,28 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { Project, HomepageService, ScrutinyDrive, HostServiceStatus, HardwareHistoryResponse } from "@/types";
-import { Plus, Search, RefreshCw, ExternalLink, Cpu, Thermometer, HardDrive as HardDriveIcon, ScrollText, Activity } from "lucide-react";
+import { Project, HomepageService, ScrutinyDrive, HostServiceStatus, HardwareHistoryResponse, Platform, SortMode } from "@/types";
+import { Plus, Search, RefreshCw, ExternalLink, Cpu, Thermometer, HardDrive as HardDriveIcon, ScrollText, Activity, Globe, Trash2, ArrowUpDown, GripVertical } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
+import MetricChart from "@/components/MetricChart";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  rectSortingStrategy,
+} from '@dnd-kit/sortable';
 
 const DEFAULT_LOG_SERVICES = ["google_drive", "syncthing", "docker_desktop", "veeam", "tailscale", "activitywatch"];
 
@@ -15,6 +31,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("projects");
   const [projects, setProjects] = useState<Project[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortMode, setSortMode] = useState<SortMode>('custom');
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Data States
@@ -24,6 +41,16 @@ export default function Home() {
   const [hardware, setHardware] = useState<HardwareHistoryResponse | null>(null);
   const [hostLogs, setHostLogs] = useState<Record<string, string[]>>({});
   const [statuses, setStatuses] = useState<Record<string, boolean | null>>({});
+  const [platforms, setPlatforms] = useState<Platform[]>([]);
+
+  // Cache timestamps
+  const [lastUpdated, setLastUpdated] = useState<Record<string, string>>({});
+  const [refreshing, setRefreshing] = useState<Record<string, boolean>>({});
+
+  // History state for charts
+  type TimeRange = '1h' | '6h' | '24h' | '7d';
+  const [historyRange, setHistoryRange] = useState<TimeRange>('1h');
+  const [historyData, setHistoryData] = useState<Array<Record<string, unknown>>>([]);
 
   // UI States
   const [newPath, setNewPath] = useState("");
@@ -60,6 +87,21 @@ export default function Home() {
       return urlObj.toString();
     } catch {
       return url;
+    }
+  };
+
+  const formatRelativeTime = (isoTimestamp: string | undefined) => {
+    if (!isoTimestamp) return null;
+    try {
+      const date = new Date(isoTimestamp);
+      const now = new Date();
+      const diffSec = Math.floor((now.getTime() - date.getTime()) / 1000);
+      if (diffSec < 60) return "just now";
+      if (diffSec < 3600) return `${Math.floor(diffSec / 60)} min ago`;
+      if (diffSec < 86400) return `${Math.floor(diffSec / 3600)} hr ago`;
+      return date.toLocaleDateString();
+    } catch {
+      return null;
     }
   };
 
@@ -136,42 +178,104 @@ export default function Home() {
     finally { setLoading(false); }
   };
 
-  const fetchHomepage = async () => {
+  const fetchHomepage = async (forceRefresh = false) => {
+    if (forceRefresh) setRefreshing(r => ({ ...r, homepage: true }));
     try {
-      const res = await fetch("/api/homepage");
+      const url = forceRefresh ? "/api/homepage/refresh" : "/api/homepage";
+      const res = await fetch(url, { method: forceRefresh ? "POST" : "GET" });
       if (res.ok) {
         const data = await res.json();
         setHomepageServices(data.services || []);
+        if (data.last_updated) setLastUpdated(u => ({ ...u, homepage: data.last_updated }));
       }
     } catch (e) { console.error(e); }
+    if (forceRefresh) setRefreshing(r => ({ ...r, homepage: false }));
   };
 
-  const fetchDrives = async () => {
+  const fetchDrives = async (forceRefresh = false) => {
+    if (forceRefresh) setRefreshing(r => ({ ...r, scrutiny: true }));
     try {
-      const res = await fetch("/api/scrutiny");
+      const url = forceRefresh ? "/api/scrutiny/refresh" : "/api/scrutiny";
+      const res = await fetch(url, { method: forceRefresh ? "POST" : "GET" });
       if (res.ok) {
         const data = await res.json();
         setDrives(data.drives || []);
+        if (data.last_updated) setLastUpdated(u => ({ ...u, scrutiny: data.last_updated }));
+      }
+    } catch (e) { console.error(e); }
+    if (forceRefresh) setRefreshing(r => ({ ...r, scrutiny: false }));
+  };
+
+  const fetchPlatforms = async () => {
+    try {
+      const res = await fetch("/api/platforms");
+      if (res.ok) {
+        const data = await res.json();
+        setPlatforms(data || []);
       }
     } catch (e) { console.error(e); }
   };
 
-  const fetchHostStatus = useCallback(async () => {
+  const addPlatform = async (name: string, url: string) => {
     try {
-      const res = await fetch("/api/host-status");
+      const res = await fetch("/api/platforms", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, url }),
+      });
+      if (res.ok) {
+        await fetchPlatforms();
+        return true;
+      }
+    } catch (e) { console.error(e); }
+    return false;
+  };
+
+  const deletePlatform = async (id: string) => {
+    try {
+      const res = await fetch(`/api/platforms/${id}`, { method: "DELETE" });
+      if (res.ok) {
+        await fetchPlatforms();
+      }
+    } catch (e) { console.error(e); }
+  };
+
+  const fetchHostStatus = useCallback(async (forceRefresh = false) => {
+    if (forceRefresh) setRefreshing(r => ({ ...r, hostStatus: true }));
+    try {
+      const url = forceRefresh ? "/api/host-status/refresh" : "/api/host-status";
+      const res = await fetch(url, { method: forceRefresh ? "POST" : "GET" });
       if (res.ok) {
         const data = await res.json();
         setHostServices(data.services || []);
+        if (data.last_updated) setLastUpdated(u => ({ ...u, hostStatus: data.last_updated }));
       }
     } catch (e) { console.error(e); }
+    if (forceRefresh) setRefreshing(r => ({ ...r, hostStatus: false }));
   }, []);
 
-  const fetchHardware = useCallback(async () => {
+  const fetchHardware = useCallback(async (forceRefresh = false) => {
+    if (forceRefresh) setRefreshing(r => ({ ...r, hardware: true }));
     try {
-      const res = await fetch("/api/host-hardware?limit=300");
+      const url = forceRefresh ? "/api/host-hardware/refresh" : "/api/host-hardware?limit=300";
+      const res = await fetch(url, { method: forceRefresh ? "POST" : "GET" });
       if (res.ok) {
         const data = await res.json();
         setHardware(data);
+        if (data.last_updated) setLastUpdated(u => ({ ...u, hardware: data.last_updated }));
+      }
+    } catch (e) { console.error(e); }
+    if (forceRefresh) setRefreshing(r => ({ ...r, hardware: false }));
+  }, []);
+
+  const fetchHistory = useCallback(async (range: TimeRange) => {
+    try {
+      const rangeMinutes = { '1h': 60, '6h': 360, '24h': 1440, '7d': 10080 };
+      const minutes = rangeMinutes[range];
+      const res = await fetch(`/api/history?minutes=${minutes}`);
+      if (res.ok) {
+        const data = await res.json();
+        setHistoryData(data.history || []);
       }
     } catch (e) { console.error(e); }
   }, []);
@@ -251,6 +355,7 @@ export default function Home() {
     fetchProjects();
     fetchHomepage();
     fetchDrives();
+    fetchPlatforms();
   }, []);
 
   // Ctrl+F to focus search input
@@ -291,6 +396,14 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [fetchHostLogs]);
 
+  // Fetch history data when range changes
+  useEffect(() => {
+    fetchHistory(historyRange);
+    // Also refresh every 60 seconds
+    const interval = setInterval(() => fetchHistory(historyRange), 60000);
+    return () => clearInterval(interval);
+  }, [fetchHistory, historyRange]);
+
   useEffect(() => {
     if (projects.length === 0) return;
 
@@ -314,15 +427,67 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [projects]);
 
-  // --- Filtering ---
+  // --- Filtering & Sorting ---
+  const sortedProjects = useMemo(() => {
+    let sorted = [...projects];
+    switch (sortMode) {
+      case 'name':
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'custom':
+        sorted.sort((a, b) => (a.position ?? 999) - (b.position ?? 999));
+        break;
+      // 'created' and 'modified' would need timestamps in the Project model
+      default:
+        break;
+    }
+    return sorted;
+  }, [projects, sortMode]);
+
   const filteredProjects = useMemo(() => {
     const q = searchQuery.toLowerCase();
-    return projects.filter(p =>
+    return sortedProjects.filter(p =>
       p.name.toLowerCase().includes(q) ||
       p.path.toLowerCase().includes(q) ||
       p.tags.some(t => t.toLowerCase().includes(q))
     );
-  }, [projects, searchQuery]);
+  }, [sortedProjects, searchQuery]);
+
+  // --- Drag and Drop ---
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  const handleDragEnd = async (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+
+    // Switch to custom sort when dragging
+    setSortMode('custom');
+
+    const oldIndex = sortedProjects.findIndex(p => p.id === active.id);
+    const newIndex = sortedProjects.findIndex(p => p.id === over.id);
+
+    if (oldIndex !== -1 && newIndex !== -1) {
+      const reordered = arrayMove(sortedProjects, oldIndex, newIndex);
+      const newOrder = reordered.map(p => p.id);
+
+      // Optimistically update UI
+      setProjects(reordered.map((p, i) => ({ ...p, position: i })));
+
+      // Persist to backend
+      try {
+        await fetch('/api/projects/reorder', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ order: newOrder }),
+        });
+      } catch (e) {
+        console.error('Failed to persist order:', e);
+      }
+    }
+  };
 
   const latestSnapshot = hardware?.latest;
   const cpuLoadSeries = useMemo(() => buildSeries(hardware?.history, ["cpu", "load_pct"]), [buildSeries, hardware]);
@@ -486,6 +651,19 @@ export default function Home() {
                 />
               </div>
 
+              {/* Sort Dropdown */}
+              <div className="flex items-center gap-2">
+                <ArrowUpDown size={14} className="text-slate-500" />
+                <select
+                  value={sortMode}
+                  onChange={(e) => setSortMode(e.target.value as SortMode)}
+                  className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                >
+                  <option value="custom">Custom</option>
+                  <option value="name">Name</option>
+                </select>
+              </div>
+
               {/* Actions */}
               <div className="flex items-center gap-2 w-full md:w-auto justify-end">
                 <button
@@ -501,19 +679,30 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Project Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {filteredProjects.map(project => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  status={statuses[project.id] ?? null}
-                  onClick={() => setSelectedProject(project)}
-                  onLaunch={launch}
-                  formatUrl={formatUrl}
-                />
-              ))}
-            </div>
+            {/* Project Grid with Drag & Drop */}
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext
+                items={filteredProjects.map(p => p.id)}
+                strategy={rectSortingStrategy}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {filteredProjects.map(project => (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      status={statuses[project.id] ?? null}
+                      onClick={() => setSelectedProject(project)}
+                      onLaunch={launch}
+                      formatUrl={formatUrl}
+                    />
+                  ))}
+                </div>
+              </SortableContext>
+            </DndContext>
             {filteredProjects.length === 0 && (
               <div className="text-center py-20 text-slate-500">
                 No projects found matching &quot;{searchQuery}&quot;
@@ -522,90 +711,230 @@ export default function Home() {
           </div>
         )}
 
+        {/* --- LINKS TAB --- */}
+        {activeTab === 'links' && (
+          <div className="space-y-6">
+            {/* Add Link Form */}
+            <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const form = e.target as HTMLFormElement;
+                  const nameInput = form.elements.namedItem('linkName') as HTMLInputElement;
+                  const urlInput = form.elements.namedItem('linkUrl') as HTMLInputElement;
+                  if (nameInput.value && urlInput.value) {
+                    const success = await addPlatform(nameInput.value, urlInput.value);
+                    if (success) {
+                      nameInput.value = '';
+                      urlInput.value = '';
+                    }
+                  }
+                }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
+                <input
+                  name="linkName"
+                  type="text"
+                  placeholder="Link name"
+                  className="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none placeholder-slate-600"
+                />
+                <input
+                  name="linkUrl"
+                  type="url"
+                  placeholder="https://..."
+                  className="flex-[2] bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none placeholder-slate-600"
+                />
+                <button
+                  type="submit"
+                  className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors"
+                >
+                  <Plus size={16} />
+                  Add Link
+                </button>
+              </form>
+            </div>
+
+            {/* Links Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {platforms.map((platform) => (
+                <div
+                  key={platform.id}
+                  className="group relative p-4 rounded-xl border border-slate-800 bg-slate-900 hover:bg-slate-800/50 hover:border-slate-700 transition-all"
+                >
+                  <a
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center">
+                        <Globe size={20} className="text-indigo-400" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-white font-semibold truncate group-hover:text-indigo-400 transition-colors">
+                          {platform.name}
+                        </h3>
+                        <p className="text-xs text-slate-500 truncate">{platform.url}</p>
+                      </div>
+                      <ExternalLink size={16} className="text-slate-600 group-hover:text-slate-400 transition-colors shrink-0" />
+                    </div>
+                  </a>
+                  <button
+                    onClick={() => deletePlatform(platform.id)}
+                    className="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-800/80 text-slate-500 hover:bg-red-600/20 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all"
+                    title="Delete link"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {platforms.length === 0 && (
+              <div className="text-center py-20 text-slate-500">
+                No saved links yet. Add one above!
+              </div>
+            )}
+          </div>
+        )}
+
         {/* --- DASHBOARD TAB --- */}
         {activeTab === 'dashboard' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {homepageServices.map((svc) => (
-              <div key={svc.name} className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm hover:border-slate-700 transition-all">
-                <div className="flex items-start gap-3 mb-4">
-                  {svc.icons[0] && (
-                    <>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={svc.icons[0]}
-                        alt={`${svc.name} icon`}
-                        className="w-10 h-10 object-contain bg-slate-800 p-1.5 rounded-lg"
-                      />
-                    </>
-                  )}
-                  <div>
-                    <div className="text-white font-semibold text-lg">{svc.name}</div>
-                    <div className="text-xs text-slate-500 mt-1 line-clamp-2">{svc.snippet}</div>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <h2 className="text-lg font-semibold text-white">Proxmox Dashboard</h2>
+                {lastUpdated.homepage && (
+                  <span className="text-xs text-slate-500">Updated {formatRelativeTime(lastUpdated.homepage)}</span>
+                )}
+              </div>
+              <button
+                onClick={() => fetchHomepage(true)}
+                disabled={refreshing.homepage}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 disabled:opacity-50 rounded-lg text-slate-300 transition-colors"
+              >
+                <RefreshCw size={14} className={refreshing.homepage ? "animate-spin" : ""} />
+                Refresh
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {homepageServices.map((svc) => (
+                <div key={svc.name} className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm hover:border-slate-700 transition-all">
+                  <div className="flex items-start gap-3 mb-4">
+                    {svc.icons[0] && (
+                      <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={svc.icons[0]}
+                          alt={`${svc.name} icon`}
+                          className="w-10 h-10 object-contain bg-slate-800 p-1.5 rounded-lg"
+                        />
+                      </>
+                    )}
+                    <div>
+                      <div className="text-white font-semibold text-lg">{svc.name}</div>
+                      <div className="text-xs text-slate-500 mt-1 line-clamp-2">{svc.snippet}</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {svc.metrics.map((m, i) => (
+                      <span key={i} className="px-2 py-1 rounded bg-slate-800 text-slate-300 text-xs">
+                        <span className="font-bold text-white">{m.value}</span> {m.label}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {svc.links.slice(0, 3).map((href, idx) => (
+                      <a
+                        key={idx}
+                        href={formatUrl(href)}
+                        target="_blank"
+                        className="flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-indigo-900/20 text-indigo-400 hover:bg-indigo-600 hover:text-white transition-colors border border-indigo-500/20"
+                      >
+                        {idx === 0 ? "Launch" : `Link ${idx + 1}`}
+                        <ExternalLink size={12} />
+                      </a>
+                    ))}
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {svc.metrics.map((m, i) => (
-                    <span key={i} className="px-2 py-1 rounded bg-slate-800 text-slate-300 text-xs">
-                      <span className="font-bold text-white">{m.value}</span> {m.label}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {svc.links.slice(0, 3).map((href, idx) => (
-                    <a
-                      key={idx}
-                      href={formatUrl(href)}
-                      target="_blank"
-                      className="flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-indigo-900/20 text-indigo-400 hover:bg-indigo-600 hover:text-white transition-colors border border-indigo-500/20"
-                    >
-                      {idx === 0 ? "Launch" : `Link ${idx + 1}`}
-                      <ExternalLink size={12} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 
         {/* --- SCRUTINY TAB --- */}
         {activeTab === 'scrutiny' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {drives.map((d) => (
-              <div key={d.device} className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <div className="text-white font-semibold text-lg">{d.device}</div>
-                    <div className="text-xs text-slate-500 font-mono">{d.bus_model}</div>
-                  </div>
-                  <span className={`text-xs px-2 py-1 rounded font-medium ${d.status.toLowerCase() === "passed" ? "bg-emerald-900/30 text-emerald-400 border border-emerald-900/50" : "bg-red-900/30 text-red-400 border border-red-900/50"
-                    }`}>
-                    {d.status}
-                  </span>
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="p-2 rounded bg-slate-800/50">
-                    <span className="text-slate-500 text-xs block">Temperature</span>
-                    <span className="text-slate-200">{d.temp}</span>
-                  </div>
-                  <div className="p-2 rounded bg-slate-800/50">
-                    <span className="text-slate-500 text-xs block">Capacity</span>
-                    <span className="text-slate-200">{d.capacity}</span>
-                  </div>
-                  <div className="col-span-2 p-2 rounded bg-slate-800/50">
-                    <span className="text-slate-500 text-xs block">Power On Hours</span>
-                    <span className="text-slate-200">{d.powered_on}</span>
-                  </div>
-                </div>
-                <div className="mt-4 text-[10px] text-slate-600 text-right">Updated: {d.last_updated}</div>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <h2 className="text-lg font-semibold text-white">Scrutiny Drives</h2>
+                {lastUpdated.scrutiny && (
+                  <span className="text-xs text-slate-500">Updated {formatRelativeTime(lastUpdated.scrutiny)}</span>
+                )}
               </div>
-            ))}
+              <button
+                onClick={() => fetchDrives(true)}
+                disabled={refreshing.scrutiny}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 disabled:opacity-50 rounded-lg text-slate-300 transition-colors"
+              >
+                <RefreshCw size={14} className={refreshing.scrutiny ? "animate-spin" : ""} />
+                Refresh
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {drives.map((d) => (
+                <div key={d.device} className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <div className="text-white font-semibold text-lg">{d.device}</div>
+                      <div className="text-xs text-slate-500 font-mono">{d.bus_model}</div>
+                    </div>
+                    <span className={`text-xs px-2 py-1 rounded font-medium ${d.status.toLowerCase() === "passed" ? "bg-emerald-900/30 text-emerald-400 border border-emerald-900/50" : "bg-red-900/30 text-red-400 border border-red-900/50"
+                      }`}>
+                      {d.status}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div className="p-2 rounded bg-slate-800/50">
+                      <span className="text-slate-500 text-xs block">Temperature</span>
+                      <span className="text-slate-200">{d.temp}</span>
+                    </div>
+                    <div className="p-2 rounded bg-slate-800/50">
+                      <span className="text-slate-500 text-xs block">Capacity</span>
+                      <span className="text-slate-200">{d.capacity}</span>
+                    </div>
+                    <div className="col-span-2 p-2 rounded bg-slate-800/50">
+                      <span className="text-slate-500 text-xs block">Power On Hours</span>
+                      <span className="text-slate-200">{d.powered_on}</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-[10px] text-slate-600 text-right">Updated: {d.last_updated}</div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
         {/* --- PC MONITORING TAB --- */}
         {activeTab === 'host' && (
           <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <h2 className="text-lg font-semibold text-white">PC Monitoring</h2>
+                {lastUpdated.hardware && (
+                  <span className="text-xs text-slate-500">Updated {formatRelativeTime(lastUpdated.hardware)}</span>
+                )}
+              </div>
+              <button
+                onClick={() => { fetchHardware(true); fetchHostStatus(true); }}
+                disabled={refreshing.hardware || refreshing.hostStatus}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 disabled:opacity-50 rounded-lg text-slate-300 transition-colors"
+              >
+                <RefreshCw size={14} className={(refreshing.hardware || refreshing.hostStatus) ? "animate-spin" : ""} />
+                Refresh
+              </button>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
               <div className="p-4 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
                 <div className="flex items-center justify-between text-sm text-slate-400 mb-2">
@@ -643,54 +972,63 @@ export default function Home() {
                 <div className="text-xs text-slate-500 mt-1">Temp {formatMetric(typeof primaryDrive?.temp_c === "number" ? primaryDrive.temp_c : undefined, "°C")}</div>
               </div>
             </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <div className="text-sm text-slate-400">CPU Load (history)</div>
-                    <div className="text-lg text-white font-semibold">{formatMetric(readMetric(latestSnapshot, ["cpu", "load_pct"]), "%")}</div>
-                    {historyWindowLabel && <div className="text-xs text-slate-500">{historyWindowLabel}</div>}
-                  </div>
-                  <span className="text-xs text-slate-500">{latestSnapshot?.timestamp ? new Date(latestSnapshot.timestamp).toLocaleTimeString() : ""}</span>
+            {/* History Charts (DuckDB data) */}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2 text-sm font-semibold text-slate-300">
+                  <Activity size={16} />
+                  <span>Historical Metrics</span>
                 </div>
-                <Sparkline data={cpuLoadSeries} color="#22d3ee" />
+                <div className="flex gap-1">
+                  {(['1h', '6h', '24h', '7d'] as const).map((range) => (
+                    <button
+                      key={range}
+                      onClick={() => setHistoryRange(range)}
+                      className={`px-2.5 py-1 text-xs rounded-lg transition-colors ${historyRange === range
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                        }`}
+                    >
+                      {range}
+                    </button>
+                  ))}
+                </div>
               </div>
-
-              <div className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <div className="text-sm text-slate-400">CPU Temp (history)</div>
-                    <div className="text-lg text-white font-semibold">{formatMetric(readMetric(latestSnapshot, ["cpu", "temp_c"]), "°C")}</div>
-                    {historyWindowLabel && <div className="text-xs text-slate-500">{historyWindowLabel}</div>}
-                  </div>
-                  <span className="text-xs text-slate-500">{latestSnapshot?.timestamp ? new Date(latestSnapshot.timestamp).toLocaleTimeString() : ""}</span>
-                </div>
-                <Sparkline data={cpuTempSeries} color="#f59e0b" />
-              </div>
-
-              <div className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <div className="text-sm text-slate-400">GPU Temp (history)</div>
-                    <div className="text-lg text-white font-semibold">{formatMetric(readMetric(latestSnapshot, ["gpu", "temp_c"]), "°C")}</div>
-                    {historyWindowLabel && <div className="text-xs text-slate-500">{historyWindowLabel}</div>}
-                  </div>
-                  <span className="text-xs text-slate-500">{latestSnapshot?.timestamp ? new Date(latestSnapshot.timestamp).toLocaleTimeString() : ""}</span>
-                </div>
-                <Sparkline data={gpuTempSeries} color="#38bdf8" />
-              </div>
-
-              <div className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <div className="text-sm text-slate-400">RAM Usage (history)</div>
-                    <div className="text-lg text-white font-semibold">{formatMetric(readMetric(latestSnapshot, ["ram", "load_pct"]), "%")}</div>
-                    {historyWindowLabel && <div className="text-xs text-slate-500">{historyWindowLabel}</div>}
-                  </div>
-                  <span className="text-xs text-slate-500">{latestSnapshot?.timestamp ? new Date(latestSnapshot.timestamp).toLocaleTimeString() : ""}</span>
-                </div>
-                <Sparkline data={ramLoadSeries} color="#34d399" />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <MetricChart
+                  data={historyData as Array<{ timestamp: string;[key: string]: number | string | null | undefined }>}
+                  dataKey="cpu_load"
+                  title="CPU Load"
+                  color="indigo"
+                  unit="%"
+                  maxY={100}
+                  timeRange={historyRange}
+                />
+                <MetricChart
+                  data={historyData as Array<{ timestamp: string;[key: string]: number | string | null | undefined }>}
+                  dataKey="cpu_temp"
+                  title="CPU Temperature"
+                  color="amber"
+                  unit="°C"
+                  timeRange={historyRange}
+                />
+                <MetricChart
+                  data={historyData as Array<{ timestamp: string;[key: string]: number | string | null | undefined }>}
+                  dataKey="gpu_temp"
+                  title="GPU Temperature"
+                  color="cyan"
+                  unit="°C"
+                  timeRange={historyRange}
+                />
+                <MetricChart
+                  data={historyData as Array<{ timestamp: string;[key: string]: number | string | null | undefined }>}
+                  dataKey="ram_load"
+                  title="RAM Usage"
+                  color="green"
+                  unit="%"
+                  maxY={100}
+                  timeRange={historyRange}
+                />
               </div>
             </div>
 

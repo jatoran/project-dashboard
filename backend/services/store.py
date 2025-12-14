@@ -59,6 +59,42 @@ class ProjectStore:
             raise ValueError(f"Project with ID {project_id} not found.")
         self._save(projects)
 
+    def refresh_project(self, project_id: str) -> Project:
+        """Rescan a project to update discovered docs. Preserves user customizations."""
+        projects = self.get_all()
+        existing = None
+        for p in projects:
+            if p.id == project_id:
+                existing = p
+                break
+        
+        if not existing:
+            raise ValueError(f"Project with ID {project_id} not found.")
+        
+        # Convert path for current environment (Windows paths -> Linux paths if in Docker)
+        scan_path = windows_to_linux(existing.path)
+        scan_path = resolve_path_case(scan_path)
+        
+        # Rescan the project path
+        scanned = self.scanner.scan(scan_path)
+        
+        # Update discovered fields from scan, preserve user customizations
+        existing.name = scanned.name
+        existing.type = scanned.type
+        existing.tags = scanned.tags
+        existing.description = scanned.description
+        existing.git_status = scanned.git_status
+        existing.docs = scanned.docs  # Fully replace discovered docs
+        existing.vscode_workspace_file = scanned.vscode_workspace_file
+        existing.frontend_url = scanned.frontend_url
+        existing.backend_port = scanned.backend_port
+        # Update path to normalized version
+        existing.path = scanned.path
+        # Keep: custom_links, custom_docs, port overrides, position
+        
+        self._save(projects)
+        return existing
+
     def add_custom_link(self, project_id: str, name: str, url: str) -> Project:
         projects = self.get_all()
         for p in projects:
@@ -109,6 +145,27 @@ class ProjectStore:
                 return p
         raise ValueError("Project not found")
 
+    def reorder(self, order: List[str]) -> List[Project]:
+        """Update project positions based on provided order of IDs."""
+        projects = self.get_all()
+        id_to_project = {p.id: p for p in projects}
+        
+        # Update positions based on order
+        for i, project_id in enumerate(order):
+            if project_id in id_to_project:
+                id_to_project[project_id].position = i
+        
+        # For any projects not in the order list, set position to end
+        max_pos = len(order)
+        for p in projects:
+            if p.id not in order:
+                p.position = max_pos
+                max_pos += 1
+        
+        self._save(projects)
+        return projects
+
     def _save(self, projects: List[Project]):
         with open(DATA_FILE, "w") as f:
             json.dump([p.dict() for p in projects], f, indent=2)
+

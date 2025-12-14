@@ -17,6 +17,7 @@ class Project(BaseModel):
     backend_port: Optional[str] = None
     frontend_port_override: Optional[str] = None
     backend_port_override: Optional[str] = None
+    position: Optional[int] = None  # For custom ordering
 
 class CreateProjectRequest(BaseModel):
     path: str
@@ -36,3 +37,6 @@ class AddDocRequest(BaseModel):
 class PortOverrideRequest(BaseModel):
     frontend_port: Optional[str] = None
     backend_port: Optional[str] = None
+
+class ReorderRequest(BaseModel):
+    order: List[str]  # List of project IDs in desired order

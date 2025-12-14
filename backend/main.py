@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.routers import projects, monitor, homepage, scrutiny, hoststatus
+from backend.routers import projects, monitor, homepage, scrutiny, hoststatus, platforms
 
 app = FastAPI(title="Gemini Project Dashboard")
 
@@ -24,7 +24,9 @@ app.include_router(monitor.router, prefix="/api")
 app.include_router(homepage.router, prefix="/api")
 app.include_router(scrutiny.router, prefix="/api")
 app.include_router(hoststatus.router, prefix="/api")
+app.include_router(platforms.router, prefix="/api")
 
 @app.get("/")
 def read_root():
     return {"message": "Gemini Project Dashboard API is running"}
+

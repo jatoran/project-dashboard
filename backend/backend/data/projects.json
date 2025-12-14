@@ -45,7 +45,8 @@
     "frontend_url": "http://localhost:5173",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 1
   },
   {
     "id": "658c0f20-ec5c-42af-94db-c963e462fd55",
@@ -92,7 +93,8 @@
     "frontend_url": "http://localhost:40882",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 2
   },
   {
     "id": "c0df7a89-446d-4908-93d3-9af2c673d574",
@@ -165,7 +167,8 @@
     "frontend_url": "http://localhost:37452",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 3
   },
   {
     "id": "ed6bb016-f274-460e-bdf2-ac3e9f6052ff",
@@ -237,7 +240,8 @@
     "frontend_url": "http://localhost:48338",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 4
   },
   {
     "id": "19c1234f-41e7-4b26-99fe-49a9458b0f2f",
@@ -306,12 +310,13 @@
     "frontend_url": "http://localhost:4000",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 5
   },
   {
     "id": "a600566f-5d08-4482-9fe8-c1ee0bc1c0f1",
     "name": "slideshow-maker-v2",
-    "path": "D:\\Projects\\slideshow-maker-v2",
+    "path": "/mnt/d/projects/slideshow-maker-v2",
     "type": "python",
     "tags": [
       "python",
@@ -322,17 +327,18 @@
     "docs": [
       {
         "name": "DOCUMENTATION.md",
-        "path": "D:\\Projects\\slideshow-maker-v2\\DOCUMENTATION.md",
+        "path": "/mnt/d/projects/slideshow-maker-v2/DOCUMENTATION.md",
         "type": "markdown"
       }
     ],
     "custom_links": [],
     "custom_docs": [],
-    "vscode_workspace_file": "D:\\Projects\\slideshow-maker-v2\\slideshow-maker-v2.code-workspace",
+    "vscode_workspace_file": "/mnt/d/projects/slideshow-maker-v2/slideshow-maker-v2.code-workspace",
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 0
   },
   {
     "id": "eeeb1a12-2cd3-4c61-ac15-bd84f23bb983",
@@ -355,7 +361,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 6
   },
   {
     "id": "cea68619-e278-41b4-acb5-3091ca397204",
@@ -381,7 +388,8 @@
     "frontend_url": "http://localhost:3883",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 7
   },
   {
     "id": "5f236612-fc60-4253-97dd-6b3f5fc95520",
@@ -438,7 +446,8 @@
     "frontend_url": "http://localhost:48012",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 8
   },
   {
     "id": "c13aee18-8e0f-4c93-973b-f1bd6ba1ab1f",
@@ -459,7 +468,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 9
   },
   {
     "id": "d8cbdabb-12fc-4eae-85ad-fddd5ecc3ea9",
@@ -476,7 +486,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 10
   },
   {
     "id": "cd9ad8d4-dfb1-4594-9b27-8d6fe4a00c9f",
@@ -546,7 +557,8 @@
     "frontend_url": "http://localhost:8000",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 11
   },
   {
     "id": "645adb68-dd29-432e-9b89-4d5ac8550f5c",
@@ -563,7 +575,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 12
   },
   {
     "id": "e9653b79-2b57-4906-9ee0-2b6607d92431",
@@ -622,7 +635,8 @@
     "frontend_url": "http://localhost:4310",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 13
   },
   {
     "id": "caebe81b-7dcf-45f6-83d9-c40e3e58d63d",
@@ -669,7 +683,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": "9876"
+    "backend_port_override": "9876",
+    "position": 14
   },
   {
     "id": "53a5c82d-2fd4-40a1-96a5-7594209b95d3",
@@ -1117,7 +1132,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 15
   },
   {
     "id": "a5da9fa3-0822-4d85-8984-28c288d3525d",
@@ -1206,7 +1222,8 @@
     "frontend_url": "http://localhost:8183",
     "backend_port": "8183",
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 16
   },
   {
     "id": "0ae4c5a8-0094-4030-a554-bce62ccb57e7",
@@ -1232,7 +1249,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 17
   },
   {
     "id": "07932ad0-7843-4842-a136-c9e3e35b32d0",
@@ -1252,7 +1270,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 18
   },
   {
     "id": "aeb6d834-90c4-461b-a282-5372e16588f4",
@@ -1287,7 +1306,8 @@
     "frontend_url": "http://localhost:3000",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 19
   },
   {
     "id": "9060fe43-3818-4afc-866d-61571397a805",
@@ -1307,7 +1327,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 20
   },
   {
     "id": "4d232584-7bbf-44d9-9ec3-e2e5b150d564",
@@ -1327,7 +1348,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 21
   },
   {
     "id": "18930787-d24f-4230-9279-99ef632db954",
@@ -1378,7 +1400,8 @@
     "frontend_url": "http://localhost:3000",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 22
   },
   {
     "id": "ac58f3ca-fe38-4a60-a1ac-bde56607175d",
@@ -1409,7 +1432,8 @@
     "frontend_url": "http://localhost:1420",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 23
   },
   {
     "id": "f5f2c7f6-0a43-4830-b9a1-9d196c24fdb9",
@@ -1431,7 +1455,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 24
   },
   {
     "id": "750f0f5e-a38a-4eeb-9c8d-b09e98a81d4e",
@@ -1482,7 +1507,8 @@
     "frontend_url": "http://localhost:40882",
     "backend_port": "40881",
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 25
   },
   {
     "id": "b4e21775-7791-431b-b1d5-c60f805b89bf",
@@ -1502,7 +1528,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 26
   },
   {
     "id": "6c1d155f-7536-48e0-8bbb-ad176154d336",
@@ -1529,7 +1556,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 27
   },
   {
     "id": "22225c9e-c6e0-4fb8-a297-0f201d1c360c",
@@ -1571,7 +1599,8 @@
     "frontend_url": "http://localhost:3000",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 28
   },
   {
     "id": "4ccdb1b0-0f52-4fc0-9d24-8021f43a494d",
@@ -1621,7 +1650,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 29
   },
   {
     "id": "9967fb62-6522-479d-b281-3da0db5a42b0",
@@ -1652,7 +1682,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 30
   },
   {
     "id": "e8f4c1c5-6f56-4d99-a5bb-9b8267895033",
@@ -1669,7 +1700,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 31
   },
   {
     "id": "93472d72-aeb8-4ee6-a2e8-2a27f077456a",
@@ -1686,7 +1718,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 32
   },
   {
     "id": "e67957d1-04f5-4d6f-b1c7-87b6d331b8f8",
@@ -1706,7 +1739,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 33
   },
   {
     "id": "e4901fce-dfc4-40a8-8405-d5962048d1f2",
@@ -1737,7 +1771,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 34
   },
   {
     "id": "07d9d0e8-e0e0-45c4-974d-660cfa8fe2e7",
@@ -1763,7 +1798,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 35
   },
   {
     "id": "e4cba222-6357-43d0-ab3d-d0878635d457",
@@ -1794,7 +1830,8 @@
     "frontend_url": "http://localhost:5792",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 36
   },
   {
     "id": "9823a2b3-7820-4c3f-83a0-ecfe5eea3f33",
@@ -1826,7 +1863,8 @@
     "frontend_url": "http://localhost:3131",
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 37
   },
   {
     "id": "f9957a39-b7c5-4d6b-920d-7a1bfbd2a867",
@@ -1846,7 +1884,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 38
   },
   {
     "id": "487e79df-3700-4308-9092-108e698f8f61",
@@ -1872,7 +1911,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 39
   },
   {
     "id": "c4efadf1-4561-472f-9ee9-18356b7c17cc",
@@ -1927,7 +1967,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 40
   },
   {
     "id": "9205e699-298b-4747-b708-12bd43aac449",
@@ -1953,7 +1994,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 41
   },
   {
     "id": "a1b2b95a-2941-4347-a16a-25a4787ae579",
@@ -1972,7 +2014,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 42
   },
   {
     "id": "a45943ec-e8af-4bae-b6d9-c8f0ce3ee041",
@@ -1992,7 +2035,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 43
   },
   {
     "id": "73fd4504-d434-4fc9-8836-6adb811bcf6e",
@@ -2014,7 +2058,8 @@
     "frontend_url": "http://localhost:3000",
     "backend_port": "5181",
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 44
   },
   {
     "id": "78e61fdd-89c0-4bd9-8e8a-ec31695d78d5",
@@ -2041,7 +2086,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 45
   },
   {
     "id": "234cf638-c7b7-48b0-a126-ed22dae418ec",
@@ -2067,7 +2113,8 @@
     "frontend_url": null,
     "backend_port": "8765",
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 46
   },
   {
     "id": "bb53ec8d-6606-4dbe-8001-9cda7533931b",
@@ -2095,7 +2142,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 47
   },
   {
     "id": "b84fa05d-6da4-4a62-aeb2-5bd282ea818f",
@@ -2112,37 +2160,8 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
-  },
-  {
-    "id": "19e3535a-7253-4866-8ff1-482727728902",
-    "name": "augur-engine",
-    "path": "/mnt/d/projects/augur-engine",
-    "type": "generic",
-    "tags": [
-      "git"
-    ],
-    "description": null,
-    "git_status": "Clean",
-    "docs": [
-      {
-        "name": "ARCHITECTURE.md",
-        "path": "/mnt/d/projects/augur-engine/docs/ARCHITECTURE.md",
-        "type": "markdown"
-      },
-      {
-        "name": "ROADMAP.md",
-        "path": "/mnt/d/projects/augur-engine/docs/ROADMAP.md",
-        "type": "markdown"
-      }
-    ],
-    "custom_links": [],
-    "custom_docs": [],
-    "vscode_workspace_file": "/mnt/d/projects/augur-engine/augur-engine.code-workspace",
-    "frontend_url": null,
-    "backend_port": null,
-    "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 48
   },
   {
     "id": "13f03629-04cf-4bda-ab6c-4d1a17be52a3",
@@ -2174,6 +2193,142 @@
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
-    "backend_port_override": null
+    "backend_port_override": null,
+    "position": 50
+  },
+  {
+    "id": "8bde83c5-e08a-4f99-a866-d6516e710632",
+    "name": "augur-engine",
+    "path": "/mnt/d/projects/augur-engine",
+    "type": "python",
+    "tags": [
+      "fastapi",
+      "docker",
+      "git",
+      "pandas",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "/mnt/d/projects/augur-engine/AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CLAUDE.md",
+        "path": "/mnt/d/projects/augur-engine/CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GEMINI.md",
+        "path": "/mnt/d/projects/augur-engine/GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "/mnt/d/projects/augur-engine/docs/CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT.md",
+        "path": "/mnt/d/projects/augur-engine/docs/ENVIRONMENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_DATA_MODELING.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/01_DATA_MODELING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_INGESTION.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/02_INGESTION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_IDENTITY.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/03_IDENTITY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_COMPUTE.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/04_COMPUTE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_ASSETS.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/05_ASSETS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/06_INFRASTRUCTURE.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/06_INFRASTRUCTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/07_DATA_INVENTORY.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/07_DATA_INVENTORY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/08_ORCHESTRATION.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/08_ORCHESTRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/09_ASSET_LINEAGE.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/09_ASSET_LINEAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/10_DATABASE_COMMANDS.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/10_DATABASE_COMMANDS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/10_DATA_QUALITY.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/10_DATA_QUALITY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/11_DAGSTER_DEV_PATTERNS.md",
+        "path": "/mnt/d/projects/augur-engine/docs/design/11_DAGSTER_DEV_PATTERNS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/ROADMAP.md",
+        "path": "/mnt/d/projects/augur-engine/docs/development/ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/augur-engine/augur-engine.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null
   }
 ]

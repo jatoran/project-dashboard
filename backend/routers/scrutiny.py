@@ -1,9 +1,13 @@
 import os
 import re
-from typing import List, Dict
+from typing import List, Dict, Any
 
 import requests
 from fastapi import APIRouter, HTTPException
+
+from backend.services.cache import (
+    cache, CACHE_KEY_SCRUTINY, TTL_SCRUTINY
+)
 
 router = APIRouter()
 
@@ -38,8 +42,8 @@ def _parse_drives(text: str) -> List[Dict[str, str]]:
     return drives
 
 
-@router.get("/scrutiny")
-def get_scrutiny_data():
+def _fetch_scrutiny_data() -> Dict[str, Any]:
+    """Fetch scrutiny data from external gateway (internal helper)."""
     gateway_url = os.getenv("GATEWAY_URL", "http://127.0.0.1:7083")
     scrutiny_url = os.getenv("SCRUTINY_URL", "http://192.168.50.193:8081/web/dashboard")
     client_id = os.getenv("GATEWAY_CLIENT_ID", "test_homepage_scrape")
@@ -97,3 +101,40 @@ def get_scrutiny_data():
     aggregated = " ".join(blobs)
     drives = _parse_drives(aggregated)
     return {"drives": drives}
+
+
+@router.get("/scrutiny")
+def get_scrutiny_data():
+    """Get scrutiny drive data. Returns cached data if fresh."""
+    cached = cache.get(CACHE_KEY_SCRUTINY)
+    if cached:
+        return {
+            "drives": cached["data"]["drives"],
+            "last_updated": cached["last_updated"],
+            "cached": True,
+        }
+    
+    # Fetch fresh data
+    data = _fetch_scrutiny_data()
+    timestamp = cache.set(CACHE_KEY_SCRUTINY, data, TTL_SCRUTINY)
+    
+    return {
+        "drives": data["drives"],
+        "last_updated": timestamp.isoformat(),
+        "cached": False,
+    }
+
+
+@router.post("/scrutiny/refresh")
+def refresh_scrutiny_data():
+    """Force refresh scrutiny data, bypassing cache."""
+    cache.invalidate(CACHE_KEY_SCRUTINY)
+    data = _fetch_scrutiny_data()
+    timestamp = cache.set(CACHE_KEY_SCRUTINY, data, TTL_SCRUTINY)
+    
+    return {
+        "drives": data["drives"],
+        "last_updated": timestamp.isoformat(),
+        "cached": False,
+    }
+

@@ -1,4 +1,4 @@
-import { Menu, X, LayoutGrid, Activity, Server, HardDrive, ScrollText } from "lucide-react";
+import { Menu, X, LayoutGrid, Activity, Server, HardDrive, ScrollText, Globe } from "lucide-react";
 import { useState } from "react";
 
 interface NavbarProps {
@@ -11,6 +11,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
 
   const tabs = [
     { id: 'projects', label: 'Projects', icon: LayoutGrid },
+    { id: 'links', label: 'Links', icon: Globe },
     { id: 'dashboard', label: 'Proxmox Dashboard', icon: Activity },
     { id: 'scrutiny', label: 'Scrutiny Drives', icon: HardDrive },
     { id: 'host', label: 'PC Monitoring', icon: Server },
@@ -42,8 +43,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === tab.id
-                  ? 'bg-slate-800 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-slate-800 text-white shadow-sm'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                 }`}
             >
               <tab.icon size={16} />
@@ -85,8 +86,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${activeTab === tab.id
-                      ? 'bg-indigo-600 text-white'
-                      : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                     }`}
                 >
                   <tab.icon size={18} />
