@@ -18,24 +18,6 @@ export interface Project {
 
 export type SortMode = 'custom' | 'name' | 'created' | 'modified';
 
-export interface HomepageService {
-  name: string;
-  links: string[];
-  icons: string[];
-  metrics: { label: string; value: string }[];
-  snippet: string;
-}
-
-export interface ScrutinyDrive {
-  device: string;
-  bus_model: string;
-  last_updated: string;
-  status: string;
-  temp: string;
-  capacity: string;
-  powered_on: string;
-}
-
 export interface HostServiceStatus {
   name: string;
   state: string;

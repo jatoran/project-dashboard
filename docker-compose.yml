@@ -17,8 +17,6 @@ services:
       - HOST_AGENT_URL=http://host.docker.internal:9876
       - HOST_STATUS_URL=http://host.docker.internal:9876/status
       - GATEWAY_URL=http://host.docker.internal:7083
-      - SCRUTINY_URL=http://192.168.50.193:8081/web/dashboard
-      - HOMEPAGE_URL=http://192.168.50.193:3000
     restart: unless-stopped
 
   frontend:

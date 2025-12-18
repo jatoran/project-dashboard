@@ -57,23 +57,6 @@ Linux filesystems are case-sensitive, while Windows is not. To prevent errors wh
 *   It walks the directory tree to find the exact on-disk casing for each path component.
 *   This ensures that `D:\PROJECTS\myApp` correctly resolves to `/mnt/d/projects/MyApp` if that is how it exists on the disk.
 
-## Homepage Integration (Proxmox/Homepage Dashboard)
-The dashboard mirrors your self-hosted Homepage (gethomepage.dev) status tiles.
-
-### How It Works
-- **Backend endpoint**: `GET /api/homepage` (see `backend/routers/homepage.py`).
-- Calls your Search Gateway `/v1/extract` using the `headless_playwright` provider to render `HOMEPAGE_URL` (defaults to `http://192.168.50.193:3000`).
-- Playwright options: wait for network idle, short post-load wait, ignore HTTPS errors, include rendered HTML.
-- Parses each `<li class="service" data-name="...">` block to extract:
-  - Service name
-  - Links and icons
-  - Metrics (label/value pairs from the tile) and a short snippet
-- Supported services include Sonarr, Radarr, Bazarr, Prowlarr, Proxmox, PBS Backup, OMV NAS, Flaresolverr, qBittorrent, Plex, Beszel, Scrutiny. Unknown services are ignored.
-
-### Required Env Vars
-- `GATEWAY_URL` (default `http://127.0.0.1:7083`)
-- `HOMEPAGE_URL` (default `http://192.168.50.193:3000`)
-
 ## Scanner Heuristics
 The `ProjectScanner` uses a waterfall approach to guess configuration without running the code.
 

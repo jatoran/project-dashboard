@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { Project, HomepageService, ScrutinyDrive, HostServiceStatus, HardwareHistoryResponse, Platform, SortMode } from "@/types";
+import { Project, HostServiceStatus, HardwareHistoryResponse, Platform, SortMode } from "@/types";
 import { Plus, Search, RefreshCw, ExternalLink, Cpu, Thermometer, HardDrive as HardDriveIcon, ScrollText, Activity, Globe, Trash2, ArrowUpDown, GripVertical } from "lucide-react";
 import DocViewer from "@/components/DocViewer";
 import Navbar from "@/components/Navbar";
@@ -35,8 +35,6 @@ export default function Home() {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Data States
-  const [homepageServices, setHomepageServices] = useState<HomepageService[]>([]);
-  const [drives, setDrives] = useState<ScrutinyDrive[]>([]);
   const [hostServices, setHostServices] = useState<HostServiceStatus[]>([]);
   const [hardware, setHardware] = useState<HardwareHistoryResponse | null>(null);
   const [hostLogs, setHostLogs] = useState<Record<string, string[]>>({});
@@ -178,33 +176,7 @@ export default function Home() {
     finally { setLoading(false); }
   };
 
-  const fetchHomepage = async (forceRefresh = false) => {
-    if (forceRefresh) setRefreshing(r => ({ ...r, homepage: true }));
-    try {
-      const url = forceRefresh ? "/api/homepage/refresh" : "/api/homepage";
-      const res = await fetch(url, { method: forceRefresh ? "POST" : "GET" });
-      if (res.ok) {
-        const data = await res.json();
-        setHomepageServices(data.services || []);
-        if (data.last_updated) setLastUpdated(u => ({ ...u, homepage: data.last_updated }));
-      }
-    } catch (e) { console.error(e); }
-    if (forceRefresh) setRefreshing(r => ({ ...r, homepage: false }));
-  };
 
-  const fetchDrives = async (forceRefresh = false) => {
-    if (forceRefresh) setRefreshing(r => ({ ...r, scrutiny: true }));
-    try {
-      const url = forceRefresh ? "/api/scrutiny/refresh" : "/api/scrutiny";
-      const res = await fetch(url, { method: forceRefresh ? "POST" : "GET" });
-      if (res.ok) {
-        const data = await res.json();
-        setDrives(data.drives || []);
-        if (data.last_updated) setLastUpdated(u => ({ ...u, scrutiny: data.last_updated }));
-      }
-    } catch (e) { console.error(e); }
-    if (forceRefresh) setRefreshing(r => ({ ...r, scrutiny: false }));
-  };
 
   const fetchPlatforms = async () => {
     try {
@@ -353,8 +325,6 @@ export default function Home() {
   // --- Effects ---
   useEffect(() => {
     fetchProjects();
-    fetchHomepage();
-    fetchDrives();
     fetchPlatforms();
   }, []);
 
@@ -796,123 +766,6 @@ export default function Home() {
                 No saved links yet. Add one above!
               </div>
             )}
-          </div>
-        )}
-
-        {/* --- DASHBOARD TAB --- */}
-        {activeTab === 'dashboard' && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <h2 className="text-lg font-semibold text-white">Proxmox Dashboard</h2>
-                {lastUpdated.homepage && (
-                  <span className="text-xs text-slate-500">Updated {formatRelativeTime(lastUpdated.homepage)}</span>
-                )}
-              </div>
-              <button
-                onClick={() => fetchHomepage(true)}
-                disabled={refreshing.homepage}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 disabled:opacity-50 rounded-lg text-slate-300 transition-colors"
-              >
-                <RefreshCw size={14} className={refreshing.homepage ? "animate-spin" : ""} />
-                Refresh
-              </button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {homepageServices.map((svc) => (
-                <div key={svc.name} className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm hover:border-slate-700 transition-all">
-                  <div className="flex items-start gap-3 mb-4">
-                    {svc.icons[0] && (
-                      <>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={svc.icons[0]}
-                          alt={`${svc.name} icon`}
-                          className="w-10 h-10 object-contain bg-slate-800 p-1.5 rounded-lg"
-                        />
-                      </>
-                    )}
-                    <div>
-                      <div className="text-white font-semibold text-lg">{svc.name}</div>
-                      <div className="text-xs text-slate-500 mt-1 line-clamp-2">{svc.snippet}</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {svc.metrics.map((m, i) => (
-                      <span key={i} className="px-2 py-1 rounded bg-slate-800 text-slate-300 text-xs">
-                        <span className="font-bold text-white">{m.value}</span> {m.label}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {svc.links.slice(0, 3).map((href, idx) => (
-                      <a
-                        key={idx}
-                        href={formatUrl(href)}
-                        target="_blank"
-                        className="flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-indigo-900/20 text-indigo-400 hover:bg-indigo-600 hover:text-white transition-colors border border-indigo-500/20"
-                      >
-                        {idx === 0 ? "Launch" : `Link ${idx + 1}`}
-                        <ExternalLink size={12} />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* --- SCRUTINY TAB --- */}
-        {activeTab === 'scrutiny' && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <h2 className="text-lg font-semibold text-white">Scrutiny Drives</h2>
-                {lastUpdated.scrutiny && (
-                  <span className="text-xs text-slate-500">Updated {formatRelativeTime(lastUpdated.scrutiny)}</span>
-                )}
-              </div>
-              <button
-                onClick={() => fetchDrives(true)}
-                disabled={refreshing.scrutiny}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 disabled:opacity-50 rounded-lg text-slate-300 transition-colors"
-              >
-                <RefreshCw size={14} className={refreshing.scrutiny ? "animate-spin" : ""} />
-                Refresh
-              </button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {drives.map((d) => (
-                <div key={d.device} className="p-5 rounded-xl border border-slate-800 bg-slate-900 shadow-sm">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <div className="text-white font-semibold text-lg">{d.device}</div>
-                      <div className="text-xs text-slate-500 font-mono">{d.bus_model}</div>
-                    </div>
-                    <span className={`text-xs px-2 py-1 rounded font-medium ${d.status.toLowerCase() === "passed" ? "bg-emerald-900/30 text-emerald-400 border border-emerald-900/50" : "bg-red-900/30 text-red-400 border border-red-900/50"
-                      }`}>
-                      {d.status}
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div className="p-2 rounded bg-slate-800/50">
-                      <span className="text-slate-500 text-xs block">Temperature</span>
-                      <span className="text-slate-200">{d.temp}</span>
-                    </div>
-                    <div className="p-2 rounded bg-slate-800/50">
-                      <span className="text-slate-500 text-xs block">Capacity</span>
-                      <span className="text-slate-200">{d.capacity}</span>
-                    </div>
-                    <div className="col-span-2 p-2 rounded bg-slate-800/50">
-                      <span className="text-slate-500 text-xs block">Power On Hours</span>
-                      <span className="text-slate-200">{d.powered_on}</span>
-                    </div>
-                  </div>
-                  <div className="mt-4 text-[10px] text-slate-600 text-right">Updated: {d.last_updated}</div>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 

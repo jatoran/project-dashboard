@@ -145,15 +145,28 @@ def record_snapshot(data: Dict[str, Any]) -> bool:
     try:
         conn = _get_connection()
         
-        # The hardware response has a "history" array with snapshots
-        # The first item in history is typically the most recent
-        history = data.get("history", [])
-        if not history:
-            # Fallback: maybe the data itself is a snapshot
-            snapshot = data
+        # Prefer 'latest' field which contains the most recent real-time data
+        # Fall back to history[0] if latest is unavailable or empty
+        latest = data.get("latest", {})
+        
+        # The latest field may have metrics directly or under a 'metrics' key
+        # Check both possibilities
+        metrics_container = latest.get("metrics", latest)
+        has_metrics = metrics_container.get("cpu") or metrics_container.get("gpu") or metrics_container.get("ram")
+        
+        if has_metrics:
+            # Use the metrics container (either latest.metrics or latest itself)
+            snapshot = metrics_container
+            # Get timestamp from the parent latest object
+            snapshot_ts = latest.get("timestamp")
         else:
-            # Take the first (most recent) snapshot from history
-            snapshot = history[0] if history else {}
+            # Fallback: try the first item from history
+            history = data.get("history", [])
+            if not history:
+                print(f"[history] No latest metrics and no history, skipping")
+                return False
+            snapshot = history[0]
+            snapshot_ts = snapshot.get("timestamp")
         
         # Metrics are directly on the snapshot (cpu, gpu, ram, etc.)
         cpu = snapshot.get("cpu", {})
@@ -186,6 +199,23 @@ def record_snapshot(data: Dict[str, Any]) -> bool:
             print(f"[history] No metrics found in snapshot, skipping")
             return False
         
+        # Use timestamp extracted earlier, or use current time as fallback
+        if snapshot_ts:
+            try:
+                ts = datetime.fromisoformat(snapshot_ts.replace("Z", "+00:00"))
+            except:
+                ts = datetime.now(timezone.utc)
+        else:
+            ts = datetime.now(timezone.utc)
+        
+        # Deduplication: check if we have this exact timestamp already
+        existing = conn.execute("""
+            SELECT COUNT(*) FROM hardware_metrics WHERE timestamp = ?
+        """, [ts]).fetchone()
+        if existing and existing[0] > 0:
+            # Already have this snapshot, skip
+            return False
+        
         # Insert the record
         conn.execute("""
             INSERT INTO hardware_metrics (
@@ -195,7 +225,7 @@ def record_snapshot(data: Dict[str, Any]) -> bool:
                 network_upload_mbps, network_download_mbps
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, [
-            datetime.now(timezone.utc),
+            ts,
             cpu_load, cpu_temp, cpu_clock,
             gpu_load, gpu_temp, gpu_clock,
             ram_load, ram_used,

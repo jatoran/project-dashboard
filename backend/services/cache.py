@@ -73,13 +73,10 @@ cache = Cache()
 
 
 # Cache key constants
-CACHE_KEY_HOMEPAGE = "homepage_services"
-CACHE_KEY_SCRUTINY = "scrutiny_drives"
 CACHE_KEY_HOST_STATUS = "host_status"
 CACHE_KEY_HOST_HARDWARE = "host_hardware"
 
 # TTL constants (in seconds)
-TTL_HOMEPAGE = 300      # 5 minutes
-TTL_SCRUTINY = 600      # 10 minutes
 TTL_HOST_STATUS = 30    # 30 seconds
 TTL_HOST_HARDWARE = 30  # 30 seconds
+
