@@ -46,7 +46,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 1
+    "position": 3
   },
   {
     "id": "658c0f20-ec5c-42af-94db-c963e462fd55",
@@ -94,7 +94,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 2
+    "position": 8
   },
   {
     "id": "c0df7a89-446d-4908-93d3-9af2c673d574",
@@ -168,7 +168,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 3
+    "position": 4
   },
   {
     "id": "ed6bb016-f274-460e-bdf2-ac3e9f6052ff",
@@ -241,7 +241,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 4
+    "position": 6
   },
   {
     "id": "19c1234f-41e7-4b26-99fe-49a9458b0f2f",
@@ -311,7 +311,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 5
+    "position": 2
   },
   {
     "id": "a600566f-5d08-4482-9fe8-c1ee0bc1c0f1",
@@ -338,7 +338,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 0
+    "position": 20
   },
   {
     "id": "eeeb1a12-2cd3-4c61-ac15-bd84f23bb983",
@@ -362,7 +362,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 6
+    "position": 7
   },
   {
     "id": "cea68619-e278-41b4-acb5-3091ca397204",
@@ -389,7 +389,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 7
+    "position": 5
   },
   {
     "id": "5f236612-fc60-4253-97dd-6b3f5fc95520",
@@ -447,7 +447,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 8
+    "position": 9
   },
   {
     "id": "c13aee18-8e0f-4c93-973b-f1bd6ba1ab1f",
@@ -469,7 +469,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 9
+    "position": 10
   },
   {
     "id": "d8cbdabb-12fc-4eae-85ad-fddd5ecc3ea9",
@@ -487,7 +487,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 10
+    "position": 11
   },
   {
     "id": "cd9ad8d4-dfb1-4594-9b27-8d6fe4a00c9f",
@@ -558,7 +558,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 11
+    "position": 12
   },
   {
     "id": "645adb68-dd29-432e-9b89-4d5ac8550f5c",
@@ -573,66 +573,6 @@
     "custom_docs": [],
     "vscode_workspace_file": "/mnt/d/projects/metrics_dashboard/metrics_dashboard.code-workspace",
     "frontend_url": null,
-    "backend_port": null,
-    "frontend_port_override": null,
-    "backend_port_override": null,
-    "position": 12
-  },
-  {
-    "id": "e9653b79-2b57-4906-9ee0-2b6607d92431",
-    "name": "generative-api-gateway",
-    "path": "/mnt/d/projects/generative-api-gateway",
-    "type": "python",
-    "tags": [
-      "python",
-      "git",
-      "docker",
-      "fastapi",
-      "pandas"
-    ],
-    "description": null,
-    "git_status": "Clean",
-    "docs": [
-      {
-        "name": "README.md",
-        "path": "/mnt/d/projects/generative-api-gateway/README.md",
-        "type": "markdown"
-      },
-      {
-        "name": "API_DOCS.md",
-        "path": "/mnt/d/projects/generative-api-gateway/docs/API_DOCS.md",
-        "type": "markdown"
-      },
-      {
-        "name": "SPEC_DESIGN_DOC.md",
-        "path": "/mnt/d/projects/generative-api-gateway/docs/SPEC_DESIGN_DOC.md",
-        "type": "markdown"
-      },
-      {
-        "name": "TECHNICAL_DOCS.md",
-        "path": "/mnt/d/projects/generative-api-gateway/docs/TECHNICAL_DOCS.md",
-        "type": "markdown"
-      },
-      {
-        "name": "Swagger UI",
-        "path": "http://localhost:8190/docs",
-        "type": "link"
-      },
-      {
-        "name": "ReDoc",
-        "path": "http://localhost:8190/redoc",
-        "type": "link"
-      },
-      {
-        "name": "OpenAPI JSON",
-        "path": "http://localhost:8190/openapi.json",
-        "type": "link"
-      }
-    ],
-    "custom_links": [],
-    "custom_docs": [],
-    "vscode_workspace_file": "/mnt/d/projects/generative-api-gateway/generative-api-gateway.code-workspace",
-    "frontend_url": "http://localhost:4310",
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
@@ -1328,7 +1268,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 20
+    "position": 21
   },
   {
     "id": "4d232584-7bbf-44d9-9ec3-e2e5b150d564",
@@ -1349,7 +1289,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 21
+    "position": 22
   },
   {
     "id": "18930787-d24f-4230-9279-99ef632db954",
@@ -1401,7 +1341,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 22
+    "position": 23
   },
   {
     "id": "ac58f3ca-fe38-4a60-a1ac-bde56607175d",
@@ -1433,7 +1373,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 23
+    "position": 24
   },
   {
     "id": "f5f2c7f6-0a43-4830-b9a1-9d196c24fdb9",
@@ -1456,7 +1396,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 24
+    "position": 25
   },
   {
     "id": "750f0f5e-a38a-4eeb-9c8d-b09e98a81d4e",
@@ -1508,7 +1448,7 @@
     "backend_port": "40881",
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 25
+    "position": 26
   },
   {
     "id": "b4e21775-7791-431b-b1d5-c60f805b89bf",
@@ -1529,7 +1469,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 26
+    "position": 27
   },
   {
     "id": "6c1d155f-7536-48e0-8bbb-ad176154d336",
@@ -1557,7 +1497,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 27
+    "position": 28
   },
   {
     "id": "22225c9e-c6e0-4fb8-a297-0f201d1c360c",
@@ -1600,7 +1540,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 28
+    "position": 29
   },
   {
     "id": "4ccdb1b0-0f52-4fc0-9d24-8021f43a494d",
@@ -1651,7 +1591,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 29
+    "position": 30
   },
   {
     "id": "9967fb62-6522-479d-b281-3da0db5a42b0",
@@ -1683,7 +1623,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 30
+    "position": 31
   },
   {
     "id": "e8f4c1c5-6f56-4d99-a5bb-9b8267895033",
@@ -1701,7 +1641,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 31
+    "position": 32
   },
   {
     "id": "93472d72-aeb8-4ee6-a2e8-2a27f077456a",
@@ -1719,7 +1659,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 32
+    "position": 33
   },
   {
     "id": "e67957d1-04f5-4d6f-b1c7-87b6d331b8f8",
@@ -1740,7 +1680,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 33
+    "position": 34
   },
   {
     "id": "e4901fce-dfc4-40a8-8405-d5962048d1f2",
@@ -1772,7 +1712,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 34
+    "position": 35
   },
   {
     "id": "07d9d0e8-e0e0-45c4-974d-660cfa8fe2e7",
@@ -1799,7 +1739,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 35
+    "position": 36
   },
   {
     "id": "e4cba222-6357-43d0-ab3d-d0878635d457",
@@ -1831,7 +1771,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 36
+    "position": 37
   },
   {
     "id": "9823a2b3-7820-4c3f-83a0-ecfe5eea3f33",
@@ -1864,7 +1804,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 37
+    "position": 38
   },
   {
     "id": "f9957a39-b7c5-4d6b-920d-7a1bfbd2a867",
@@ -1885,7 +1825,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 38
+    "position": 39
   },
   {
     "id": "487e79df-3700-4308-9092-108e698f8f61",
@@ -1912,7 +1852,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 39
+    "position": 40
   },
   {
     "id": "c4efadf1-4561-472f-9ee9-18356b7c17cc",
@@ -1968,7 +1908,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 40
+    "position": 41
   },
   {
     "id": "9205e699-298b-4747-b708-12bd43aac449",
@@ -1995,7 +1935,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 41
+    "position": 42
   },
   {
     "id": "a1b2b95a-2941-4347-a16a-25a4787ae579",
@@ -2015,7 +1955,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 42
+    "position": 43
   },
   {
     "id": "a45943ec-e8af-4bae-b6d9-c8f0ce3ee041",
@@ -2036,7 +1976,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 43
+    "position": 44
   },
   {
     "id": "73fd4504-d434-4fc9-8836-6adb811bcf6e",
@@ -2059,7 +1999,7 @@
     "backend_port": "5181",
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 44
+    "position": 45
   },
   {
     "id": "78e61fdd-89c0-4bd9-8e8a-ec31695d78d5",
@@ -2087,7 +2027,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 45
+    "position": 46
   },
   {
     "id": "234cf638-c7b7-48b0-a126-ed22dae418ec",
@@ -2114,7 +2054,7 @@
     "backend_port": "8765",
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 46
+    "position": 47
   },
   {
     "id": "bb53ec8d-6606-4dbe-8001-9cda7533931b",
@@ -2143,7 +2083,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 47
+    "position": 48
   },
   {
     "id": "b84fa05d-6da4-4a62-aeb2-5bd282ea818f",
@@ -2161,7 +2101,7 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": 48
+    "position": 49
   },
   {
     "id": "13f03629-04cf-4bda-ab6c-4d1a17be52a3",
@@ -2329,6 +2269,76 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": null
+    "position": 0
+  },
+  {
+    "id": "e9abb74a-bd57-45e6-b702-582c0eb34099",
+    "name": "generative-gateway",
+    "path": "/mnt/d/projects/generative-gateway",
+    "type": "python",
+    "tags": [
+      "pandas",
+      "python",
+      "docker",
+      "git",
+      "fastapi"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "GEMINI.md",
+        "path": "/mnt/d/projects/generative-gateway/GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "/mnt/d/projects/generative-gateway/README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API_DOCS.md",
+        "path": "/mnt/d/projects/generative-gateway/docs/API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API_USAGE.md",
+        "path": "/mnt/d/projects/generative-gateway/docs/API_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ROADMAP.md",
+        "path": "/mnt/d/projects/generative-gateway/docs/ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "/mnt/d/projects/generative-gateway/docs/TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8190/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8190/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8190/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "/mnt/d/projects/generative-gateway/generative-gateway.code-workspace",
+    "frontend_url": "http://localhost:4310",
+    "backend_port": "8190",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": 1
   }
 ]
