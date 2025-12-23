@@ -350,13 +350,13 @@ export default function Home() {
 
   useEffect(() => {
     fetchHostStatus();
-    const interval = setInterval(fetchHostStatus, 30000);
+    const interval = setInterval(fetchHostStatus, 60000); // Reduced from 30s to 60s
     return () => clearInterval(interval);
   }, [fetchHostStatus]);
 
   useEffect(() => {
     fetchHardware();
-    const interval = setInterval(fetchHardware, 30000);
+    const interval = setInterval(fetchHardware, 60000); // Reduced from 30s to 60s
     return () => clearInterval(interval);
   }, [fetchHardware]);
 
@@ -393,7 +393,7 @@ export default function Home() {
     };
 
     checkStatuses();
-    const interval = setInterval(checkStatuses, 30000);
+    const interval = setInterval(checkStatuses, 60000); // Reduced from 30s to 60s
     return () => clearInterval(interval);
   }, [projects]);
 
