@@ -83,27 +83,31 @@ class Launcher:
             raise HTTPException(status_code=500, detail=f"Launch failed: {e}")
 
     def _launch_vscode(self, path: Path):
-        """Open VS Code at the given path."""
-        code_cmd = self._find_code_cmd()
+        """Open Antigravity at the given path."""
+        antigravity_path = r"C:\Users\Jatora\AppData\Local\Programs\Antigravity\Antigravity.exe"
         if IS_WINDOWS:
             subprocess.Popen(
-                [code_cmd, str(path)],
+                [antigravity_path, str(path)],
                 shell=False,
                 creationflags=subprocess.CREATE_NO_WINDOW
             )
         else:
+            # Fallback to VS Code on non-Windows platforms
+            code_cmd = self._find_code_cmd()
             subprocess.Popen([code_cmd, str(path)], shell=False)
 
     def _launch_vscode_workspace(self, workspace_file: Path):
-        """Open a VS Code workspace file."""
-        code_cmd = self._find_code_cmd()
+        """Open an Antigravity workspace file."""
+        antigravity_path = r"C:\Users\Jatora\AppData\Local\Programs\Antigravity\Antigravity.exe"
         if IS_WINDOWS:
             subprocess.Popen(
-                [code_cmd, str(workspace_file)],
+                [antigravity_path, str(workspace_file)],
                 shell=False,
                 creationflags=subprocess.CREATE_NO_WINDOW
             )
         else:
+            # Fallback to VS Code on non-Windows platforms
+            code_cmd = self._find_code_cmd()
             subprocess.Popen([code_cmd, str(workspace_file)], shell=False)
 
     def _launch_terminal(self, path: Path, command: Optional[str] = None):

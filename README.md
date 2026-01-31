@@ -4,6 +4,8 @@ A desktop dashboard for managing local development projects. Quickly launch proj
 
 ![Windows Only](https://img.shields.io/badge/platform-Windows-blue)
 
+![Dashboard Screenshot](docs/dashboard-screenshot.png)
+
 ## Features
 
 - **Command Palette** - Press `Win+Shift+W` from anywhere to instantly search and open projects
@@ -86,6 +88,8 @@ The dashboard will:
 ### Command Palette (Win+Shift+W)
 
 Press `Win+Shift+W` from anywhere to open the command palette:
+
+![Command Palette](docs/widget-ss.png)
 
 | Key | Action |
 |-----|--------|
