@@ -68,6 +68,7 @@ class DashboardTray:
         project_dir = Path(__file__).parent.parent
         
         # Start uvicorn via uv run to ensure dependencies are available
+        # Use DEVNULL instead of PIPE to prevent buffer deadlocks
         self.server_process = subprocess.Popen(
             [
                 "uv", "run", "--project", "backend",
@@ -76,8 +77,8 @@ class DashboardTray:
                 "--port", str(self.PORT),
             ],
             cwd=str(project_dir),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
             creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
         )
         

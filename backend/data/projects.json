@@ -3339,5 +3339,1402 @@
     "backend_port_override": null,
     "position": null,
     "last_palette_open": 1769891001.3836124
+  },
+  {
+    "id": "4ebb4078-f48b-4778-ba6d-ca3882e154f1",
+    "name": "generative-gateway",
+    "path": "D:\\PROJECTS\\generative-gateway",
+    "type": "python",
+    "tags": [
+      "docker",
+      "pandas",
+      "git",
+      "fastapi",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API_DOCS.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\docs\\API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API_USAGE.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\docs\\API_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ROADMAP.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\docs\\ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\generative-gateway\\docs\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8190/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8190/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8190/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\generative-gateway\\generative-gateway.code-workspace",
+    "frontend_url": "http://localhost:4310",
+    "backend_port": "8190",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "7dbd2f81-6b50-4527-b690-bf275f6da9d3",
+    "name": "search-gateway",
+    "path": "D:\\PROJECTS\\search-gateway",
+    "type": "python",
+    "tags": [
+      "docker",
+      "next.js",
+      "node",
+      "git",
+      "tailwind",
+      "typescript",
+      "fastapi",
+      "python",
+      "javascript",
+      "react"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\search-gateway\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "API_USAGE.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\API_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ROADMAP.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\design\\01_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_PROVIDERS.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\design\\02_PROVIDERS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_CACHING.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\design\\03_CACHING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_GOVERNANCE.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\design\\04_GOVERNANCE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_API_DESIGN.md",
+        "path": "D:\\PROJECTS\\search-gateway\\docs\\design\\05_API_DESIGN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\search-gateway\\search-gateway.code-workspace",
+    "frontend_url": "http://localhost:4000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "58365471-c56b-4f27-8fac-b7876645f627",
+    "name": "personal-media-feed",
+    "path": "D:\\PROJECTS\\personal-media-feed",
+    "type": "python",
+    "tags": [
+      "git",
+      "javascript",
+      "node",
+      "react",
+      "python",
+      "fastapi",
+      "typescript",
+      "tailwind",
+      "docker"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CLAUDE.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_data_model.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\01_data_model.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_content_classification.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\02_content_classification.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_ingestion_systems.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\03_ingestion_systems.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_enrichment_resolvers.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\04_enrichment_resolvers.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_search_filtering.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\05_search_filtering.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/06_infrastructure.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\06_infrastructure.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/07_admin_auxiliary.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\07_admin_auxiliary.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/08_media_management_integrations.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\design\\08_media_management_integrations.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/Initial_Design_Plan.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\development\\zArchive\\Initial_Design_Plan.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/Sonarr_Integration.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\development\\zArchive\\Sonarr_Integration.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/GENERATIVE_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\references\\GENERATIVE_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/SEARCH_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\personal-media-feed\\docs\\references\\SEARCH_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:45001/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:45001/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:45001/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\personal-media-feed\\personal-media-feed.code-workspace",
+    "frontend_url": "http://localhost:45002",
+    "backend_port": "45001",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "8cc89d4a-28d4-4435-aa12-20167facdfa4",
+    "name": "gallery-of-conceptual-lenses",
+    "path": "D:\\PROJECTS\\gallery-of-conceptual-lenses",
+    "type": "python",
+    "tags": [
+      "python",
+      "git",
+      "pandas",
+      "pytorch"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\gallery-of-conceptual-lenses\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\gallery-of-conceptual-lenses\\gallery-of-conceptual-lenses.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "6115149f-707f-430d-b94d-16298bc364ae",
+    "name": "yt-dlp",
+    "path": "D:\\PROJECTS\\yt-dlp",
+    "type": "python",
+    "tags": [
+      "python",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\yt-dlp\\yt-dlp.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "c78876a3-83be-4c6e-bdf4-cc8f7ec2eb9d",
+    "name": "cmr-grant-finder",
+    "path": "D:\\PROJECTS\\cmr-grant-finder",
+    "type": "python",
+    "tags": [
+      "python",
+      "node",
+      "git",
+      "react",
+      "javascript",
+      "fastapi",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "TECHNICAL_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\cmr-grant-finder\\TECHNICAL_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "UPDATE_PLAN.md",
+        "path": "D:\\PROJECTS\\cmr-grant-finder\\UPDATE_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\cmr-grant-finder\\cmr-grant-finder.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "7106d486-7aad-4f37-951a-be617b67f55a",
+    "name": "cc-scaffold",
+    "path": "D:\\PROJECTS\\cc-scaffold",
+    "type": "node",
+    "tags": [
+      "typescript",
+      "javascript",
+      "node",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "CLAUDE.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\design\\01_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_HOOKS.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\design\\02_HOOKS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_BACKEND.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\design\\03_BACKEND.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_FRONTEND.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\design\\04_FRONTEND.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_SKILLS.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\design\\05_SKILLS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/AGENT_ORCHESTRATION_PLAN.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\development\\AGENT_ORCHESTRATION_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/DESIGN_SPEC.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\development\\DESIGN_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "reference/GENERATIVE_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\reference\\GENERATIVE_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "reference/SEARCH_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\cc-scaffold\\docs\\reference\\SEARCH_GATEWAY_USAGE.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\cc-scaffold\\cc-scaffold.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "45f62c92-11a7-488f-b3d1-52153739e0af",
+    "name": "metrics_dashboard",
+    "path": "D:\\PROJECTS\\metrics_dashboard",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [
+      {
+        "name": "DATA_CLASSIFICATIONS.md",
+        "path": "D:\\PROJECTS\\metrics_dashboard\\docs\\DATA_CLASSIFICATIONS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DESIGN_PLAN.md",
+        "path": "D:\\PROJECTS\\metrics_dashboard\\docs\\DESIGN_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DOCUMENATATION.md",
+        "path": "D:\\PROJECTS\\metrics_dashboard\\docs\\DOCUMENATATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\metrics_dashboard\\metrics_dashboard.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "23af8ddd-299f-4ab3-8b93-41452bfb312b",
+    "name": "Odyssos",
+    "path": "D:\\PROJECTS\\Odyssos",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "ad6fdde1-8e26-423d-9a1f-db7c49d3fb18",
+    "name": "llm-bench-aggregator",
+    "path": "D:\\PROJECTS\\llm-bench-aggregator",
+    "type": "generic",
+    "tags": [
+      "node",
+      "git",
+      "react",
+      "javascript",
+      "fastapi",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CLAUDE.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\ENVIRONMENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\01_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_DATA_MODEL.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\02_DATA_MODEL.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_ADAPTERS.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\03_ADAPTERS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_REFRESH_SYSTEM.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\04_REFRESH_SYSTEM.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_API_REFERENCE.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\05_API_REFERENCE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/06_MODEL_IDENTITY.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\06_MODEL_IDENTITY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/07_BENCHMARK_SOURCES.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\07_BENCHMARK_SOURCES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/08_FRONTEND.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\08_FRONTEND.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/09_CANONICALIZATION.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\design\\09_CANONICALIZATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/CANONICALIZATION_ROADMAP.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\development\\CANONICALIZATION_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/LLM_BENCH_AGGREGATOR_SPEC.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\development\\LLM_BENCH_AGGREGATOR_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/LLM_CANONICALIZATION_NEXT_RUN.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\development\\LLM_CANONICALIZATION_NEXT_RUN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/ROADMAP.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\development\\ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/SCRAPER_DEVELOPMENT.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\development\\SCRAPER_DEVELOPMENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/api_routes.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\GENERATED\\api_routes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/dependencies.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\GENERATED\\dependencies.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/git_digest.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\GENERATED\\git_digest.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/models_schemas.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\GENERATED\\models_schemas.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/skeleton.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\GENERATED\\skeleton.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/GENERATIVE_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\references\\GENERATIVE_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/SEARCH_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\llm-bench-aggregator\\docs\\references\\SEARCH_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\llm-bench-aggregator\\llm-bench-aggregator.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "50a503a0-9d48-462d-933f-3ba4bcca8d4f",
+    "name": "media-feed-gallery",
+    "path": "D:\\PROJECTS\\media-feed-gallery",
+    "type": "python",
+    "tags": [
+      "python",
+      "node",
+      "git",
+      "javascript",
+      "express"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\media-feed-gallery\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/BOORU-PROVIDER-PLAN.md",
+        "path": "D:\\PROJECTS\\media-feed-gallery\\docs\\development\\BOORU-PROVIDER-PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/DESIGN-PLAN.md",
+        "path": "D:\\PROJECTS\\media-feed-gallery\\docs\\development\\DESIGN-PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/ROADMAP.md",
+        "path": "D:\\PROJECTS\\media-feed-gallery\\docs\\development\\ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/VIEWS-INTERLEAVING.md",
+        "path": "D:\\PROJECTS\\media-feed-gallery\\docs\\development\\VIEWS-INTERLEAVING.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\media-feed-gallery\\media-feed-gallery.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "cfcf194c-cf2f-4b2d-b2a3-46cf00703c00",
+    "name": "music-analyzer",
+    "path": "D:\\PROJECTS\\music-analyzer",
+    "type": "python",
+    "tags": [
+      "git",
+      "python",
+      "fastapi",
+      "pytorch"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "CLAUDE.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_AUDIO_CAPTURE.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\01_AUDIO_CAPTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_AI_CLASSIFICATION.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\02_AI_CLASSIFICATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_SPECTRAL_ANALYSIS.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\03_SPECTRAL_ANALYSIS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_MUSIC_THEORY.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\04_MUSIC_THEORY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_PRODUCTION_METRICS.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\05_PRODUCTION_METRICS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/06_SOURCE_SEPARATION.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\06_SOURCE_SEPARATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/07_WEB_INTERFACE.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\07_WEB_INTERFACE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/08_RESOURCE_MONITORING.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\08_RESOURCE_MONITORING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/09_SESSION_RECORDING.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\09_SESSION_RECORDING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/10_LLM_INTEGRATION.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\10_LLM_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/11_FILE_ANALYSIS.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\design\\11_FILE_ANALYSIS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/GENERATIVE_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\music-analyzer\\docs\\references\\GENERATIVE_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:18123/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:18123/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:18123/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\music-analyzer\\music-analyzer.code-workspace",
+    "frontend_url": "http://localhost:18123",
+    "backend_port": "18123",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "0f4734d5-c038-44d9-a52a-34a9a3a0901d",
+    "name": "transformer-learning",
+    "path": "D:\\PROJECTS\\transformer-learning",
+    "type": "python",
+    "tags": [
+      "pytorch",
+      "git",
+      "python",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_analysis_prompt.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_analysis_prompt.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DATA_CURATION_GOALS.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\DATA_CURATION_GOALS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DATA_CURATION_PIPELINE.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\DATA_CURATION_PIPELINE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DPO_SYNTHETIC_GENERATION.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\DPO_SYNTHETIC_GENERATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "FULL_PLAN_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\FULL_PLAN_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/anthropic_hh-rlhf_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\anthropic_hh-rlhf_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/bigcode_commitpackft_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\bigcode_commitpackft_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/codeparrot_clean_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\codeparrot_clean_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/helpsteer_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\helpsteer_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/megamath_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\megamath_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/metamathQA_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\metamathQA_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/oasst1_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\oasst1_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/open_orca_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\open_orca_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/orca_math_word_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\orca_math_word_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/orpo_dpo_mix_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\orpo_dpo_mix_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/pes2o_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\pes2o_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/philosophy_dialogue_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\philosophy_dialogue_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/pydpo_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\pydpo_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/redpajama_v2_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\redpajama_v2_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/refusal-xl_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\refusal-xl_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/stackexchange_pref_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\stackexchange_pref_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/starcoder_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\starcoder_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/swallow_code_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\swallow_code_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/truthful_qa_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\truthful_qa_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/truthy-dpo_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\truthy-dpo_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/ultra_fineweb_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\ultra_fineweb_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_cards/webgpt_dataset_card.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_cards\\webgpt_dataset_card.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/helpsteer_dpo.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\dpo\\helpsteer_dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/orpo-dpo.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\dpo\\orpo-dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/py_dpo,.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\dpo\\py_dpo,.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/stackexchange_pref_dpo.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\dpo\\stackexchange_pref_dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/dpo/webgpt_dpo.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\dpo\\webgpt_dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/megamath.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\megamath.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/orca_math_pretrain.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\orca_math_pretrain.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/pes2o.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\pes2o.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/redpajama.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\redpajama.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/stack_exchange_pretrain.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\stack_exchange_pretrain.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/starcoderdata.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\starcoderdata.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/pretrain/ultrafineweb.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\pretrain\\ultrafineweb.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/anthropic_hhrlhf.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\anthropic_hhrlhf.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/commitpackft_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\commitpackft_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/helpsteer_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\helpsteer_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/meatamathqa_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\meatamathqa_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/oasst.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\oasst.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/open_orca_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\open_orca_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/orca_math_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\orca_math_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/philosophy.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\philosophy.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/py_dpo_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\py_dpo_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/refusal_xl.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\refusal_xl.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/stack_exchange_pref_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\stack_exchange_pref_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/truthfulqa_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\truthfulqa_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_filtering_todos/sft/webgpt_sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_filtering_todos\\sft\\webgpt_sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_rationales/dpo.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_rationales\\dpo.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_rationales/pretrain.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_rationales\\pretrain.md",
+        "type": "markdown"
+      },
+      {
+        "name": "dataset_rationales/sft.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\dataset_rationales\\sft.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0a_dataset_ingestion.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\0a_dataset_ingestion.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0b_pipeline_prep.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\0b_pipeline_prep.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0c_smoke_testing.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\0c_smoke_testing.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0d_validation.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\0d_validation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/0e_tokenizer_training.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\0e_tokenizer_training.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s00_validation.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s00_validation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s01_convert_to_parquet.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s01_convert_to_parquet.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s02_html_cleaning.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s02_html_cleaning.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s03_text_normalization.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s03_text_normalization.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s04a_pii_redaction.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s04a_pii_redaction.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s04_heuristic_cleaning.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s04_heuristic_cleaning.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s05a_compute_clean_metrics.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s05a_compute_clean_metrics.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s05_build_manifest.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s05_build_manifest.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s06_assign_splits.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s06_assign_splits.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s07_exact_deduplication.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s07_exact_deduplication.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s08_lang_filter.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s08_lang_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s09a_code_language_detection.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s09a_code_language_detection.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s09_compute_quality_signals.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s09_compute_quality_signals.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s10_metadata_filter.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s10_metadata_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s11_benchmark_decontamination.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s11_benchmark_decontamination.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s13_heuristic_scoring.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s13_heuristic_scoring.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s14_coarse_filter.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s14_coarse_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s15_near_deduplication.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s15_near_deduplication.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s16_ppl_tagging.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s16_ppl_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s17_toxicity_tagging.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s17_toxicity_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s18_final_quality_filter.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s18_final_quality_filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s19_axis_tagging.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s19_axis_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s20_control_token_tagging.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s20_control_token_tagging.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS/s21_finalization.md",
+        "path": "D:\\PROJECTS\\transformer-learning\\docs\\TECHNICAL_DOCS\\s21_finalization.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\transformer-learning\\transformer-learning.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "d5c1dd34-bf0b-47e0-bc80-591f4f8dbb47",
+    "name": "LCAV",
+    "path": "D:\\PROJECTS\\LCAV",
+    "type": "python",
+    "tags": [
+      "git",
+      "node",
+      "fastapi",
+      "react",
+      "javascript",
+      "tailwind",
+      "typescript",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\LCAV\\LCAV.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "c6e8dcaa-75f8-4edf-806e-6510544f4fcc",
+    "name": "Note Widget App",
+    "path": "D:\\PROJECTS\\Note Widget App",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
   }
 ]

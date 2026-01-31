@@ -13,5 +13,10 @@
     "id": "e93821db-0d6a-4127-b733-2f0910932d8d",
     "name": "Tavily Dashboard",
     "url": "https://app.tavily.com/home"
+  },
+  {
+    "id": "02b90479-ca1e-46c2-a186-66a0da6378a5",
+    "name": "Claude Usage",
+    "url": "https://claude.ai/settings/usage"
   }
 ]
