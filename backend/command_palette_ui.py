@@ -11,6 +11,7 @@ import ctypes
 # Direct store import for speed (bypasses HTTP)
 from .services.launcher import Launcher
 from .services.store import ProjectStore
+from .services.config import get_config
 
 # Windows API for forcing focus
 user32 = ctypes.windll.user32
@@ -24,10 +25,41 @@ _store = ProjectStore()
 MAX_VISIBLE_ITEMS = 6
 
 
+def parse_hotkey(hotkey_str: str) -> Optional[str]:
+    """Convert config hotkey string to Tkinter binding."""
+    if not hotkey_str:
+        return None
+
+    parts = hotkey_str.lower().split("+")
+    modifiers = []
+    key = parts[-1]
+
+    for part in parts[:-1]:
+        if part == "ctrl":
+            modifiers.append("Control")
+        elif part == "shift":
+            modifiers.append("Shift")
+        elif part == "alt":
+            modifiers.append("Alt")
+
+    if key == "enter":
+        key = "Return"
+
+    binding = "-".join(modifiers + [key])
+    return f"<{binding}>"
+
+
+def format_hotkey_display(hotkey_str: str) -> str:
+    """Format hotkey string for UI display (e.g., 'ctrl+c' -> 'Ctrl+C')."""
+    if not hotkey_str:
+        return ""
+    return "+".join(part.capitalize() for part in hotkey_str.split("+"))
+
+
 class ProjectItem(ctk.CTkFrame):
     """Reusable project item widget."""
 
-    def __init__(self, master, on_launch):
+    def __init__(self, master, on_launch, launchers: List[Dict]):
         super().__init__(master, fg_color="#1e293b", corner_radius=8, height=56)
         self.pack_propagate(False)
 
@@ -60,29 +92,17 @@ class ProjectItem(ctk.CTkFrame):
         btn_style = {"width": 65, "height": 26, "font": ("Segoe UI", 10),
                      "fg_color": "#475569", "hover_color": "#6366f1"}
 
-        self._btn_code = ctk.CTkButton(self._btn_frame, text="Code",
-            command=lambda: self._do_launch('vscode'), **btn_style)
-        self._btn_code.pack(side="left", padx=2)
-
-        self._btn_term = ctk.CTkButton(self._btn_frame, text="Terminal",
-            command=lambda: self._do_launch('terminal'), **btn_style)
-        self._btn_term.pack(side="left", padx=2)
-
-        self._btn_folder = ctk.CTkButton(self._btn_frame, text="Folder",
-            command=lambda: self._do_launch('explorer'), **btn_style)
-        self._btn_folder.pack(side="left", padx=2)
-
-        self._btn_claude = ctk.CTkButton(self._btn_frame, text="Claude",
-            command=lambda: self._do_launch('claude'), **btn_style)
-        self._btn_claude.pack(side="left", padx=2)
-
-        self._btn_codex = ctk.CTkButton(self._btn_frame, text="Codex",
-            command=lambda: self._do_launch('codex'), **btn_style)
-        self._btn_codex.pack(side="left", padx=2)
-
-        self._btn_opencode = ctk.CTkButton(self._btn_frame, text="OpenCode",
-            command=lambda: self._do_launch('opencode'), **btn_style)
-        self._btn_opencode.pack(side="left", padx=2)
+        # Create buttons dynamically from config
+        self._buttons = []
+        for launcher in launchers:
+            btn = ctk.CTkButton(
+                self._btn_frame,
+                text=launcher["name"],
+                command=lambda lid=launcher["id"]: self._do_launch(lid),
+                **btn_style
+            )
+            btn.pack(side="left", padx=2)
+            self._buttons.append(btn)
 
         # Bind clicks
         self.bind('<Button-1>', self._on_click)
@@ -132,6 +152,10 @@ class CommandPaletteUI:
     """Fast, lightweight command palette window."""
 
     def __init__(self):
+        # Load config
+        self._config = get_config()
+        self._launchers = self._config.get_launchers(enabled_only=True)
+
         # Data
         self.projects: List[Dict] = []
         self.filtered_projects: List[Dict] = []
@@ -210,17 +234,20 @@ class CommandPaletteUI:
         )
         self.search_entry.pack(fill="x", padx=20, pady=(20, 12))
 
-        # Bind keys
+        # Bind keys dynamically from config
         self.search_entry.bind('<KeyRelease>', self._on_key)
-        self.search_entry.bind('<Return>', lambda e: self._launch_selected('vscode'))
-        self.search_entry.bind('<Control-Return>', lambda e: self._launch_selected('terminal'))
-        self.search_entry.bind('<Shift-Return>', lambda e: self._launch_selected('explorer'))
-        self.search_entry.bind('<Control-c>', lambda e: self._launch_selected('claude') or "break")
-        self.search_entry.bind('<Control-x>', lambda e: self._launch_selected('codex') or "break")
-        self.search_entry.bind('<Control-z>', lambda e: self._launch_selected('opencode') or "break")
         self.search_entry.bind('<Escape>', lambda e: self.hide())
         self.search_entry.bind('<Up>', self._on_up)
         self.search_entry.bind('<Down>', self._on_down)
+
+        # Bind launcher hotkeys
+        for launcher in self._launchers:
+            hotkey = launcher.get("hotkey")
+            if hotkey:
+                binding = parse_hotkey(hotkey)
+                if binding:
+                    launcher_id = launcher["id"]
+                    self.search_entry.bind(binding, lambda e, lid=launcher_id: self._launch_selected(lid) or "break")
 
         # Results frame with fixed height so it doesn't cover hints
         self.results_frame = ctk.CTkFrame(container, fg_color="transparent", height=380)
@@ -229,7 +256,7 @@ class CommandPaletteUI:
 
         # Pre-create item widgets
         for _ in range(MAX_VISIBLE_ITEMS):
-            item = ProjectItem(self.results_frame, self._launch_project)
+            item = ProjectItem(self.results_frame, self._launch_project, self._launchers)
             self._items.append(item)
 
         # Hints frame
@@ -239,27 +266,38 @@ class CommandPaletteUI:
         hint_style = {"font": ("Segoe UI", 11), "text_color": "#64748b"}
         key_style = {"font": ("Consolas", 11), "text_color": "#94a3b8"}
 
-        # Row 1: Basic actions
-        row1 = ctk.CTkFrame(hints_frame, fg_color="transparent")
-        row1.pack()
-        ctk.CTkLabel(row1, text="Enter", **key_style).pack(side="left")
-        ctk.CTkLabel(row1, text=" Code   ", **hint_style).pack(side="left")
-        ctk.CTkLabel(row1, text="Ctrl+Enter", **key_style).pack(side="left")
-        ctk.CTkLabel(row1, text=" Terminal   ", **hint_style).pack(side="left")
-        ctk.CTkLabel(row1, text="Shift+Enter", **key_style).pack(side="left")
-        ctk.CTkLabel(row1, text=" Folder   ", **hint_style).pack(side="left")
-        ctk.CTkLabel(row1, text="Esc", **key_style).pack(side="left")
-        ctk.CTkLabel(row1, text=" Close", **hint_style).pack(side="left")
+        # Build hints dynamically from config
+        # Split launchers into two rows for display
+        builtins = [l for l in self._launchers if l.get("builtin", False)]
+        customs = [l for l in self._launchers if not l.get("builtin", False)]
 
-        # Row 2: AI tools
-        row2 = ctk.CTkFrame(hints_frame, fg_color="transparent")
-        row2.pack(pady=(4, 0))
-        ctk.CTkLabel(row2, text="Ctrl+C", **key_style).pack(side="left")
-        ctk.CTkLabel(row2, text=" Claude   ", **hint_style).pack(side="left")
-        ctk.CTkLabel(row2, text="Ctrl+X", **key_style).pack(side="left")
-        ctk.CTkLabel(row2, text=" Codex   ", **hint_style).pack(side="left")
-        ctk.CTkLabel(row2, text="Ctrl+Z", **key_style).pack(side="left")
-        ctk.CTkLabel(row2, text=" OpenCode", **hint_style).pack(side="left")
+        # Row 1: Builtin actions
+        if builtins:
+            row1 = ctk.CTkFrame(hints_frame, fg_color="transparent")
+            row1.pack()
+            for i, launcher in enumerate(builtins):
+                hotkey = launcher.get("hotkey", "")
+                if hotkey:
+                    if i > 0:
+                        ctk.CTkLabel(row1, text="   ", **hint_style).pack(side="left")
+                    ctk.CTkLabel(row1, text=format_hotkey_display(hotkey), **key_style).pack(side="left")
+                    ctk.CTkLabel(row1, text=f" {launcher['name']}", **hint_style).pack(side="left")
+            # Add Esc hint
+            ctk.CTkLabel(row1, text="   ", **hint_style).pack(side="left")
+            ctk.CTkLabel(row1, text="Esc", **key_style).pack(side="left")
+            ctk.CTkLabel(row1, text=" Close", **hint_style).pack(side="left")
+
+        # Row 2: Custom launchers (CLI tools)
+        if customs:
+            row2 = ctk.CTkFrame(hints_frame, fg_color="transparent")
+            row2.pack(pady=(4, 0))
+            for i, launcher in enumerate(customs):
+                hotkey = launcher.get("hotkey", "")
+                if hotkey:
+                    if i > 0:
+                        ctk.CTkLabel(row2, text="   ", **hint_style).pack(side="left")
+                    ctk.CTkLabel(row2, text=format_hotkey_display(hotkey), **key_style).pack(side="left")
+                    ctk.CTkLabel(row2, text=f" {launcher['name']}", **hint_style).pack(side="left")
 
     def _load_projects_sync(self):
         """Load projects directly from store (fast, no HTTP)."""

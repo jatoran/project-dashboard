@@ -1,0 +1,57 @@
+{
+  "server": {
+    "port": 37453
+  },
+  "global_hotkey": "win+shift+w",
+  "file_manager": null,
+  "launchers": [
+    {
+      "id": "vscode",
+      "name": "Code",
+      "command": "__vscode__",
+      "hotkey": "enter",
+      "enabled": true,
+      "builtin": true
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "command": "__terminal__",
+      "hotkey": "ctrl+enter",
+      "enabled": true,
+      "builtin": true
+    },
+    {
+      "id": "explorer",
+      "name": "Folder",
+      "command": "__explorer__",
+      "hotkey": "shift+enter",
+      "enabled": true,
+      "builtin": true
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "command": "claude",
+      "hotkey": "ctrl+c",
+      "enabled": true,
+      "builtin": false
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "command": "codex",
+      "hotkey": "ctrl+x",
+      "enabled": true,
+      "builtin": false
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode",
+      "command": "opencode",
+      "hotkey": "ctrl+z",
+      "enabled": true,
+      "builtin": false
+    }
+  ]
+}

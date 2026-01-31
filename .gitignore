@@ -1,4 +1,4 @@
-﻿# === OS Files ===
+# === OS Files ===
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -6,9 +6,6 @@ desktop.ini
 # === VS Code ===
 .vscode/
 *.code-workspace
-
-# === Git ===
-.git/
 
 # === Node.js ===
 node_modules/
@@ -23,6 +20,7 @@ __pycache__/
 *.pyd
 env/
 venv/
+.venv/
 *.egg-info/
 
 # === Logs ===
@@ -36,3 +34,11 @@ out/
 # === JetBrains IDEs ===
 .idea/
 *.iml
+
+# === User Data (do not commit) ===
+backend/data/projects.json
+backend/data/platforms.json
+backend/data/config.json
+
+# === Claude Code local settings ===
+.claude/settings.local.json

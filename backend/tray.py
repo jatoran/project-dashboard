@@ -19,54 +19,58 @@ except ImportError:
 
 from .hotkey_manager import HotkeyManager
 from .command_palette_ui import CommandPaletteUI
+from .services.config import get_config
 
 
 class DashboardTray:
     """System tray controller for the Project Dashboard."""
-    
-    PORT = 37453
-    URL = f"http://localhost:{PORT}"
-    
+
     def __init__(self):
+        # Load configuration
+        self._config = get_config()
+        self.PORT = self._config.config.port
+        self.URL = f"http://localhost:{self.PORT}"
+        self.GLOBAL_HOTKEY = self._config.config.global_hotkey
+
         self.server_process: Optional[subprocess.Popen] = None
         self.icon: Optional[pystray.Icon] = None
         self._running = False
         self.hotkey_manager: Optional[HotkeyManager] = None
         self.palette_ui: Optional[CommandPaletteUI] = None
-    
+
     def create_icon_image(self, running: bool = False) -> Image.Image:
         """Create a simple icon indicating server status."""
         size = 64
         image = Image.new('RGBA', (size, size), (0, 0, 0, 0))
         draw = ImageDraw.Draw(image)
-        
+
         # Background circle
         bg_color = (34, 197, 94) if running else (100, 100, 100)  # Green if running, gray if stopped
         draw.ellipse([4, 4, size-4, size-4], fill=bg_color)
-        
+
         # Inner circle (dashboard icon representation)
         inner_color = (255, 255, 255)
         draw.ellipse([16, 16, size-16, size-16], fill=inner_color)
-        
+
         # Small dot in center
         center_color = bg_color
         draw.ellipse([26, 26, size-26, size-26], fill=center_color)
-        
+
         return image
-    
+
     def update_icon(self):
         """Update the tray icon to reflect current state."""
         if self.icon:
             self.icon.icon = self.create_icon_image(self._running)
-    
+
     def start_server(self, icon=None, item=None):
         """Start the uvicorn server."""
         if self._running:
             return
-        
-        # Get the project root directory  
+
+        # Get the project root directory
         project_dir = Path(__file__).parent.parent
-        
+
         # Start uvicorn via uv run to ensure dependencies are available
         # Use DEVNULL instead of PIPE to prevent buffer deadlocks
         self.server_process = subprocess.Popen(
@@ -81,16 +85,16 @@ class DashboardTray:
             stderr=subprocess.DEVNULL,
             creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
         )
-        
+
         self._running = True
         self.update_icon()
         print(f"Server started on {self.URL}")
-    
+
     def stop_server(self, icon=None, item=None):
         """Stop the uvicorn server and all child processes."""
         if self.server_process:
             pid = self.server_process.pid
-            
+
             # On Windows, we need to kill the entire process tree
             # because uv spawns child processes that don't get killed
             # when we terminate just the parent
@@ -112,22 +116,22 @@ class DashboardTray:
                     self.server_process.wait(timeout=5)
                 except subprocess.TimeoutExpired:
                     self.server_process.kill()
-            
+
             self.server_process = None
-        
+
         self._running = False
         self.update_icon()
         print("Server stopped")
-    
+
     def open_dashboard(self, icon=None, item=None):
         """Open the dashboard in the default browser."""
         if not self._running:
             # Auto-start if not running
             self.start_server()
             time.sleep(1)  # Give server time to start
-        
+
         webbrowser.open(self.URL)
-    
+
     def exit_app(self, icon=None, item=None):
         """Exit the application."""
         self.stop_server()
@@ -135,11 +139,15 @@ class DashboardTray:
             self.hotkey_manager.stop()
         if self.icon:
             self.icon.stop()
-    
+
     def open_command_palette(self, icon=None, item=None):
         """Open the command palette overlay."""
         if self.palette_ui:
             self.palette_ui.show()
+
+    def _format_hotkey_display(self, hotkey: str) -> str:
+        """Format hotkey string for display (e.g., 'win+shift+w' -> 'Win+Shift+W')."""
+        return "+".join(part.capitalize() for part in hotkey.split("+"))
 
     def create_menu(self):
         """Create the system tray menu."""
@@ -152,6 +160,8 @@ class DashboardTray:
             else:
                 self.start_server()
 
+        hotkey_display = self._format_hotkey_display(self.GLOBAL_HOTKEY)
+
         return pystray.Menu(
             pystray.MenuItem(
                 get_start_stop_text,
@@ -163,7 +173,7 @@ class DashboardTray:
                 default=True,  # Double-click action
             ),
             pystray.MenuItem(
-                "Command Palette (Win+Shift+W)",
+                f"Command Palette ({hotkey_display})",
                 self.open_command_palette,
             ),
             pystray.Menu.SEPARATOR,
@@ -172,7 +182,7 @@ class DashboardTray:
                 self.exit_app,
             ),
         )
-    
+
     def run(self, autostart: bool = True):
         """Run the system tray application."""
         # Auto-start server on launch
@@ -200,10 +210,11 @@ class DashboardTray:
             menu=self.create_menu(),
         )
 
+        hotkey_display = self._format_hotkey_display(self.GLOBAL_HOTKEY)
         print("✓ Command palette ready (instant show/hide)")
         print("Project Dashboard tray icon running...")
         print(f"Server: {self.URL}")
-        print(f"Global Hotkey: Win+Shift+W")
+        print(f"Global Hotkey: {hotkey_display}")
         print("Right-click tray icon for options")
 
         self.icon.run()

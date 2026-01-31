@@ -1,0 +1,12 @@
+[
+  {
+    "id": "example-project",
+    "name": "Example Project",
+    "path": "D:\\Projects\\example-project",
+    "tags": ["javascript", "react"],
+    "docs": [],
+    "frontend_url": null,
+    "backend_url": null,
+    "position": 0
+  }
+]

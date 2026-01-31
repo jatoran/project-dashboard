@@ -4,14 +4,19 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pathlib import Path
 
-from .routers import projects, monitor, platforms
+from .routers import projects, monitor, platforms, config
+from .services.config import get_config
+
+# Load configuration
+_config = get_config()
 
 app = FastAPI(title="Gemini Project Dashboard")
 
-# CORS - allow same-origin and dev server
+# CORS - allow same-origin and dev server (use configured port)
+port = _config.config.port
 origins = [
-    "http://localhost:37453",  # Same origin (static frontend)
-    "http://127.0.0.1:37453",
+    f"http://localhost:{port}",  # Same origin (static frontend)
+    f"http://127.0.0.1:{port}",
     "http://localhost:37452",  # Dev server
     "http://127.0.0.1:37452",
 ]
@@ -28,6 +33,7 @@ app.add_middleware(
 app.include_router(projects.router, prefix="/api")
 app.include_router(monitor.router, prefix="/api")
 app.include_router(platforms.router, prefix="/api")
+app.include_router(config.router, prefix="/api")
 
 
 @app.get("/api/health")
