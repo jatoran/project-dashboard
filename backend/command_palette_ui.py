@@ -151,9 +151,14 @@ class CommandPaletteUI:
         label.pack(pady=40)
 
     def load_projects(self):
-        """Load projects from API."""
+        """Load projects from API, sorted by palette recency."""
         try:
-            response = requests.get('http://localhost:37453/api/projects', timeout=2)
+            # Fetch with palette recency sorting
+            response = requests.get(
+                'http://localhost:37453/api/projects',
+                params={'sort_by_palette': 'true'},
+                timeout=2
+            )
             response.raise_for_status()
             self.projects = response.json()
             self.filtered_projects = self.projects
@@ -453,8 +458,15 @@ class CommandPaletteUI:
         # Launch in background thread (don't wait)
         def do_launch():
             try:
+                # Launch the project
                 requests.post(
                     'http://localhost:37453/api/launch',
+                    json={'project_path': project['path'], 'launch_type': launch_type},
+                    timeout=2
+                )
+                # Mark as recently opened for recency sorting
+                requests.post(
+                    'http://localhost:37453/api/projects/palette-opened',
                     json={'project_path': project['path'], 'launch_type': launch_type},
                     timeout=2
                 )

@@ -2968,7 +2968,8 @@
     "backend_port": null,
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": null
+    "position": null,
+    "last_palette_open": null
   },
   {
     "id": "f7e7c7b7-f669-4eb9-a1c6-19dbba6f757d",
@@ -3288,7 +3289,8 @@
     "backend_port": "32583",
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": null
+    "position": null,
+    "last_palette_open": 1769890351.6263587
   },
   {
     "id": "7d4e22bc-f8d0-4dd4-8bf0-3a29b4c51025",
@@ -3335,6 +3337,7 @@
     "backend_port": "3883",
     "frontend_port_override": null,
     "backend_port_override": null,
-    "position": null
+    "position": null,
+    "last_palette_open": 1769890327.4959588
   }
 ]

@@ -18,6 +18,7 @@ class Project(BaseModel):
     frontend_port_override: Optional[str] = None
     backend_port_override: Optional[str] = None
     position: Optional[int] = None  # For custom ordering
+    last_palette_open: Optional[float] = None  # Timestamp for command palette recency sorting
 
 class CreateProjectRequest(BaseModel):
     path: str

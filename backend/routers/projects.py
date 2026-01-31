@@ -12,8 +12,9 @@ launcher = Launcher()
 
 
 @router.get("/projects", response_model=List[Project])
-def get_projects():
-    return store.get_all()
+def get_projects(sort_by_palette: bool = False):
+    """Get all projects. If sort_by_palette=True, sort by command palette recency."""
+    return store.get_all(sort_by_palette_recency=sort_by_palette)
 
 
 @router.post("/projects/{project_id}/links", response_model=Project)
@@ -114,6 +115,16 @@ def launch_project(request: LaunchRequest):
     try:
         launcher.launch(request.project_path, request.launch_type)
         return {"status": "success", "message": f"Launched {request.launch_type}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/projects/palette-opened")
+def mark_palette_opened(request: LaunchRequest):
+    """Mark a project as recently opened from the command palette."""
+    try:
+        store.mark_palette_open(request.project_path)
+        return {"status": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

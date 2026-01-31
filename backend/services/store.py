@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from pathlib import Path
 from typing import List
 from ..models import Project
@@ -20,10 +21,30 @@ class ProjectStore:
             with open(DATA_FILE, "w") as f:
                 json.dump([], f)
 
-    def get_all(self) -> List[Project]:
+    def get_all(self, sort_by_palette_recency: bool = False) -> List[Project]:
         with open(DATA_FILE, "r") as f:
             data = json.load(f)
-        return [Project(**p) for p in data]
+        projects = [Project(**p) for p in data]
+
+        if sort_by_palette_recency:
+            # Sort by last_palette_open descending (most recent first)
+            # Projects with no palette history go to the bottom
+            projects.sort(
+                key=lambda p: p.last_palette_open if p.last_palette_open else 0,
+                reverse=True
+            )
+
+        return projects
+
+    def mark_palette_open(self, project_path: str) -> None:
+        """Update the last_palette_open timestamp for a project."""
+        projects = self.get_all()
+        for p in projects:
+            if p.path == project_path:
+                p.last_palette_open = time.time()
+                self._save(projects)
+                return
+        # Project not found is fine - just ignore
 
     def add_project(self, path_str: str) -> Project:
         print(f"[DEBUG] add_project received path: '{path_str}'")
