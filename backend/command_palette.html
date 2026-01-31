@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Palette</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: rgba(15, 23, 42, 0.98);
+            color: #e2e8f0;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 18px;
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            color: #f1f5f9;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        #search:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .results {
+            max-height: 350px;
+            overflow-y: auto;
+            background: #1e293b;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .result-item {
+            padding: 14px 18px;
+            cursor: pointer;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.15s;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item:hover,
+        .result-item.selected {
+            background: #334155;
+        }
+
+        .result-item.selected {
+            border-left: 3px solid #6366f1;
+        }
+
+        .result-icon {
+            width: 36px;
+            height: 36px;
+            background: #4f46e5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .result-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .result-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 2px;
+        }
+
+        .result-path {
+            font-size: 13px;
+            color: #94a3b8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .result-item:hover .result-actions,
+        .result-item.selected .result-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            padding: 6px 10px;
+            background: #475569;
+            border: none;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-weight: 500;
+        }
+
+        .action-btn:hover {
+            background: #6366f1;
+        }
+
+        .empty-state {
+            padding: 40px 20px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #64748b;
+            flex-shrink: 0;
+        }
+
+        .status-dot.online {
+            background: #22c55e;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+        }
+
+        .hint {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        .hint kbd {
+            padding: 2px 6px;
+            background: #334155;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #e2e8f0;
+            margin: 0 2px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-box">
+            <input
+                type="text"
+                id="search"
+                placeholder="Search projects..."
+                autofocus
+                autocomplete="off"
+            />
+        </div>
+        <div id="results" class="results"></div>
+        <div class="hint">
+            <kbd>↑</kbd> <kbd>↓</kbd> Navigate •
+            <kbd>Enter</kbd> Open in VS Code •
+            <kbd>Ctrl+Enter</kbd> Terminal •
+            <kbd>Shift+Enter</kbd> Explorer •
+            <kbd>Esc</kbd> Close
+        </div>
+    </div>
+
+    <script>
+        let projects = [];
+        let filteredProjects = [];
+        let selectedIndex = 0;
+
+        // Fetch projects from API
+        async function loadProjects() {
+            try {
+                const response = await fetch('http://localhost:37453/api/projects');
+                projects = await response.json();
+                filteredProjects = projects;
+                renderResults();
+            } catch (error) {
+                console.error('Failed to load projects:', error);
+                document.getElementById('results').innerHTML =
+                    '<div class="empty-state">Failed to load projects. Is the server running?</div>';
+            }
+        }
+
+        // Fuzzy search implementation
+        function fuzzyMatch(text, query) {
+            text = text.toLowerCase();
+            query = query.toLowerCase();
+
+            let textIndex = 0;
+            let queryIndex = 0;
+            let score = 0;
+            let consecutiveMatches = 0;
+
+            while (textIndex < text.length && queryIndex < query.length) {
+                if (text[textIndex] === query[queryIndex]) {
+                    score += 1 + consecutiveMatches;
+                    consecutiveMatches++;
+                    queryIndex++;
+                } else {
+                    consecutiveMatches = 0;
+                }
+                textIndex++;
+            }
+
+            return queryIndex === query.length ? score : 0;
+        }
+
+        // Filter projects based on search
+        function filterProjects(query) {
+            if (!query.trim()) {
+                filteredProjects = projects;
+                return;
+            }
+
+            const results = projects
+                .map(project => ({
+                    project,
+                    score: Math.max(
+                        fuzzyMatch(project.name, query),
+                        fuzzyMatch(project.path, query) * 0.8,
+                        ...(project.tech_stack || []).map(tag => fuzzyMatch(tag, query) * 0.6)
+                    )
+                }))
+                .filter(item => item.score > 0)
+                .sort((a, b) => b.score - a.score)
+                .map(item => item.project);
+
+            filteredProjects = results;
+        }
+
+        // Render results
+        function renderResults() {
+            const resultsDiv = document.getElementById('results');
+
+            if (filteredProjects.length === 0) {
+                resultsDiv.innerHTML = '<div class="empty-state">No projects found</div>';
+                return;
+            }
+
+            resultsDiv.innerHTML = filteredProjects.map((project, index) => `
+                <div class="result-item ${index === selectedIndex ? 'selected' : ''}"
+                     data-index="${index}"
+                     onclick="selectProject(${index})">
+                    <div class="result-icon">📁</div>
+                    <div class="result-info">
+                        <div class="result-name">${escapeHtml(project.name)}</div>
+                        <div class="result-path">${escapeHtml(project.path)}</div>
+                    </div>
+                    <div class="status-dot ${project.frontend_status === 'online' ? 'online' : ''}"></div>
+                    <div class="result-actions">
+                        <button class="action-btn" onclick="launchProject(event, '${project.path}', 'vscode')">Code</button>
+                        <button class="action-btn" onclick="launchProject(event, '${project.path}', 'terminal')">Terminal</button>
+                        <button class="action-btn" onclick="launchProject(event, '${project.path}', 'explorer')">Files</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Launch project
+        async function launchProject(event, path, type) {
+            if (event) event.stopPropagation();
+
+            try {
+                await fetch('http://localhost:37453/api/launch', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_path: path, launch_type: type })
+                });
+                // Close the window/tab
+                window.close();
+            } catch (error) {
+                console.error('Launch failed:', error);
+            }
+        }
+
+        // Select project by index
+        function selectProject(index) {
+            selectedIndex = index;
+            renderResults();
+        }
+
+        // Handle keyboard navigation
+        document.getElementById('search').addEventListener('input', (e) => {
+            filterProjects(e.target.value);
+            selectedIndex = 0;
+            renderResults();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                window.close();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedIndex = Math.min(selectedIndex + 1, filteredProjects.length - 1);
+                renderResults();
+                scrollToSelected();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedIndex = Math.max(selectedIndex - 1, 0);
+                renderResults();
+                scrollToSelected();
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (filteredProjects[selectedIndex]) {
+                    const project = filteredProjects[selectedIndex];
+                    let type = 'vscode';
+                    if (e.ctrlKey) type = 'terminal';
+                    else if (e.shiftKey) type = 'explorer';
+                    launchProject(null, project.path, type);
+                }
+            }
+        });
+
+        function scrollToSelected() {
+            const selected = document.querySelector('.result-item.selected');
+            if (selected) {
+                selected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Load projects on startup
+        loadProjects();
+    </script>
+</body>
+</html>

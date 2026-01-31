@@ -5,4 +5,4 @@ Set WshShell = CreateObject("WScript.Shell")
 strPath = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName)
 
 ' Run uv in hidden mode (0 = hidden, False = don't wait)
-WshShell.Run "cmd /c cd /d """ & strPath & """ && uv run --project backend python backend/tray.py", 0, False
+WshShell.Run "cmd /c cd /d """ & strPath & """ && uv run --project backend python -m backend.tray", 0, False

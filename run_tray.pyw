@@ -15,7 +15,7 @@ def main():
     
     # Run the tray app using uv to ensure dependencies are available
     subprocess.run(
-        ["uv", "run", "--project", "backend", "python", "backend/tray.py"],
+        ["uv", "run", "--project", "backend", "python", "-m", "backend.tray"],
         cwd=str(project_dir),
         creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
     )

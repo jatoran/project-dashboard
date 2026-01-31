@@ -17,6 +17,9 @@ except ImportError:
     print("Missing dependencies. Install with: uv add pystray Pillow")
     sys.exit(1)
 
+from .hotkey_manager import HotkeyManager
+from .command_palette_ui import CommandPaletteUI
+
 
 class DashboardTray:
     """System tray controller for the Project Dashboard."""
@@ -28,6 +31,8 @@ class DashboardTray:
         self.server_process: Optional[subprocess.Popen] = None
         self.icon: Optional[pystray.Icon] = None
         self._running = False
+        self.hotkey_manager: Optional[HotkeyManager] = None
+        self.palette_ui: Optional[CommandPaletteUI] = None
     
     def create_icon_image(self, running: bool = False) -> Image.Image:
         """Create a simple icon indicating server status."""
@@ -125,20 +130,27 @@ class DashboardTray:
     def exit_app(self, icon=None, item=None):
         """Exit the application."""
         self.stop_server()
+        if self.hotkey_manager:
+            self.hotkey_manager.stop()
         if self.icon:
             self.icon.stop()
     
+    def open_command_palette(self, icon=None, item=None):
+        """Open the command palette overlay."""
+        if self.palette_ui:
+            self.palette_ui.show()
+
     def create_menu(self):
         """Create the system tray menu."""
         def get_start_stop_text(item):
             return "Stop Server" if self._running else "Start Server"
-        
+
         def toggle_server(icon, item):
             if self._running:
                 self.stop_server()
             else:
                 self.start_server()
-        
+
         return pystray.Menu(
             pystray.MenuItem(
                 get_start_stop_text,
@@ -148,6 +160,10 @@ class DashboardTray:
                 "Open Dashboard",
                 self.open_dashboard,
                 default=True,  # Double-click action
+            ),
+            pystray.MenuItem(
+                "Command Palette (Win+Shift+W)",
+                self.open_command_palette,
             ),
             pystray.Menu.SEPARATOR,
             pystray.MenuItem(
@@ -161,7 +177,20 @@ class DashboardTray:
         # Auto-start server on launch
         if autostart:
             self.start_server()
-        
+
+        # Create command palette UI (lightweight, stays hidden)
+        print("Initializing command palette...")
+        self.palette_ui = CommandPaletteUI()
+
+        # Start global hotkey listener in background thread
+        self.hotkey_manager = HotkeyManager(self.palette_ui)
+        hotkey_thread = threading.Thread(
+            target=self.hotkey_manager.start,
+            daemon=True,
+            name="HotkeyListener"
+        )
+        hotkey_thread.start()
+
         # Create and run the icon
         self.icon = pystray.Icon(
             "project-dashboard",
@@ -169,11 +198,13 @@ class DashboardTray:
             "Project Dashboard",
             menu=self.create_menu(),
         )
-        
+
+        print("✓ Command palette ready (instant show/hide)")
         print("Project Dashboard tray icon running...")
         print(f"Server: {self.URL}")
+        print(f"Global Hotkey: Win+Shift+W")
         print("Right-click tray icon for options")
-        
+
         self.icon.run()
 
 

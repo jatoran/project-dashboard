@@ -2969,5 +2969,372 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null
+  },
+  {
+    "id": "f7e7c7b7-f669-4eb9-a1c6-19dbba6f757d",
+    "name": "augur-engine",
+    "path": "D:\\PROJECTS\\augur-engine",
+    "type": "python",
+    "tags": [
+      "python",
+      "docker",
+      "fastapi",
+      "git",
+      "pandas"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\augur-engine\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CLAUDE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\augur-engine\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "VALIDATION_RESULTS.md",
+        "path": "D:\\PROJECTS\\augur-engine\\VALIDATION_RESULTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG (archive).md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\CHANGELOG (archive).md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\ENVIRONMENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_MEDALLION_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\01_MEDALLION_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/02_ASSET_PATTERNS.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\02_ASSET_PATTERNS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/03_SCHEMA_SYSTEM.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\03_SCHEMA_SYSTEM.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/04_DATA_QUALITY.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\04_DATA_QUALITY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/05_INFRASTRUCTURE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\05_INFRASTRUCTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/06_DATABASE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\06_DATABASE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/07_ADDING_DATA_SOURCE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\07_ADDING_DATA_SOURCE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/08_FRONTEND_API_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\design\\08_FRONTEND_API_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/ENTITY_RESOLUTION_FINALIZATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\ENTITY_RESOLUTION_FINALIZATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/FRED_VINTAGE_TRACKING.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\FRED_VINTAGE_TRACKING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/NEW_ASSETS_ROADMAP.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\NEW_ASSETS_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/SEC_FILINGS_TEXT_STORAGE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\SEC_FILINGS_TEXT_STORAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ASSET_CHECKS_IMPLEMENTATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ASSET_CHECKS_IMPLEMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ASSET_CHECK_ROADMAP.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ASSET_CHECK_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ASSET_FIXES.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ASSET_FIXES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/DATA_SOURCE_ADDITIONS.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\DATA_SOURCE_ADDITIONS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/DQ_THRESHOLDS_CONSOLIDATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\DQ_THRESHOLDS_CONSOLIDATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ENTITY_RESOLUTION_DESIGN.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ENTITY_RESOLUTION_DESIGN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ENTITY_RESOLUTION_DESIGN_v2.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ENTITY_RESOLUTION_DESIGN_v2.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ENTITY_RESOLUTION_ROADMAP.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ENTITY_RESOLUTION_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/FRESHNESS_CONSOLIDATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\FRESHNESS_CONSOLIDATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/IDENTIFIER_MAPPING_STRATEGY.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\IDENTIFIER_MAPPING_STRATEGY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/IMPLEMENT_ETF_NAV_CLEAN.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\IMPLEMENT_ETF_NAV_CLEAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/INCREMENTAL_PROCESSING_REFACTOR.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\INCREMENTAL_PROCESSING_REFACTOR.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/INDUSTRY_CLASSIFICATION_PLAN.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\INDUSTRY_CLASSIFICATION_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/nport_data_samples.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\nport_data_samples.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/NPORT_DEBT_SECURITY_INTEGRATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\NPORT_DEBT_SECURITY_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/NPORT_DERIVATIVE_COUNTERPARTY.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\NPORT_DERIVATIVE_COUNTERPARTY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/NPORT_INTEREST_RATE_RISK.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\NPORT_INTEREST_RATE_RISK.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/NPORT_REGISTRANT_INTEGRATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\NPORT_REGISTRANT_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/OUTPUT_METADATA_TEMPLATES.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\OUTPUT_METADATA_TEMPLATES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/Polygon Integration and Symbol History Tracking.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\Polygon Integration and Symbol History Tracking.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/POLYGON_INTEGRATION.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\POLYGON_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/ROADMAP.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/SEC_13F_AMENDMENT_TRACKING.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\SEC_13F_AMENDMENT_TRACKING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/SEC_FORM4_DERIVATIVE_ENHANCEMENT.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\SEC_FORM4_DERIVATIVE_ENHANCEMENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/zArchive/SEC_MARKET_STRUCTURE_METRICS.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\development\\zArchive\\SEC_MARKET_STRUCTURE_METRICS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/asset_lineage.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\asset_lineage.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/code_outline.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\code_outline.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/dagster_assets.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\dagster_assets.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/data_sources.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\data_sources.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/git_digest.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\git_digest.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/imports.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\imports.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/schema_catalog.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\schema_catalog.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/skeleton.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\skeleton.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/validation_queries.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\GENERATED\\validation_queries.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/GENERATIVE_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\references\\GENERATIVE_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/SEARCH_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\augur-engine\\docs\\references\\SEARCH_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:32583/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:32583/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:32583/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\augur-engine\\augur-engine.code-workspace",
+    "frontend_url": "http://localhost:18123",
+    "backend_port": "32583",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null
+  },
+  {
+    "id": "7d4e22bc-f8d0-4dd4-8bf0-3a29b4c51025",
+    "name": "news-aggregator",
+    "path": "D:\\PROJECTS\\news-aggregator",
+    "type": "docker",
+    "tags": [
+      "docker",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\news-aggregator\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\news-aggregator\\DOCUMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/GATEWAY_SCRAPER_MIGRATION.md",
+        "path": "D:\\PROJECTS\\news-aggregator\\docs\\development\\GATEWAY_SCRAPER_MIGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/GENERATIVE_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\news-aggregator\\docs\\references\\GENERATIVE_GATEWAY_USAGE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "references/SEARCH_GATEWAY_USAGE.md",
+        "path": "D:\\PROJECTS\\news-aggregator\\docs\\references\\SEARCH_GATEWAY_USAGE.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\news-aggregator\\news-aggregator.code-workspace",
+    "frontend_url": "http://localhost:3883",
+    "backend_port": "3883",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null
   }
 ]
