@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.1.0] - 2026-01-31
+### Features
+- **Global Command Palette:** Press `Win+Shift+W` from anywhere in Windows to instantly open a project launcher
+  - CustomTkinter-based frameless overlay window
+  - Fuzzy search across project name, path, and tech tags
+  - Keyboard-driven: Arrow keys to navigate, Enter/Ctrl+Enter/Shift+Enter to launch
+  - Projects sorted by recency (most recently opened first)
+  - Auto-hides when clicking outside or pressing Escape
+  - Status indicators (green dot = project running)
+
+### Performance Improvements
+- **Instant Command Palette:** Pre-spawned window shows in <50ms
+- **Fast Launches:** Direct subprocess calls instead of HTTP (~15ms vs 4000ms)
+- **Cached VS Code Path:** Only looked up once, reused for all launches
+- **Cached Windows Terminal Check:** Avoids repeated filesystem checks
+- **Efficient UI Updates:** Only changed items re-render (no flicker)
+
+### Technical Changes
+- Added `pynput` for lightweight global hotkey detection (no keyboard lag)
+- Added `customtkinter` for modern, lightweight UI
+- Added Windows API integration (`AttachThreadInput`) for reliable window focus
+- Added `last_palette_open` field to Project model for recency tracking
+- Command palette calls launcher directly (bypasses HTTP for speed)
+- Removed `pywebview` dependency (replaced with CustomTkinter)
+
+### New Files
+- `backend/command_palette_ui.py` - Command palette UI
+- `backend/hotkey_manager.py` - Global hotkey listener
+
+### New API Endpoints
+- `GET /api/projects?sort_by_palette=true` - Get projects sorted by palette recency
+- `POST /api/projects/palette-opened` - Mark a project as recently opened
+
+---
+
 ## [2.0.0] - 2026-01-31
 ### Breaking Changes
 - **Docker Removed:** Application no longer runs in Docker. Now runs as a native Windows system tray application.

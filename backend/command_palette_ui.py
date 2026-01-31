@@ -10,9 +10,17 @@ import time
 import ctypes
 from ctypes import wintypes
 
+# Direct launcher import for speed (bypasses HTTP)
+from .services.launcher import Launcher
+from .services.store import ProjectStore
+
 # Windows API for forcing focus
 user32 = ctypes.windll.user32
 kernel32 = ctypes.windll.kernel32
+
+# Singleton instances for direct calls
+_launcher = Launcher()
+_store = ProjectStore()
 
 
 class CommandPaletteUI:
@@ -475,21 +483,13 @@ class CommandPaletteUI:
         # Hide immediately for instant feedback
         self.hide()
 
-        # Launch in background thread (don't wait)
+        # Launch in background thread (don't block UI)
         def do_launch():
             try:
-                # Launch the project
-                requests.post(
-                    'http://localhost:37453/api/launch',
-                    json={'project_path': project['path'], 'launch_type': launch_type},
-                    timeout=2
-                )
+                # Launch directly (no HTTP overhead)
+                _launcher.launch(project['path'], launch_type)
                 # Mark as recently opened for recency sorting
-                requests.post(
-                    'http://localhost:37453/api/projects/palette-opened',
-                    json={'project_path': project['path'], 'launch_type': launch_type},
-                    timeout=2
-                )
+                _store.mark_palette_open(project['path'])
             except Exception as e:
                 print(f"Launch failed: {e}")
 
