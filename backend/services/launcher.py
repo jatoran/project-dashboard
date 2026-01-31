@@ -75,8 +75,9 @@ class Launcher:
             subprocess.Popen(f'start cmd /k "cd /d {path}"', shell=True)
 
     def _launch_explorer(self, path: Path):
-        """Open File Explorer at the given path."""
-        subprocess.Popen(["explorer", str(path)])
+        """Open Directory Opus at the given path."""
+        dopus = r"C:\Program Files\GPSoftware\Directory Opus\dopus.exe"
+        subprocess.Popen([dopus, str(path)])
 
     def _find_code_cmd(self) -> str:
         """Find the VS Code command (cached for speed)."""

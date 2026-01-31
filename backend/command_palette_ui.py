@@ -1,16 +1,14 @@
 """
 Ultra-Fast Command Palette using CustomTkinter.
-Lightweight (~20MB), instant show/hide (<50ms).
+Optimized for instant show/hide and smooth typing.
 """
 import customtkinter as ctk
 import threading
-import requests
 from typing import List, Dict, Optional
 import time
 import ctypes
-from ctypes import wintypes
 
-# Direct launcher import for speed (bypasses HTTP)
+# Direct store import for speed (bypasses HTTP)
 from .services.launcher import Launcher
 from .services.store import ProjectStore
 
@@ -22,6 +20,75 @@ kernel32 = ctypes.windll.kernel32
 _launcher = Launcher()
 _store = ProjectStore()
 
+# How many items to show max
+MAX_VISIBLE_ITEMS = 15
+
+
+class ProjectItem(ctk.CTkFrame):
+    """Reusable project item widget."""
+
+    def __init__(self, master, on_launch):
+        super().__init__(master, fg_color="#1e293b", corner_radius=6, height=50)
+        self.pack_propagate(False)
+
+        self._on_launch = on_launch
+        self._project = None
+
+        # Simple layout: name on left, path below
+        self._name_label = ctk.CTkLabel(
+            self,
+            text="",
+            font=("Segoe UI Semibold", 13),
+            text_color="#f1f5f9",
+            anchor="w",
+        )
+        self._name_label.place(x=12, y=6)
+
+        self._path_label = ctk.CTkLabel(
+            self,
+            text="",
+            font=("Segoe UI", 10),
+            text_color="#64748b",
+            anchor="w",
+        )
+        self._path_label.place(x=12, y=26)
+
+        # Bind clicks
+        self.bind('<Button-1>', self._on_click)
+        self._name_label.bind('<Button-1>', self._on_click)
+        self._path_label.bind('<Button-1>', self._on_click)
+
+        # Right-click for terminal
+        self.bind('<Button-3>', self._on_right_click)
+        self._name_label.bind('<Button-3>', self._on_right_click)
+        self._path_label.bind('<Button-3>', self._on_right_click)
+
+    def set_project(self, project: Dict):
+        """Update this item with project data."""
+        self._project = project
+        self._name_label.configure(text=project['name'])
+
+        # Truncate path
+        path = project['path']
+        if len(path) > 65:
+            path = "..." + path[-62:]
+        self._path_label.configure(text=path)
+
+    def set_selected(self, selected: bool):
+        """Update selection state."""
+        if selected:
+            self.configure(fg_color="#334155", border_width=2, border_color="#6366f1")
+        else:
+            self.configure(fg_color="#1e293b", border_width=0)
+
+    def _on_click(self, event=None):
+        if self._project:
+            self._on_launch(self._project, 'vscode')
+
+    def _on_right_click(self, event=None):
+        if self._project:
+            self._on_launch(self._project, 'terminal')
+
 
 class CommandPaletteUI:
     """Fast, lightweight command palette window."""
@@ -31,23 +98,22 @@ class CommandPaletteUI:
         self.projects: List[Dict] = []
         self.filtered_projects: List[Dict] = []
         self.selected_index = 0
+        self._last_query = ""
+        self._projects_loaded = False
 
         # Window reference
         self.window = None
         self.search_entry = None
         self.results_frame = None
 
-        # Item references for efficient updates
-        self._item_frames: List[ctk.CTkFrame] = []
-        self._item_buttons: List[ctk.CTkFrame] = []  # Button frames for each item
-        self._item_dots: List[ctk.CTkLabel] = []  # Status dots for each item
-        self._last_query = ""
+        # Pre-created item widgets for reuse
+        self._items: List[ProjectItem] = []
 
         # Thread-safe flag
         self._initialized = False
-        self._first_show = True  # Track first show for extra focus handling
+        self._first_show = True
 
-        # Start Tkinter in its own thread with event loop
+        # Start Tkinter in its own thread
         self._ui_thread = threading.Thread(target=self._run_ui_thread, daemon=True)
         self._ui_thread.start()
 
@@ -55,555 +121,301 @@ class CommandPaletteUI:
         timeout = 5
         start = time.time()
         while not self._initialized and (time.time() - start) < timeout:
-            time.sleep(0.1)
+            time.sleep(0.05)
 
         if not self._initialized:
             raise RuntimeError("Failed to initialize command palette UI")
 
     def _run_ui_thread(self):
         """Run Tkinter in its own thread."""
-        # Create main window
         self.window = ctk.CTk()
         self.window.title("Command Palette")
-
-        # Window settings
-        self.window.geometry("700x500")
+        self.window.geometry("600x450")
         self.window.resizable(False, False)
-
-        # Make it frameless and always on top
         self.window.overrideredirect(True)
         self.window.attributes('-topmost', True)
 
-        # Dark theme
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
 
-        # Setup UI
-        self.setup_ui()
+        self._setup_ui()
 
-        # Instead of hiding, move it way off-screen
-        # This keeps the window "visible" to Windows, ensuring focus works
-        self.window.geometry("700x500-10000-10000")
+        # Start off-screen
+        self.window.geometry("600x450-10000-10000")
         self.window.update()
 
-        # Bind focus loss to hide
-        self.window.bind('<FocusOut>', lambda e: self.hide())
+        # Bind focus loss
+        self.window.bind('<FocusOut>', lambda e: self._schedule_hide_check())
 
-        # Mark as initialized
         self._initialized = True
 
-        # Load projects
-        threading.Thread(target=self.load_projects, daemon=True).start()
+        # Pre-load projects
+        self._load_projects_sync()
 
-        # Run the event loop (blocks this thread)
         self.window.mainloop()
 
-    def setup_ui(self):
+    def _setup_ui(self):
         """Create the UI elements."""
-        # Main container with padding
-        container = ctk.CTkFrame(self.window, fg_color="#0f172a", corner_radius=12)
+        # Main container
+        container = ctk.CTkFrame(self.window, fg_color="#0f172a", corner_radius=10)
         container.pack(fill="both", expand=True, padx=2, pady=2)
 
         # Search box
-        search_frame = ctk.CTkFrame(container, fg_color="transparent")
-        search_frame.pack(fill="x", padx=20, pady=(20, 10))
-
         self.search_entry = ctk.CTkEntry(
-            search_frame,
+            container,
             placeholder_text="Search projects...",
-            height=50,
-            font=("Segoe UI", 16),
+            height=45,
+            font=("Segoe UI", 15),
             fg_color="#1e293b",
             border_color="#334155",
             border_width=2,
         )
-        self.search_entry.pack(fill="x")
-        self.search_entry.bind('<KeyRelease>', self.on_search)
-        self.search_entry.bind('<Return>', self.on_enter)
-        self.search_entry.bind('<Control-Return>', lambda e: self.on_enter(e, 'terminal') or "break")
-        self.search_entry.bind('<Shift-Return>', lambda e: self.on_enter(e, 'explorer') or "break")
-        self.search_entry.bind('<Escape>', lambda e: self.hide() or "break")
-        self.search_entry.bind('<Up>', self.on_arrow_up)
-        self.search_entry.bind('<Down>', self.on_arrow_down)
+        self.search_entry.pack(fill="x", padx=15, pady=(15, 10))
 
-        # Results scrollable frame
-        self.results_frame = ctk.CTkScrollableFrame(
-            container,
-            fg_color="#1e293b",
-            height=320,
-            corner_radius=8,
-        )
-        self.results_frame.pack(fill="both", expand=True, padx=20, pady=(0, 10))
+        # Bind keys
+        self.search_entry.bind('<KeyRelease>', self._on_key)
+        self.search_entry.bind('<Return>', lambda e: self._launch_selected('vscode'))
+        self.search_entry.bind('<Control-Return>', lambda e: self._launch_selected('terminal'))
+        self.search_entry.bind('<Shift-Return>', lambda e: self._launch_selected('explorer'))
+        self.search_entry.bind('<Escape>', lambda e: self.hide())
+        self.search_entry.bind('<Up>', self._on_up)
+        self.search_entry.bind('<Down>', self._on_down)
+
+        # Results frame (not scrollable - we limit items instead)
+        self.results_frame = ctk.CTkFrame(container, fg_color="transparent")
+        self.results_frame.pack(fill="both", expand=True, padx=15, pady=(0, 5))
+
+        # Pre-create item widgets
+        for _ in range(MAX_VISIBLE_ITEMS):
+            item = ProjectItem(self.results_frame, self._launch_project)
+            self._items.append(item)
 
         # Hints
         hints = ctk.CTkLabel(
             container,
-            text="↑↓ Navigate • Enter: Code • Ctrl+Enter: Terminal • Shift+Enter: Explorer • Esc: Close",
-            font=("Segoe UI", 11),
-            text_color="#64748b",
+            text="Enter: Code • Ctrl+Enter: Terminal • Shift+Enter/Right-click: Explorer",
+            font=("Segoe UI", 10),
+            text_color="#475569",
         )
-        hints.pack(pady=(0, 15))
+        hints.pack(pady=(0, 10))
 
-        # Initially show empty state
-        self.show_empty_state("Loading projects...")
-
-    def show_empty_state(self, message: str):
-        """Show empty state message."""
-        for widget in self.results_frame.winfo_children():
-            widget.destroy()
-
-        label = ctk.CTkLabel(
-            self.results_frame,
-            text=message,
-            font=("Segoe UI", 14),
-            text_color="#64748b",
-        )
-        label.pack(pady=40)
-
-    def load_projects(self):
-        """Load projects from API, sorted by palette recency."""
+    def _load_projects_sync(self):
+        """Load projects directly from store (fast, no HTTP)."""
         try:
-            # Fetch with palette recency sorting
-            response = requests.get(
-                'http://localhost:37453/api/projects',
-                params={'sort_by_palette': 'true'},
-                timeout=2
-            )
-            response.raise_for_status()
-            self.projects = response.json()
+            projects = _store.get_all(sort_by_palette_recency=True)
+            self.projects = [p.dict() for p in projects]
             self.filtered_projects = self.projects
+            self._projects_loaded = True
 
-            # Update UI in main thread
-            self.window.after(0, self.render_results)
+            # Update UI
+            if self.window:
+                self.window.after(0, self._render)
         except Exception as e:
-            error_msg = "Failed to load projects. Is the server running?"
-            self.window.after(0, lambda: self.show_empty_state(error_msg))
+            print(f"Failed to load projects: {e}")
 
-    def fuzzy_match(self, text: str, query: str) -> int:
-        """Simple fuzzy matching with scoring."""
-        text = text.lower()
-        query = query.lower()
+    def _on_key(self, event):
+        """Handle key press in search."""
+        # Ignore navigation keys
+        if event.keysym in ('Up', 'Down', 'Return', 'Escape', 'Shift_L', 'Shift_R',
+                           'Control_L', 'Control_R', 'Alt_L', 'Alt_R', 'Tab'):
+            return "break"
 
-        if not query:
-            return 1
+        query = self.search_entry.get()
+        if query == self._last_query:
+            return
 
-        score = 0
-        text_idx = 0
-        consecutive = 0
+        self._last_query = query
+        self._filter(query)
+        self.selected_index = 0
+        self._render()
 
-        for char in query:
-            # Find next occurrence
-            found = False
-            while text_idx < len(text):
-                if text[text_idx] == char:
-                    score += 1 + consecutive
-                    consecutive += 1
-                    found = True
-                    text_idx += 1
-                    break
-                else:
-                    consecutive = 0
-                    text_idx += 1
-
-            if not found:
-                return 0
-
-        return score
-
-    def filter_projects(self, query: str):
-        """Filter projects by fuzzy search."""
+    def _filter(self, query: str):
+        """Filter projects by query."""
         if not query.strip():
             self.filtered_projects = self.projects
             return
 
-        # Score each project
+        query_lower = query.lower()
         scored = []
+
         for project in self.projects:
-            name_score = self.fuzzy_match(project['name'], query)
-            path_score = self.fuzzy_match(project['path'], query) * 0.8
+            name = project['name'].lower()
 
-            # Tech stack scoring
-            tag_score = 0
-            if project.get('tech_stack'):
-                tag_score = max(
-                    (self.fuzzy_match(tag, query) * 0.6 for tag in project['tech_stack']),
-                    default=0
-                )
+            # Exact prefix match scores highest
+            if name.startswith(query_lower):
+                scored.append((project, 100 + len(query)))
+            # Contains match
+            elif query_lower in name:
+                scored.append((project, 50))
+            # Fuzzy match on name
+            elif self._fuzzy_match(name, query_lower):
+                scored.append((project, 25))
+            # Path contains
+            elif query_lower in project['path'].lower():
+                scored.append((project, 10))
 
-            total_score = max(name_score, path_score, tag_score)
-
-            if total_score > 0:
-                scored.append((project, total_score))
-
-        # Sort by score
         scored.sort(key=lambda x: x[1], reverse=True)
-        self.filtered_projects = [item[0] for item in scored]
+        self.filtered_projects = [p for p, _ in scored]
 
-    def on_search(self, event=None):
-        """Handle search input."""
-        # Ignore arrow keys, modifiers, and navigation keys
-        if event and event.keysym in ('Up', 'Down', 'Left', 'Right', 'Return',
-                                       'Escape', 'Shift_L', 'Shift_R',
-                                       'Control_L', 'Control_R', 'Alt_L', 'Alt_R',
-                                       'Home', 'End', 'Tab', 'Caps_Lock'):
-            return
+    def _fuzzy_match(self, text: str, query: str) -> bool:
+        """Simple fuzzy match - all query chars must appear in order."""
+        text_idx = 0
+        for char in query:
+            found = False
+            while text_idx < len(text):
+                if text[text_idx] == char:
+                    found = True
+                    text_idx += 1
+                    break
+                text_idx += 1
+            if not found:
+                return False
+        return True
 
-        # Check if query actually changed
-        query = self.search_entry.get()
-        if hasattr(self, '_last_query') and self._last_query == query:
-            return  # No change, don't re-render
+    def _render(self):
+        """Update visible items (no widget destruction)."""
+        # Hide all items first
+        for item in self._items:
+            item.pack_forget()
 
-        self._last_query = query
-        self.filter_projects(query)
-        self.selected_index = 0
-        self.render_results()
+        # Show items for filtered projects
+        for i, project in enumerate(self.filtered_projects[:MAX_VISIBLE_ITEMS]):
+            item = self._items[i]
+            item.set_project(project)
+            item.set_selected(i == self.selected_index)
+            item.pack(fill="x", pady=2)
 
-    def render_results(self):
-        """Render filtered results."""
-        # Clear existing
-        for widget in self.results_frame.winfo_children():
-            widget.destroy()
-
-        self._item_frames = []
-        self._item_buttons = []
-        self._item_dots = []
-
-        if not self.filtered_projects:
-            self.show_empty_state("No projects found")
-            return
-
-        # Render each project and track widgets
-        for idx, project in enumerate(self.filtered_projects[:20]):  # Limit to 20
-            widget = self.create_project_item(project, idx)
-            self._item_frames.append(widget)
-
-        # Scroll selected item into view
-        if self.selected_index < len(self._item_frames):
-            selected_widget = self._item_frames[self.selected_index]
-            self.window.after(10, lambda: self._scroll_to_widget(selected_widget))
-
-    def _scroll_to_widget(self, widget):
-        """Scroll to make a widget visible in the scrollable frame."""
-        try:
-            # Get the canvas that backs the scrollable frame
-            canvas = self.results_frame._parent_canvas
-
-            # Get widget position
-            widget.update_idletasks()
-            bbox = canvas.bbox("all")
-
-            # Calculate the widget's position
-            widget_y = widget.winfo_y()
-            canvas_height = canvas.winfo_height()
-
-            # Scroll to show the widget
-            if widget_y < 0:
-                # Widget is above visible area
-                canvas.yview_moveto(widget_y / bbox[3])
-            elif widget_y + widget.winfo_height() > canvas_height:
-                # Widget is below visible area
-                canvas.yview_moveto((widget_y + widget.winfo_height() - canvas_height) / bbox[3])
-        except:
-            pass  # Ignore scrolling errors
-
-    def create_project_item(self, project: Dict, idx: int) -> ctk.CTkFrame:
-        """Create a project result item. Returns the frame widget."""
-        is_selected = idx == self.selected_index
-
-        # Container frame - only set border_color if selected
-        frame_kwargs = {
-            "master": self.results_frame,
-            "fg_color": "#334155" if is_selected else "#1e293b",
-            "corner_radius": 6,
-            "height": 60,
-        }
-        if is_selected:
-            frame_kwargs["border_width"] = 2
-            frame_kwargs["border_color"] = "#6366f1"
-        else:
-            frame_kwargs["border_width"] = 0
-
-        item_frame = ctk.CTkFrame(**frame_kwargs)
-        item_frame.pack(fill="x", padx=5, pady=3)
-        item_frame.pack_propagate(False)
-
-        # Make clickable
-        item_frame.bind('<Button-1>', lambda e, p=project: self.launch_project(p, 'vscode'))
-
-        # Left side - icon and info
-        left_frame = ctk.CTkFrame(item_frame, fg_color="transparent")
-        left_frame.pack(side="left", fill="both", expand=True, padx=10, pady=8)
-
-        # Project name
-        name_label = ctk.CTkLabel(
-            left_frame,
-            text=project['name'],
-            font=("Segoe UI Semibold", 14),
-            text_color="#f1f5f9",
-            anchor="w",
-        )
-        name_label.pack(anchor="w")
-        name_label.bind('<Button-1>', lambda e, p=project: self.launch_project(p, 'vscode'))
-
-        # Project path (truncated)
-        path = project['path']
-        if len(path) > 60:
-            path = "..." + path[-57:]
-        path_label = ctk.CTkLabel(
-            left_frame,
-            text=path,
-            font=("Segoe UI", 11),
-            text_color="#94a3b8",
-            anchor="w",
-        )
-        path_label.pack(anchor="w")
-        path_label.bind('<Button-1>', lambda e, p=project: self.launch_project(p, 'vscode'))
-
-        # Right side - status and actions
-        right_frame = ctk.CTkFrame(item_frame, fg_color="transparent")
-        right_frame.pack(side="right", padx=10, pady=8)
-
-        # Status dot (always created, shown when not selected)
-        status = project.get('frontend_status', 'offline')
-        dot_color = "#22c55e" if status == 'online' else "#64748b"
-        status_dot = ctk.CTkLabel(
-            right_frame,
-            text="●",
-            font=("Segoe UI", 16),
-            text_color=dot_color,
-        )
-        self._item_dots.append(status_dot)
-
-        # Action buttons (always created, shown when selected)
-        btn_frame = ctk.CTkFrame(right_frame, fg_color="transparent")
-        self._item_buttons.append(btn_frame)
-
-        # Code button
-        code_btn = ctk.CTkButton(
-            btn_frame,
-            text="Code",
-            width=60,
-            height=28,
-            font=("Segoe UI", 11),
-            fg_color="#475569",
-            hover_color="#6366f1",
-            command=lambda p=project: self.launch_project(p, 'vscode')
-        )
-        code_btn.pack(side="left", padx=2)
-
-        # Terminal button
-        term_btn = ctk.CTkButton(
-            btn_frame,
-            text="Term",
-            width=60,
-            height=28,
-            font=("Segoe UI", 11),
-            fg_color="#475569",
-            hover_color="#6366f1",
-            command=lambda p=project: self.launch_project(p, 'terminal')
-        )
-        term_btn.pack(side="left", padx=2)
-
-        # Explorer button
-        exp_btn = ctk.CTkButton(
-            btn_frame,
-            text="Files",
-            width=60,
-            height=28,
-            font=("Segoe UI", 11),
-            fg_color="#475569",
-            hover_color="#6366f1",
-            command=lambda p=project: self.launch_project(p, 'explorer')
-        )
-        exp_btn.pack(side="left", padx=2)
-
-        # Show buttons or dot based on selection
-        if is_selected:
-            btn_frame.pack(side="right")
-        else:
-            status_dot.pack()
-
-        return item_frame
-
-    def on_arrow_up(self, event):
-        """Handle up arrow."""
+    def _on_up(self, event):
+        """Move selection up."""
         if self.selected_index > 0:
-            old_index = self.selected_index
             self.selected_index -= 1
-            self._update_selection(old_index, self.selected_index)
-        return "break"  # Prevent event propagation
+            self._update_selection()
+        return "break"
 
-    def on_arrow_down(self, event):
-        """Handle down arrow."""
-        if self.selected_index < len(self.filtered_projects) - 1:
-            old_index = self.selected_index
+    def _on_down(self, event):
+        """Move selection down."""
+        max_idx = min(len(self.filtered_projects), MAX_VISIBLE_ITEMS) - 1
+        if self.selected_index < max_idx:
             self.selected_index += 1
-            self._update_selection(old_index, self.selected_index)
-        return "break"  # Prevent event propagation
+            self._update_selection()
+        return "break"
 
-    def _update_selection(self, old_index: int, new_index: int):
-        """Update only the selection styling without re-rendering everything."""
-        if not self._item_frames:
-            return
+    def _update_selection(self):
+        """Update selection highlighting without full re-render."""
+        for i, item in enumerate(self._items):
+            if i < len(self.filtered_projects):
+                item.set_selected(i == self.selected_index)
 
-        # Update old selected item to unselected style
-        if 0 <= old_index < len(self._item_frames):
-            old_frame = self._item_frames[old_index]
-            old_frame.configure(fg_color="#1e293b", border_width=0)
-
-            # Hide buttons, show dot
-            if old_index < len(self._item_buttons):
-                self._item_buttons[old_index].pack_forget()
-            if old_index < len(self._item_dots):
-                self._item_dots[old_index].pack()
-
-        # Update new selected item to selected style
-        if 0 <= new_index < len(self._item_frames):
-            new_frame = self._item_frames[new_index]
-            new_frame.configure(fg_color="#334155", border_width=2, border_color="#6366f1")
-
-            # Show buttons, hide dot
-            if new_index < len(self._item_dots):
-                self._item_dots[new_index].pack_forget()
-            if new_index < len(self._item_buttons):
-                self._item_buttons[new_index].pack(side="right")
-
-            # Scroll into view
-            self.window.after(10, lambda: self._scroll_to_widget(new_frame))
-
-    def on_enter(self, event, launch_type='vscode'):
-        """Handle Enter key."""
+    def _launch_selected(self, launch_type: str):
+        """Launch the selected project."""
         if self.filtered_projects and self.selected_index < len(self.filtered_projects):
             project = self.filtered_projects[self.selected_index]
-            self.launch_project(project, launch_type)
-        return "break"  # Prevent event propagation
+            self._launch_project(project, launch_type)
+        return "break"
 
-    def launch_project(self, project: Dict, launch_type: str):
-        """Launch a project."""
-        # Hide immediately for instant feedback
+    def _launch_project(self, project: Dict, launch_type: str):
+        """Launch a project and hide palette."""
         self.hide()
 
-        # Launch in background thread (don't block UI)
         def do_launch():
             try:
-                # Launch directly (no HTTP overhead)
                 _launcher.launch(project['path'], launch_type)
-                # Mark as recently opened for recency sorting
                 _store.mark_palette_open(project['path'])
             except Exception as e:
                 print(f"Launch failed: {e}")
 
         threading.Thread(target=do_launch, daemon=True).start()
 
+    def _schedule_hide_check(self):
+        """Check if we should hide after focus loss."""
+        # Small delay to handle focus transitions
+        self.window.after(100, self._check_focus)
+
+    def _check_focus(self):
+        """Hide if window doesn't have focus."""
+        try:
+            if not self.window.focus_get():
+                self.hide()
+        except:
+            pass
+
     def show(self):
-        """Show the command palette (instant!). Thread-safe."""
+        """Show the command palette."""
         if not self.window:
             return
-
-        # Schedule on Tkinter thread
         self.window.after(0, self._do_show)
 
     def _do_show(self):
-        """Internal show method (runs on Tkinter thread)."""
-        # Center on screen
-        self.center_window()
+        """Internal show."""
+        # Refresh projects in background (non-blocking)
+        threading.Thread(target=self._load_projects_sync, daemon=True).start()
 
-        # Show window
+        # Reset state
+        self.selected_index = 0
+        self._last_query = ""
+        self.filtered_projects = self.projects
+
+        # Center and show
+        self._center_window()
         self.window.deiconify()
-
-        # Force window to front and focus
         self.window.lift()
-        self.window.focus_force()
         self.window.attributes('-topmost', True)
-        self.window.attributes('-topmost', False)  # Reset to allow other windows on top
-        self.window.attributes('-topmost', True)   # But keep on top
 
-        # First show needs extra time for Windows to fully initialize
+        # Render current projects immediately
+        self._render()
+
+        # Focus
         if self._first_show:
             self._first_show = False
-            # Multiple focus attempts with delays for first show
             self.window.after(50, self._focus_search)
             self.window.after(100, self._focus_search)
-            self.window.after(150, self._focus_search)
         else:
-            # Subsequent shows can be faster
             self.window.after(10, self._focus_search)
 
-        # Reload projects
-        threading.Thread(target=self.load_projects, daemon=True).start()
-
-    def _force_window_focus(self):
-        """Force window focus using Windows API."""
+    def _focus_search(self):
+        """Focus the search entry."""
         try:
-            # Get the Tkinter window handle
             hwnd = user32.GetParent(self.window.winfo_id())
-
-            # Get current foreground window's thread
-            foreground_hwnd = user32.GetForegroundWindow()
-            foreground_thread = user32.GetWindowThreadProcessId(foreground_hwnd, None)
-
-            # Get our thread
+            fg_hwnd = user32.GetForegroundWindow()
+            fg_thread = user32.GetWindowThreadProcessId(fg_hwnd, None)
             our_thread = kernel32.GetCurrentThreadId()
 
-            # Attach our thread to the foreground thread's input
-            # This tricks Windows into thinking we're the foreground app
-            if foreground_thread != our_thread:
-                user32.AttachThreadInput(foreground_thread, our_thread, True)
+            if fg_thread != our_thread:
+                user32.AttachThreadInput(fg_thread, our_thread, True)
 
-            # Now we can set foreground
             user32.SetForegroundWindow(hwnd)
             user32.BringWindowToTop(hwnd)
-            user32.SetFocus(hwnd)
 
-            # Detach threads
-            if foreground_thread != our_thread:
-                user32.AttachThreadInput(foreground_thread, our_thread, False)
+            if fg_thread != our_thread:
+                user32.AttachThreadInput(fg_thread, our_thread, False)
+        except:
+            pass
 
-        except Exception as e:
-            print(f"Force focus failed: {e}")
-
-    def _focus_search(self):
-        """Focus the search entry (delayed for reliability)."""
-        # Use Windows API to force window focus
-        self._force_window_focus()
-
-        # Then focus the search entry with Tkinter
         self.search_entry.focus_force()
-        self.search_entry.select_range(0, 'end')
-        self.search_entry.icursor('end')
+        self.search_entry.delete(0, 'end')
+        self.search_entry.icursor(0)
 
     def hide(self):
-        """Hide the command palette (instant!). Thread-safe."""
+        """Hide the command palette."""
         if not self.window:
             return
-
-        # Schedule on Tkinter thread
         self.window.after(0, self._do_hide)
 
     def _do_hide(self):
-        """Internal hide method (runs on Tkinter thread)."""
-        # Move off-screen instead of withdrawing
-        # This keeps the window "active" in Windows, ensuring focus works next time
-        self.window.geometry("700x500-10000-10000")
-
-        # Clear search
+        """Internal hide."""
+        self.window.geometry("600x450-10000-10000")
         self.search_entry.delete(0, 'end')
-        self.selected_index = 0
+        self._last_query = ""
 
-    def center_window(self):
+    def _center_window(self):
         """Center window on screen."""
         self.window.update_idletasks()
-
-        screen_width = self.window.winfo_screenwidth()
-        screen_height = self.window.winfo_screenheight()
-
-        x = (screen_width - 700) // 2
-        y = (screen_height - 500) // 3  # Upper third looks better
-
-        self.window.geometry(f"700x500+{x}+{y}")
+        x = (self.window.winfo_screenwidth() - 600) // 2
+        y = (self.window.winfo_screenheight() - 450) // 3
+        self.window.geometry(f"600x450+{x}+{y}")
 
     def run(self):
-        """Run the main loop (for standalone testing)."""
+        """Run standalone."""
         self.show()
         self.window.mainloop()
 

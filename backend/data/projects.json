@@ -3290,7 +3290,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": 1769891017.1275654
+    "last_palette_open": 1769895456.464215
   },
   {
     "id": "7d4e22bc-f8d0-4dd4-8bf0-3a29b4c51025",
@@ -4730,6 +4730,1146 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "249e6601-42df-45e5-9636-0f39aef198a5",
+    "name": "list-import-studio",
+    "path": "D:\\PROJECTS\\list-import-studio",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\list-import-studio\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DEV_PLAN.md",
+        "path": "D:\\PROJECTS\\list-import-studio\\DEV_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT_INFO.md",
+        "path": "D:\\PROJECTS\\list-import-studio\\ENVIRONMENT_INFO.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PROJECT_STATUS.md",
+        "path": "D:\\PROJECTS\\list-import-studio\\PROJECT_STATUS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "REFACTOR_PLAN.md",
+        "path": "D:\\PROJECTS\\list-import-studio\\REFACTOR_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\list-import-studio\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\list-import-studio\\list-import-studio.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "0188a078-08a2-4b3b-8ed2-4d5b108d4b3a",
+    "name": "slideshow-maker-v2",
+    "path": "D:\\PROJECTS\\slideshow-maker-v2",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\slideshow-maker-v2\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\slideshow-maker-v2\\slideshow-maker-v2.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": 1769894950.9351046
+  },
+  {
+    "id": "8a1611f9-9cc1-40aa-8bcf-9d7c292fcc83",
+    "name": "project-dashboard",
+    "path": "D:\\PROJECTS\\project-dashboard",
+    "type": "generic",
+    "tags": [
+      "python",
+      "react",
+      "next.js",
+      "javascript",
+      "node",
+      "git",
+      "typescript",
+      "fastapi",
+      "tailwind"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "HOTKEY_GUIDE.md",
+        "path": "D:\\PROJECTS\\project-dashboard\\HOTKEY_GUIDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "IMPLEMENTATION_SUMMARY.md",
+        "path": "D:\\PROJECTS\\project-dashboard\\IMPLEMENTATION_SUMMARY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\project-dashboard\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\project-dashboard\\docs\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\project-dashboard\\project-dashboard.code-workspace",
+    "frontend_url": "http://localhost:37452",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "238b7838-41b3-4302-86f1-822c098dcf7d",
+    "name": "code_context_builder",
+    "path": "D:\\PROJECTS\\code_context_builder",
+    "type": "node",
+    "tags": [
+      "react",
+      "javascript",
+      "node",
+      "git",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\code_context_builder\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\code_context_builder\\code_context_builder.code-workspace",
+    "frontend_url": "http://localhost:1420",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "87d55f07-2bae-4c89-8767-daec10246dfe",
+    "name": "ai_timeline",
+    "path": "D:\\PROJECTS\\ai_timeline",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\ai_timeline\\ai_timeline.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "69af92d4-3dbf-466b-b2d3-a4e12b6bfb0c",
+    "name": "singularity-timeline",
+    "path": "D:\\PROJECTS\\singularity-timeline",
+    "type": "node",
+    "tags": [
+      "react",
+      "javascript",
+      "node",
+      "git",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "_DEV_BLUEPRINT.md",
+        "path": "D:\\PROJECTS\\singularity-timeline\\_DEV_BLUEPRINT.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\singularity-timeline\\singularity-timeline.code-workspace",
+    "frontend_url": "http://localhost:5792",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "06479b0f-98dd-46d9-8bfc-fb19379b7d9f",
+    "name": "tab-manager",
+    "path": "D:\\PROJECTS\\tab-manager",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\tab-manager\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\tab-manager\\tab-manager.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "9d0cfaaa-ca6e-4ad6-8f8a-b740b2474f94",
+    "name": "adambandel.com",
+    "path": "D:\\PROJECTS\\adambandel.com",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\adambandel.com\\README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\adambandel.com\\adambandel.com.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "43829fa1-a66a-48b5-bbbe-e88045211238",
+    "name": "valadezfamily",
+    "path": "D:\\PROJECTS\\adambandel.com\\valadezfamily",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\adambandel.com\\valadezfamily\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\adambandel.com\\valadezfamily\\valadezfamily.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "a828e650-69e7-45c5-b73a-b2a68f8ba5a6",
+    "name": "dianabandel.com",
+    "path": "D:\\PROJECTS\\dianabandel.com",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\dianabandel.com\\dianabandel.com.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "f28e4b95-5d12-4807-8241-ef8f29fe9c23",
+    "name": "transformer-learning-training",
+    "path": "D:\\PROJECTS\\transformer-learning-training",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT_INFO_old.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\docs\\ENVIRONMENT_INFO_old.md",
+        "type": "markdown"
+      },
+      {
+        "name": "LOCAL_ENVIRONMENT_NOTES.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\docs\\LOCAL_ENVIRONMENT_NOTES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "OPTUNA_GUIDE.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\docs\\OPTUNA_GUIDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PLAN_new.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\docs\\PLAN_new.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PLAN_old.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\docs\\PLAN_old.md",
+        "type": "markdown"
+      },
+      {
+        "name": "RUNPOD_ENV_REBUILD_NOTES.md",
+        "path": "D:\\PROJECTS\\transformer-learning-training\\docs\\RUNPOD_ENV_REBUILD_NOTES.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\transformer-learning-training\\transformer-learning-training.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "a2550209-63aa-436b-a219-d869ab3c3170",
+    "name": "tokyo-map",
+    "path": "D:\\PROJECTS\\tokyo-map",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\tokyo-map\\tokyo-map.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "2437b4ee-c8f8-4bc4-87b2-687b3c2ac3c2",
+    "name": "tree-of-life",
+    "path": "D:\\PROJECTS\\tree-of-life",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\tree-of-life\\tree-of-life.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "fa2e5510-67c4-477d-909f-e174ef6f21f3",
+    "name": "window-layout",
+    "path": "D:\\PROJECTS\\window-layout",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\window-layout\\DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\window-layout\\window-layout.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "071dcafd-2ab9-4bac-bd1a-9f159c3c13b7",
+    "name": "ytdb",
+    "path": "D:\\PROJECTS\\ytdb",
+    "type": "node",
+    "tags": [
+      "node",
+      "git",
+      "javascript",
+      "react"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\ytdb\\ytdb.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "d0bf9ba6-e7fb-4c2c-827b-dfccb6f05345",
+    "name": "skill-grid",
+    "path": "D:\\PROJECTS\\skill-grid",
+    "type": "node",
+    "tags": [
+      "node",
+      "git",
+      "javascript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\skill-grid\\README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "f6037ed7-3557-4cbd-8c57-c18e54b2ce8c",
+    "name": "anki-create-sync",
+    "path": "D:\\PROJECTS\\anki-create-sync",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "ANKICONNECT DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\anki-create-sync\\ANKICONNECT DOCUMENTATION.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\anki-create-sync\\anki-create-sync.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "4bad8c0d-3530-45e8-b261-ce68ed3dcbe2",
+    "name": "brihTK",
+    "path": "D:\\PROJECTS\\brihTK",
+    "type": "node",
+    "tags": [
+      "node",
+      "typescript",
+      "git",
+      "javascript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "GAME_SPEC.md",
+        "path": "D:\\PROJECTS\\brihTK\\GAME_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\brihTK\\README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "f812c260-ef5e-402a-8b35-28895a33ca8f",
+    "name": "axiom",
+    "path": "D:\\PROJECTS\\axiom",
+    "type": "docker",
+    "tags": [
+      "docker",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\axiom\\axiom.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "a0f6a573-1601-4da5-a76f-084d59087bab",
+    "name": "civ-evolver",
+    "path": "D:\\PROJECTS\\civ-evolver",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "577ff655-6823-4613-b22c-5e5d434c1925",
+    "name": "csv_analyzer",
+    "path": "D:\\PROJECTS\\csv_analyzer",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "1d610f07-3791-4246-85bf-d6ebaba51d85",
+    "name": "csv_profiler",
+    "path": "D:\\PROJECTS\\csv_profiler",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\csv_profiler\\csv_profiler.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "0c2aa737-3280-42de-9027-52cb85a9ff6c",
+    "name": "cyberpunk bullethell",
+    "path": "D:\\PROJECTS\\cyberpunk bullethell",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\cyberpunk bullethell\\cyberpunk bullethell.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "ca2a1633-c4a5-4d32-8e71-7bdc90647c32",
+    "name": "asi-builder-sim",
+    "path": "D:\\PROJECTS\\asi-builder-sim",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [
+      {
+        "name": "conceptual-design-1.md",
+        "path": "D:\\PROJECTS\\asi-builder-sim\\conceptual-design-1.md",
+        "type": "markdown"
+      },
+      {
+        "name": "conceptual-design-2.md",
+        "path": "D:\\PROJECTS\\asi-builder-sim\\conceptual-design-2.md",
+        "type": "markdown"
+      },
+      {
+        "name": "phased-dev-plan-1.md",
+        "path": "D:\\PROJECTS\\asi-builder-sim\\phased-dev-plan-1.md",
+        "type": "markdown"
+      },
+      {
+        "name": "phased-dev-plan-2.md",
+        "path": "D:\\PROJECTS\\asi-builder-sim\\phased-dev-plan-2.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\asi-builder-sim\\asi-builder-sim.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "520b44d1-0fbf-47d1-8e83-8f4391acbc45",
+    "name": "agent-thunderdome",
+    "path": "D:\\PROJECTS\\agent-thunderdome",
+    "type": "python",
+    "tags": [
+      "fastapi",
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\agent-thunderdome\\DOCUMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:8000/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:8000/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:8000/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\agent-thunderdome\\agent-thunderdome.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "5147fafb-61d9-44b6-8345-ae9f598b2277",
+    "name": "agent-god-action-simulator",
+    "path": "D:\\PROJECTS\\agent-god-action-simulator",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\agent-god-action-simulator\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "DEV_PLAN.md",
+        "path": "D:\\PROJECTS\\agent-god-action-simulator\\DEV_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PROJECT_DESIGN.md",
+        "path": "D:\\PROJECTS\\agent-god-action-simulator\\PROJECT_DESIGN.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\agent-god-action-simulator\\agent-god-action-simulator.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "0d10cde6-f174-40b4-a4c1-fd8c6a4dc673",
+    "name": "agent-brancher",
+    "path": "D:\\PROJECTS\\agent-brancher",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\agent-brancher\\agent-brancher.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "8d9bd03b-7e07-4b64-a493-918196152e15",
+    "name": "email-planner",
+    "path": "D:\\PROJECTS\\email-planner",
+    "type": "node",
+    "tags": [
+      "react",
+      "javascript",
+      "node",
+      "git",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\email-planner\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\email-planner\\ARCHITECTURE.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\email-planner\\email-planner.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "23fad6c9-32b8-4c9f-96de-4587945a4634",
+    "name": "galaxy-sim",
+    "path": "D:\\PROJECTS\\galaxy-sim",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\galaxy-sim\\AGENTS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\galaxy-sim\\galaxy-sim.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "01a39121-7f9e-4473-a931-6eaf53d4f879",
+    "name": "gmail-fetcher",
+    "path": "D:\\PROJECTS\\gmail-fetcher",
+    "type": "docker",
+    "tags": [
+      "react",
+      "javascript",
+      "node",
+      "docker",
+      "git",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "API_DOCS.md",
+        "path": "D:\\PROJECTS\\gmail-fetcher\\API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\gmail-fetcher\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\gmail-fetcher\\gmail-fetcher.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": "40881",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "60835069-c86c-46e7-867a-dc7d46396187",
+    "name": "inbox-processor",
+    "path": "D:\\PROJECTS\\inbox-processor",
+    "type": "docker",
+    "tags": [
+      "react",
+      "javascript",
+      "node",
+      "docker",
+      "git",
+      "typescript",
+      "tailwind"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DESIGN_DOC.md",
+        "path": "D:\\PROJECTS\\inbox-processor\\DESIGN_DOC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATIVE_API_DOCS.md",
+        "path": "D:\\PROJECTS\\inbox-processor\\docs\\GENERATIVE_API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GMAIL_FETCHER_API_DOCS.md",
+        "path": "D:\\PROJECTS\\inbox-processor\\docs\\GMAIL_FETCHER_API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PMF_API_DOCS.md",
+        "path": "D:\\PROJECTS\\inbox-processor\\docs\\PMF_API_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "PMF_INTEGRATION.md",
+        "path": "D:\\PROJECTS\\inbox-processor\\docs\\PMF_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\inbox-processor\\docs\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\inbox-processor\\inbox-processor.code-workspace",
+    "frontend_url": "http://localhost:3000",
+    "backend_port": "48337",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "beececd8-083d-4c0d-81f6-cdd0e6b27f22",
+    "name": "task-windows",
+    "path": "D:\\PROJECTS\\task-windows",
+    "type": "node",
+    "tags": [
+      "react",
+      "next.js",
+      "javascript",
+      "node",
+      "docker",
+      "git",
+      "typescript",
+      "tailwind"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\task-windows\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\task-windows\\README.md",
+        "type": "markdown"
+      },
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\task-windows\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "Swagger UI",
+        "path": "http://localhost:48012/docs",
+        "type": "link"
+      },
+      {
+        "name": "ReDoc",
+        "path": "http://localhost:48012/redoc",
+        "type": "link"
+      },
+      {
+        "name": "OpenAPI JSON",
+        "path": "http://localhost:48012/openapi.json",
+        "type": "link"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\task-windows\\task-windows.code-workspace",
+    "frontend_url": "http://localhost:48012",
+    "backend_port": "48012",
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "81a69406-2e16-4e50-b158-38af6909f7f1",
+    "name": "hand-detector",
+    "path": "D:\\PROJECTS\\hand-detector",
+    "type": "python",
+    "tags": [
+      "git",
+      "python"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "TECHNICAL_DOCS.md",
+        "path": "D:\\PROJECTS\\hand-detector\\docs\\TECHNICAL_DOCS.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\hand-detector\\hand-detector.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "9e125f48-4959-4e40-bfd6-854299cda14a",
+    "name": "prompt-manager",
+    "path": "D:\\PROJECTS\\prompt-manager",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\prompt-manager\\prompt-manager.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "02c9660b-35bb-4c81-9fd9-1db87a5aa035",
+    "name": "ravel-rs",
+    "path": "D:\\PROJECTS\\ravel-rs",
+    "type": "rust",
+    "tags": [
+      "rust",
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "DOCUMENTATION.md",
+        "path": "D:\\PROJECTS\\ravel-rs\\DOCUMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\ravel-rs\\README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\ravel-rs\\ravel-rs.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "b582f339-be07-4886-acf2-f7ff2d62b893",
+    "name": "wallpaper-boi",
+    "path": "D:\\PROJECTS\\wallpaper-boi",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\wallpaper-boi\\wallpaper-boi.code-workspace",
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
