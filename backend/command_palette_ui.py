@@ -31,6 +31,8 @@ class CommandPaletteUI:
 
         # Item references for efficient updates
         self._item_frames: List[ctk.CTkFrame] = []
+        self._item_buttons: List[ctk.CTkFrame] = []  # Button frames for each item
+        self._item_dots: List[ctk.CTkLabel] = []  # Status dots for each item
         self._last_query = ""
 
         # Thread-safe flag
@@ -255,6 +257,8 @@ class CommandPaletteUI:
             widget.destroy()
 
         self._item_frames = []
+        self._item_buttons = []
+        self._item_dots = []
 
         if not self.filtered_projects:
             self.show_empty_state("No projects found")
@@ -351,60 +355,64 @@ class CommandPaletteUI:
         right_frame = ctk.CTkFrame(item_frame, fg_color="transparent")
         right_frame.pack(side="right", padx=10, pady=8)
 
-        # Action buttons (only show on selected)
+        # Status dot (always created, shown when not selected)
+        status = project.get('frontend_status', 'offline')
+        dot_color = "#22c55e" if status == 'online' else "#64748b"
+        status_dot = ctk.CTkLabel(
+            right_frame,
+            text="●",
+            font=("Segoe UI", 16),
+            text_color=dot_color,
+        )
+        self._item_dots.append(status_dot)
+
+        # Action buttons (always created, shown when selected)
+        btn_frame = ctk.CTkFrame(right_frame, fg_color="transparent")
+        self._item_buttons.append(btn_frame)
+
+        # Code button
+        code_btn = ctk.CTkButton(
+            btn_frame,
+            text="Code",
+            width=60,
+            height=28,
+            font=("Segoe UI", 11),
+            fg_color="#475569",
+            hover_color="#6366f1",
+            command=lambda p=project: self.launch_project(p, 'vscode')
+        )
+        code_btn.pack(side="left", padx=2)
+
+        # Terminal button
+        term_btn = ctk.CTkButton(
+            btn_frame,
+            text="Term",
+            width=60,
+            height=28,
+            font=("Segoe UI", 11),
+            fg_color="#475569",
+            hover_color="#6366f1",
+            command=lambda p=project: self.launch_project(p, 'terminal')
+        )
+        term_btn.pack(side="left", padx=2)
+
+        # Explorer button
+        exp_btn = ctk.CTkButton(
+            btn_frame,
+            text="Files",
+            width=60,
+            height=28,
+            font=("Segoe UI", 11),
+            fg_color="#475569",
+            hover_color="#6366f1",
+            command=lambda p=project: self.launch_project(p, 'explorer')
+        )
+        exp_btn.pack(side="left", padx=2)
+
+        # Show buttons or dot based on selection
         if is_selected:
-            btn_frame = ctk.CTkFrame(right_frame, fg_color="transparent")
             btn_frame.pack(side="right")
-
-            # Code button
-            code_btn = ctk.CTkButton(
-                btn_frame,
-                text="Code",
-                width=60,
-                height=28,
-                font=("Segoe UI", 11),
-                fg_color="#475569",
-                hover_color="#6366f1",
-                command=lambda p=project: self.launch_project(p, 'vscode')
-            )
-            code_btn.pack(side="left", padx=2)
-
-            # Terminal button
-            term_btn = ctk.CTkButton(
-                btn_frame,
-                text="Term",
-                width=60,
-                height=28,
-                font=("Segoe UI", 11),
-                fg_color="#475569",
-                hover_color="#6366f1",
-                command=lambda p=project: self.launch_project(p, 'terminal')
-            )
-            term_btn.pack(side="left", padx=2)
-
-            # Explorer button
-            exp_btn = ctk.CTkButton(
-                btn_frame,
-                text="Files",
-                width=60,
-                height=28,
-                font=("Segoe UI", 11),
-                fg_color="#475569",
-                hover_color="#6366f1",
-                command=lambda p=project: self.launch_project(p, 'explorer')
-            )
-            exp_btn.pack(side="left", padx=2)
         else:
-            # Just show status dot
-            status = project.get('frontend_status', 'offline')
-            dot_color = "#22c55e" if status == 'online' else "#64748b"
-
-            status_dot = ctk.CTkLabel(
-                right_frame,
-                text="●",
-                font=("Segoe UI", 16),
-                text_color=dot_color,
-            )
             status_dot.pack()
 
         return item_frame
@@ -435,10 +443,22 @@ class CommandPaletteUI:
             old_frame = self._item_frames[old_index]
             old_frame.configure(fg_color="#1e293b", border_width=0)
 
+            # Hide buttons, show dot
+            if old_index < len(self._item_buttons):
+                self._item_buttons[old_index].pack_forget()
+            if old_index < len(self._item_dots):
+                self._item_dots[old_index].pack()
+
         # Update new selected item to selected style
         if 0 <= new_index < len(self._item_frames):
             new_frame = self._item_frames[new_index]
             new_frame.configure(fg_color="#334155", border_width=2, border_color="#6366f1")
+
+            # Show buttons, hide dot
+            if new_index < len(self._item_dots):
+                self._item_dots[new_index].pack_forget()
+            if new_index < len(self._item_buttons):
+                self._item_buttons[new_index].pack(side="right")
 
             # Scroll into view
             self.window.after(10, lambda: self._scroll_to_widget(new_frame))
