@@ -37,6 +37,12 @@ class Launcher:
                 self._launch_terminal(project_path)
             elif launch_type == "explorer":
                 self._launch_explorer(project_path)
+            elif launch_type == "claude":
+                self._launch_cli_tool(project_path, "claude")
+            elif launch_type == "codex":
+                self._launch_cli_tool(project_path, "codex")
+            elif launch_type == "opencode":
+                self._launch_cli_tool(project_path, "opencode")
             else:
                 raise HTTPException(status_code=400, detail=f"Unknown launch type: {launch_type}")
         except FileNotFoundError as e:
@@ -78,6 +84,19 @@ class Launcher:
         """Open Directory Opus at the given path."""
         dopus = r"C:\Program Files\GPSoftware\Directory Opus\dopus.exe"
         subprocess.Popen([dopus, str(path)])
+
+    def _launch_cli_tool(self, path: Path, tool: str):
+        """Open terminal at path and run a CLI tool (claude, codex, opencode)."""
+        # Check Windows Terminal availability (cached)
+        if Launcher._wt_available is None:
+            wt_path = os.path.expandvars(r"%LOCALAPPDATA%\Microsoft\WindowsApps\wt.exe")
+            Launcher._wt_available = os.path.exists(wt_path)
+
+        if Launcher._wt_available:
+            # Use cmd /k to load user's environment and keep terminal open
+            subprocess.Popen(["wt", "-d", str(path), "cmd", "/k", tool])
+        else:
+            subprocess.Popen(f'start cmd /k "cd /d {path} && {tool}"', shell=True)
 
     def _find_code_cmd(self) -> str:
         """Find the VS Code command (cached for speed)."""

@@ -20,38 +20,69 @@ kernel32 = ctypes.windll.kernel32
 _launcher = Launcher()
 _store = ProjectStore()
 
-# How many items to show max
-MAX_VISIBLE_ITEMS = 15
+# How many items to show max (fits in 380px height with 56px items + padding)
+MAX_VISIBLE_ITEMS = 6
 
 
 class ProjectItem(ctk.CTkFrame):
     """Reusable project item widget."""
 
     def __init__(self, master, on_launch):
-        super().__init__(master, fg_color="#1e293b", corner_radius=6, height=50)
+        super().__init__(master, fg_color="#1e293b", corner_radius=8, height=56)
         self.pack_propagate(False)
 
         self._on_launch = on_launch
         self._project = None
+        self._selected = False
 
         # Simple layout: name on left, path below
         self._name_label = ctk.CTkLabel(
             self,
             text="",
-            font=("Segoe UI Semibold", 13),
+            font=("Segoe UI Semibold", 15),
             text_color="#f1f5f9",
             anchor="w",
         )
-        self._name_label.place(x=12, y=6)
+        self._name_label.place(x=14, y=6)
 
         self._path_label = ctk.CTkLabel(
             self,
             text="",
-            font=("Segoe UI", 10),
+            font=("Segoe UI", 11),
             text_color="#64748b",
             anchor="w",
         )
-        self._path_label.place(x=12, y=26)
+        self._path_label.place(x=14, y=30)
+
+        # Buttons frame (shown when selected)
+        self._btn_frame = ctk.CTkFrame(self, fg_color="transparent")
+
+        btn_style = {"width": 65, "height": 26, "font": ("Segoe UI", 10),
+                     "fg_color": "#475569", "hover_color": "#6366f1"}
+
+        self._btn_code = ctk.CTkButton(self._btn_frame, text="Code",
+            command=lambda: self._do_launch('vscode'), **btn_style)
+        self._btn_code.pack(side="left", padx=2)
+
+        self._btn_term = ctk.CTkButton(self._btn_frame, text="Terminal",
+            command=lambda: self._do_launch('terminal'), **btn_style)
+        self._btn_term.pack(side="left", padx=2)
+
+        self._btn_folder = ctk.CTkButton(self._btn_frame, text="Folder",
+            command=lambda: self._do_launch('explorer'), **btn_style)
+        self._btn_folder.pack(side="left", padx=2)
+
+        self._btn_claude = ctk.CTkButton(self._btn_frame, text="Claude",
+            command=lambda: self._do_launch('claude'), **btn_style)
+        self._btn_claude.pack(side="left", padx=2)
+
+        self._btn_codex = ctk.CTkButton(self._btn_frame, text="Codex",
+            command=lambda: self._do_launch('codex'), **btn_style)
+        self._btn_codex.pack(side="left", padx=2)
+
+        self._btn_opencode = ctk.CTkButton(self._btn_frame, text="OpenCode",
+            command=lambda: self._do_launch('opencode'), **btn_style)
+        self._btn_opencode.pack(side="left", padx=2)
 
         # Bind clicks
         self.bind('<Button-1>', self._on_click)
@@ -62,6 +93,10 @@ class ProjectItem(ctk.CTkFrame):
         self.bind('<Button-3>', self._on_right_click)
         self._name_label.bind('<Button-3>', self._on_right_click)
         self._path_label.bind('<Button-3>', self._on_right_click)
+
+    def _do_launch(self, launch_type: str):
+        if self._project:
+            self._on_launch(self._project, launch_type)
 
     def set_project(self, project: Dict):
         """Update this item with project data."""
@@ -76,10 +111,13 @@ class ProjectItem(ctk.CTkFrame):
 
     def set_selected(self, selected: bool):
         """Update selection state."""
+        self._selected = selected
         if selected:
             self.configure(fg_color="#334155", border_width=2, border_color="#6366f1")
+            self._btn_frame.place(relx=1.0, y=14, anchor="ne", x=-10)
         else:
             self.configure(fg_color="#1e293b", border_width=0)
+            self._btn_frame.place_forget()
 
     def _on_click(self, event=None):
         if self._project:
@@ -130,7 +168,7 @@ class CommandPaletteUI:
         """Run Tkinter in its own thread."""
         self.window = ctk.CTk()
         self.window.title("Command Palette")
-        self.window.geometry("600x450")
+        self.window.geometry("750x550")
         self.window.resizable(False, False)
         self.window.overrideredirect(True)
         self.window.attributes('-topmost', True)
@@ -141,7 +179,7 @@ class CommandPaletteUI:
         self._setup_ui()
 
         # Start off-screen
-        self.window.geometry("600x450-10000-10000")
+        self.window.geometry("750x550-10000-10000")
         self.window.update()
 
         # Bind focus loss
@@ -164,40 +202,64 @@ class CommandPaletteUI:
         self.search_entry = ctk.CTkEntry(
             container,
             placeholder_text="Search projects...",
-            height=45,
-            font=("Segoe UI", 15),
+            height=50,
+            font=("Segoe UI", 17),
             fg_color="#1e293b",
             border_color="#334155",
             border_width=2,
         )
-        self.search_entry.pack(fill="x", padx=15, pady=(15, 10))
+        self.search_entry.pack(fill="x", padx=20, pady=(20, 12))
 
         # Bind keys
         self.search_entry.bind('<KeyRelease>', self._on_key)
         self.search_entry.bind('<Return>', lambda e: self._launch_selected('vscode'))
         self.search_entry.bind('<Control-Return>', lambda e: self._launch_selected('terminal'))
         self.search_entry.bind('<Shift-Return>', lambda e: self._launch_selected('explorer'))
+        self.search_entry.bind('<Control-c>', lambda e: self._launch_selected('claude') or "break")
+        self.search_entry.bind('<Control-x>', lambda e: self._launch_selected('codex') or "break")
+        self.search_entry.bind('<Control-z>', lambda e: self._launch_selected('opencode') or "break")
         self.search_entry.bind('<Escape>', lambda e: self.hide())
         self.search_entry.bind('<Up>', self._on_up)
         self.search_entry.bind('<Down>', self._on_down)
 
-        # Results frame (not scrollable - we limit items instead)
-        self.results_frame = ctk.CTkFrame(container, fg_color="transparent")
-        self.results_frame.pack(fill="both", expand=True, padx=15, pady=(0, 5))
+        # Results frame with fixed height so it doesn't cover hints
+        self.results_frame = ctk.CTkFrame(container, fg_color="transparent", height=380)
+        self.results_frame.pack(fill="x", padx=20, pady=(0, 8))
+        self.results_frame.pack_propagate(False)
 
         # Pre-create item widgets
         for _ in range(MAX_VISIBLE_ITEMS):
             item = ProjectItem(self.results_frame, self._launch_project)
             self._items.append(item)
 
-        # Hints
-        hints = ctk.CTkLabel(
-            container,
-            text="Enter: Code • Ctrl+Enter: Terminal • Shift+Enter/Right-click: Explorer",
-            font=("Segoe UI", 10),
-            text_color="#475569",
-        )
-        hints.pack(pady=(0, 10))
+        # Hints frame
+        hints_frame = ctk.CTkFrame(container, fg_color="transparent")
+        hints_frame.pack(pady=(0, 15))
+
+        hint_style = {"font": ("Segoe UI", 11), "text_color": "#64748b"}
+        key_style = {"font": ("Consolas", 11), "text_color": "#94a3b8"}
+
+        # Row 1: Basic actions
+        row1 = ctk.CTkFrame(hints_frame, fg_color="transparent")
+        row1.pack()
+        ctk.CTkLabel(row1, text="Enter", **key_style).pack(side="left")
+        ctk.CTkLabel(row1, text=" Code   ", **hint_style).pack(side="left")
+        ctk.CTkLabel(row1, text="Ctrl+Enter", **key_style).pack(side="left")
+        ctk.CTkLabel(row1, text=" Terminal   ", **hint_style).pack(side="left")
+        ctk.CTkLabel(row1, text="Shift+Enter", **key_style).pack(side="left")
+        ctk.CTkLabel(row1, text=" Folder   ", **hint_style).pack(side="left")
+        ctk.CTkLabel(row1, text="Esc", **key_style).pack(side="left")
+        ctk.CTkLabel(row1, text=" Close", **hint_style).pack(side="left")
+
+        # Row 2: AI tools
+        row2 = ctk.CTkFrame(hints_frame, fg_color="transparent")
+        row2.pack(pady=(4, 0))
+        ctk.CTkLabel(row2, text="Ctrl+C", **key_style).pack(side="left")
+        ctk.CTkLabel(row2, text=" Claude   ", **hint_style).pack(side="left")
+        ctk.CTkLabel(row2, text="Ctrl+X", **key_style).pack(side="left")
+        ctk.CTkLabel(row2, text=" Codex   ", **hint_style).pack(side="left")
+        ctk.CTkLabel(row2, text="Ctrl+Z", **key_style).pack(side="left")
+        ctk.CTkLabel(row2, text=" OpenCode", **hint_style).pack(side="left")
 
     def _load_projects_sync(self):
         """Load projects directly from store (fast, no HTTP)."""
@@ -403,16 +465,16 @@ class CommandPaletteUI:
 
     def _do_hide(self):
         """Internal hide."""
-        self.window.geometry("600x450-10000-10000")
+        self.window.geometry("750x550-10000-10000")
         self.search_entry.delete(0, 'end')
         self._last_query = ""
 
     def _center_window(self):
         """Center window on screen."""
         self.window.update_idletasks()
-        x = (self.window.winfo_screenwidth() - 600) // 2
-        y = (self.window.winfo_screenheight() - 450) // 3
-        self.window.geometry(f"600x450+{x}+{y}")
+        x = (self.window.winfo_screenwidth() - 750) // 2
+        y = (self.window.winfo_screenheight() - 550) // 3
+        self.window.geometry(f"750x550+{x}+{y}")
 
     def run(self):
         """Run standalone."""

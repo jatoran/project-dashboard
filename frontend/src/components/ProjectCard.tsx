@@ -69,9 +69,30 @@ export default function ProjectCard({ project, status, onClick, onLaunch, format
                     </div>
 
                     {/* Primary Action Button - Stops propagation to prevent modal open */}
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5">
                         {/* Desktop-only extra actions */}
-                        <div className="hidden md:flex gap-2">
+                        <div className="hidden md:flex gap-1.5">
+                            <button
+                                onClick={(e) => { e.stopPropagation(); onLaunch(project.path, 'claude'); }}
+                                className="px-1.5 py-1 rounded-md bg-slate-800 text-[10px] font-medium text-slate-400 hover:text-orange-400 hover:bg-slate-700 transition-colors"
+                                title="Open Claude"
+                            >
+                                Claude
+                            </button>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); onLaunch(project.path, 'codex'); }}
+                                className="px-1.5 py-1 rounded-md bg-slate-800 text-[10px] font-medium text-slate-400 hover:text-green-400 hover:bg-slate-700 transition-colors"
+                                title="Open Codex"
+                            >
+                                Codex
+                            </button>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); onLaunch(project.path, 'opencode'); }}
+                                className="px-1.5 py-1 rounded-md bg-slate-800 text-[10px] font-medium text-slate-400 hover:text-purple-400 hover:bg-slate-700 transition-colors"
+                                title="Open Opencode"
+                            >
+                                Opencode
+                            </button>
                             <button
                                 onClick={(e) => { e.stopPropagation(); onLaunch(project.path, 'terminal'); }}
                                 className="p-1.5 rounded-md bg-slate-800 text-slate-400 hover:text-emerald-400 hover:bg-slate-700 transition-colors"

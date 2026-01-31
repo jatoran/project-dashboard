@@ -2969,7 +2969,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": 1769891240.7269738
+    "last_palette_open": 1769898326.3637087
   },
   {
     "id": "f7e7c7b7-f669-4eb9-a1c6-19dbba6f757d",
@@ -3290,7 +3290,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": 1769895456.464215
+    "last_palette_open": 1769898356.7216163
   },
   {
     "id": "7d4e22bc-f8d0-4dd4-8bf0-3a29b4c51025",
@@ -3338,7 +3338,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": 1769891001.3836124
+    "last_palette_open": 1769898353.4537873
   },
   {
     "id": "4ebb4078-f48b-4778-ba6d-ca3882e154f1",
@@ -3414,7 +3414,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": null
+    "last_palette_open": 1769898110.1281636
   },
   {
     "id": "7dbd2f81-6b50-4527-b690-bf275f6da9d3",
@@ -5015,7 +5015,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": null
+    "last_palette_open": 1769898360.5517936
   },
   {
     "id": "43829fa1-a66a-48b5-bbbe-e88045211238",
@@ -5243,7 +5243,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": null
+    "last_palette_open": 1769895846.4357457
   },
   {
     "id": "f6037ed7-3557-4cbd-8c57-c18e54b2ce8c",
@@ -5713,7 +5713,7 @@
     "frontend_port_override": null,
     "backend_port_override": null,
     "position": null,
-    "last_palette_open": null
+    "last_palette_open": 1769898367.8156438
   },
   {
     "id": "beececd8-083d-4c0d-81f6-cdd0e6b27f22",
@@ -5870,6 +5870,71 @@
     "custom_links": [],
     "custom_docs": [],
     "vscode_workspace_file": "D:\\PROJECTS\\wallpaper-boi\\wallpaper-boi.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "5609985e-b372-48f7-a8f0-508a70a459d1",
+    "name": "Studio-bella",
+    "path": "D:\\PROJECTS\\Studio-bella",
+    "type": "generic",
+    "tags": [
+      "git"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\Studio-bella\\Studio-bella.code-workspace",
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "32f30e36-0e8c-4ec2-bd7f-fe644eaacda2",
+    "name": "vine-reviews",
+    "path": "D:\\PROJECTS\\vine-reviews",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
+    "frontend_url": null,
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null,
+    "last_palette_open": null
+  },
+  {
+    "id": "97dcbc36-e475-49f1-b561-76c69396197a",
+    "name": "project-corpus",
+    "path": "D:\\PROJECTS\\adambandel.com\\project-corpus",
+    "type": "generic",
+    "tags": [],
+    "description": null,
+    "git_status": null,
+    "docs": [
+      {
+        "name": "README.md",
+        "path": "D:\\PROJECTS\\adambandel.com\\project-corpus\\README.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": null,
     "frontend_url": null,
     "backend_port": null,
     "frontend_port_override": null,
