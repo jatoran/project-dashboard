@@ -3,7 +3,7 @@ import json
 import subprocess
 from pathlib import Path
 from typing import List, Dict, Optional
-from backend.models import Project
+from ..models import Project
 import uuid
 import re
 import yaml

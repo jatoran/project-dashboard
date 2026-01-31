@@ -1,21 +1,20 @@
 import os
-import requests
+from pathlib import Path
 from fastapi import APIRouter, HTTPException
 from typing import List
-from backend.models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest, PortOverrideRequest, ReorderRequest
-from backend.services.store import ProjectStore
-from backend.services.launcher import Launcher
-from backend.utils.path_utils import linux_to_windows
+from ..models import Project, CreateProjectRequest, LaunchRequest, AddLinkRequest, AddDocRequest, PortOverrideRequest, ReorderRequest
+from ..services.store import ProjectStore
+from ..services.launcher import Launcher
 
 router = APIRouter()
 store = ProjectStore()
 launcher = Launcher()
 
+
 @router.get("/projects", response_model=List[Project])
 def get_projects():
     return store.get_all()
 
-# ... [keep existing endpoints] ...
 
 @router.post("/projects/{project_id}/links", response_model=Project)
 def add_custom_link(project_id: str, request: AddLinkRequest):
@@ -24,12 +23,14 @@ def add_custom_link(project_id: str, request: AddLinkRequest):
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+
 @router.delete("/projects/{project_id}/links/{name}", response_model=Project)
 def remove_custom_link(project_id: str, name: str):
     try:
         return store.remove_custom_link(project_id, name)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 
 @router.post("/projects/{project_id}/custom-docs", response_model=Project)
 def add_custom_doc(project_id: str, request: AddDocRequest):
@@ -38,12 +39,14 @@ def add_custom_doc(project_id: str, request: AddDocRequest):
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+
 @router.delete("/projects/{project_id}/custom-docs/{name}", response_model=Project)
 def remove_custom_doc(project_id: str, name: str):
     try:
         return store.remove_custom_doc(project_id, name)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 
 @router.post("/projects/{project_id}/ports", response_model=Project)
 def update_ports(project_id: str, request: PortOverrideRequest):
@@ -52,31 +55,37 @@ def update_ports(project_id: str, request: PortOverrideRequest):
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+
 @router.get("/files/content")
 def get_file_content(path: str):
-    """Reads and returns the content of a file via the host agent."""
-    host_agent_url = os.getenv("HOST_AGENT_URL", "http://host.docker.internal:9876")
-
-    if not host_agent_url:
-        raise HTTPException(status_code=501, detail="File content functionality disabled (HOST_AGENT_URL not set).")
-
+    """Read and return the content of a file directly from the filesystem."""
     try:
-        # The host agent expects Windows paths. The dashboard backend holds Linux paths.
-        # So we convert.
-        win_path = linux_to_windows(path)
+        file_path = Path(path)
         
-        response = requests.get(f"{host_agent_url}/files/content", params={"path": win_path}, timeout=10)
-        response.raise_for_status() # Raise an exception for HTTP errors (4xx or 5xx)
+        if not file_path.exists():
+            raise HTTPException(status_code=404, detail=f"File not found: {path}")
         
-        agent_response = response.json()
-        if response.status_code == 200 and "status" in agent_response and agent_response["status"] == "error":
-            raise HTTPException(status_code=404, detail=agent_response.get('message', 'File not found via agent'))
+        if not file_path.is_file():
+            raise HTTPException(status_code=400, detail=f"Path is not a file: {path}")
         
-        return agent_response
-    except requests.exceptions.RequestException as e:
-        raise HTTPException(status_code=502, detail=f"Failed to connect to host agent for file content: {e}")
+        # Try to detect encoding
+        content = None
+        for encoding in ['utf-8', 'utf-16', 'latin-1']:
+            try:
+                content = file_path.read_text(encoding=encoding)
+                break
+            except UnicodeDecodeError:
+                continue
+        
+        if content is None:
+            raise HTTPException(status_code=500, detail="Unable to read file (encoding issue)")
+        
+        return {"content": content, "path": str(file_path)}
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Unexpected error during host agent file content fetch: {e}")
+        raise HTTPException(status_code=500, detail=f"Error reading file: {e}")
+
 
 @router.post("/projects", response_model=Project)
 def add_project(request: CreateProjectRequest):
@@ -90,6 +99,7 @@ def add_project(request: CreateProjectRequest):
         print(f"[ERROR] Router caught unexpected exception: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @router.delete("/projects/{project_id}")
 def delete_project(project_id: str):
     try:
@@ -97,6 +107,7 @@ def delete_project(project_id: str):
         return {"status": "success", "message": f"Project {project_id} removed"}
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 
 @router.post("/launch")
 def launch_project(request: LaunchRequest):
@@ -106,6 +117,7 @@ def launch_project(request: LaunchRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @router.post("/projects/reorder", response_model=List[Project])
 def reorder_projects(request: ReorderRequest):
     """Update project positions based on provided order of IDs."""
@@ -113,6 +125,7 @@ def reorder_projects(request: ReorderRequest):
         return store.reorder(request.order)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @router.post("/projects/{project_id}/refresh", response_model=Project)
 def refresh_project(project_id: str):

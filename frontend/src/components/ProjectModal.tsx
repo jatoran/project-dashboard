@@ -1,5 +1,5 @@
 import { Project } from "@/types";
-import { X, Terminal, Code2, Command, Folder, Globe, Link, ExternalLink, FileText, Copy, Check, Plus, Trash2, RefreshCw } from "lucide-react";
+import { X, Terminal, Code2, Folder, Globe, Link, ExternalLink, FileText, Copy, Check, Plus, Trash2, RefreshCw } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
 interface ProjectModalProps {
@@ -275,7 +275,7 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
           {/* Actions Grid - Desktop Only */}
           <div className="hidden md:block">
             <h3 className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Developer Actions</h3>
-            <div className={`grid gap-2 ${project.frontend_url ? 'grid-cols-5' : 'grid-cols-4'}`}>
+            <div className={`grid gap-2 ${project.frontend_url ? 'grid-cols-4' : 'grid-cols-3'}`}>
               <button onClick={() => onLaunch(project.vscode_workspace_file || project.path, 'vscode')} className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-xs">
                 <Code2 size={16} className="text-blue-400" />
                 <span>Code</span>
@@ -283,10 +283,6 @@ export default function ProjectModal({ project, isOpen, onClose, onLaunch, onVie
               <button onClick={() => onLaunch(project.path, 'terminal')} className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-xs">
                 <Terminal size={16} className="text-emerald-400" />
                 <span>Terminal</span>
-              </button>
-              <button onClick={() => onLaunch(project.path, 'wsl')} className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-xs">
-                <Command size={16} className="text-orange-400" />
-                <span>WSL</span>
               </button>
               <button onClick={() => onLaunch(project.path, 'explorer')} className="flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-600 transition-all text-slate-300 font-medium text-xs">
                 <Folder size={16} className="text-yellow-400" />

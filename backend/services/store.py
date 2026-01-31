@@ -1,11 +1,13 @@
 import json
 import os
+from pathlib import Path
 from typing import List
-from backend.models import Project
-from backend.services.scanner import ProjectScanner
-from backend.utils.path_utils import windows_to_linux, resolve_path_case
+from ..models import Project
+from .scanner import ProjectScanner
+from ..utils.path_utils import normalize_path, resolve_path_case
 
-DATA_FILE = "backend/data/projects.json"
+# Use absolute path relative to this file for reliable data location
+DATA_FILE = Path(__file__).parent.parent / "data" / "projects.json"
 
 class ProjectStore:
     def __init__(self):
@@ -26,14 +28,10 @@ class ProjectStore:
     def add_project(self, path_str: str) -> Project:
         print(f"[DEBUG] add_project received path: '{path_str}'")
         
-        # Convert potential Windows path to Linux path for scanning/storage
-        linux_path_str = windows_to_linux(path_str)
-        print(f"[DEBUG] converted to linux path: '{linux_path_str}'")
-        
-        # Resolve case sensitivity (e.g. 'Projects' vs 'projects')
-        resolved_path = resolve_path_case(linux_path_str)
-        if resolved_path != linux_path_str:
-            print(f"[DEBUG] Resolved path case: '{linux_path_str}' -> '{resolved_path}'")
+        # Normalize and resolve case for consistent paths
+        normalized_path = normalize_path(path_str)
+        resolved_path = resolve_path_case(normalized_path)
+        print(f"[DEBUG] Resolved path: '{resolved_path}'")
             
         try:
             project = self.scanner.scan(resolved_path)
@@ -71,9 +69,8 @@ class ProjectStore:
         if not existing:
             raise ValueError(f"Project with ID {project_id} not found.")
         
-        # Convert path for current environment (Windows paths -> Linux paths if in Docker)
-        scan_path = windows_to_linux(existing.path)
-        scan_path = resolve_path_case(scan_path)
+        # Normalize and resolve path case
+        scan_path = resolve_path_case(existing.path)
         
         # Rescan the project path
         scanned = self.scanner.scan(scan_path)

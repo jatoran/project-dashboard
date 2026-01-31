@@ -1,4 +1,4 @@
-import { Menu, X, LayoutGrid, Server, ScrollText, Globe } from "lucide-react";
+import { Menu, X, LayoutGrid, Globe } from "lucide-react";
 import { useState } from "react";
 
 interface NavbarProps {
@@ -12,8 +12,6 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   const tabs = [
     { id: 'projects', label: 'Projects', icon: LayoutGrid },
     { id: 'links', label: 'Links', icon: Globe },
-    { id: 'host', label: 'PC Monitoring', icon: Server },
-    { id: 'services', label: 'PC Services', icon: ScrollText },
   ];
 
   const handleTabClick = (id: string) => {

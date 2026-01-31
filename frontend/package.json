@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 37452",
     "build": "next build",
+    "build:static": "next build && xcopy /E /I /Y out ..\\backend\\frontend_dist",
     "start": "next start",
     "lint": "eslint"
   },

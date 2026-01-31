@@ -1,24 +1,20 @@
 import type { NextConfig } from "next";
 
-console.log("---------------------------------");
-console.log("Loading next.config.ts");
-console.log("API_URL env var:", process.env.API_URL);
-console.log("---------------------------------");
-
 const nextConfig: NextConfig = {
-  output: "standalone",
-  async rewrites() {
-    const isProd = process.env.NODE_ENV === "production";
-    const fallbackUrl = isProd ? "http://backend:37453/api/:path*" : "http://127.0.0.1:37453/api/:path*";
-    const apiUrl = process.env.API_URL || fallbackUrl;
-    console.log("Rewrite destination:", apiUrl);
-    return [
-      {
-        source: "/api/:path*",
-        destination: apiUrl,
-      },
-    ];
+  // Static export for system tray deployment
+  output: "export",
+
+  // Output to 'out' directory (default for static export)
+  // Will be copied to backend/frontend_dist after build
+  distDir: "out",
+
+  // Disable image optimization (not supported in static export)
+  images: {
+    unoptimized: true,
   },
+
+  // Trailing slashes for static file serving
+  trailingSlash: true,
 };
 
 export default nextConfig;

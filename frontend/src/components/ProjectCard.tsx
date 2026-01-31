@@ -1,5 +1,5 @@
 import { Project } from "@/types";
-import { Globe, Code2, FileText, Terminal, Command, Folder, GripVertical } from "lucide-react";
+import { Globe, Code2, FileText, Terminal, Folder, GripVertical } from "lucide-react";
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -46,7 +46,7 @@ export default function ProjectCard({ project, status, onClick, onLaunch, format
 
             {/* Status Indicator Dot (Absolute Top Right) */}
             <div className={`absolute top-4 right-4 w-2.5 h-2.5 rounded-full border border-slate-900/50 ${status === true ? "bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.6)]" :
-                    "bg-slate-600"
+                "bg-slate-600"
                 }`} title={status === true ? "Online" : status === false ? "Offline" : "Unknown"} />
 
             <div className="flex flex-col h-full justify-between space-y-3 pl-4">
@@ -78,13 +78,6 @@ export default function ProjectCard({ project, status, onClick, onLaunch, format
                                 title="Open Terminal"
                             >
                                 <Terminal size={14} />
-                            </button>
-                            <button
-                                onClick={(e) => { e.stopPropagation(); onLaunch(project.path, 'wsl'); }}
-                                className="p-1.5 rounded-md bg-slate-800 text-slate-400 hover:text-orange-400 hover:bg-slate-700 transition-colors"
-                                title="Open WSL"
-                            >
-                                <Command size={14} />
                             </button>
                             <button
                                 onClick={(e) => { e.stopPropagation(); onLaunch(project.path, 'explorer'); }}

@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.0.0] - 2026-01-31
+### Breaking Changes
+- **Docker Removed:** Application no longer runs in Docker. Now runs as a native Windows system tray application.
+- **Host Monitoring Removed:** Removed PC Monitoring and PC Services tabs (CPU, RAM, Network, Drives, Services, Logs).
+- **WSL Button Removed:** WSL terminal launch button removed from project cards.
+
+### Features
+- **System Tray Application:** New `pystray`-based tray controller with start/stop server, open dashboard, and exit options.
+- **Static Frontend:** Frontend is now built as static files and served directly by FastAPI.
+- **Direct Launching:** VS Code, terminals, and Explorer now launch directly via subprocess (no host agent needed).
+- **Windowless Startup:** `StartDashboard.vbs` runs the dashboard completely hidden in the system tray.
+
+### Removed
+- `backend/Dockerfile`, `frontend/Dockerfile`, `docker-compose.yml`
+- `backend/routers/hoststatus.py` - Host status monitoring
+- `backend/services/history.py` - DuckDB history storage
+- `backend/services/cache.py` - Host metrics caching
+- `frontend/src/components/MetricChart.tsx` - Charts component
+- WSL/Docker path translation utilities
+
 ## [1.3.5] - 2025-11-29
 ### Bug Fixes
 - **Copy Button Usability:**

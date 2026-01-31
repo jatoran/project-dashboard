@@ -2,82 +2,131 @@
 
 ## Deployment & Startup
 
-### Docker Compose (Recommended)
-The application is designed to run as a containerized stack.
+### System Tray Application (Recommended)
+The application runs as a native Windows system tray application.
 
-```bash
-docker compose up -d --build
-```
-- **Frontend**: http://localhost:37452
-- **Backend**: http://localhost:37453
-- **Volume Mounts**:
-  - `../` (Host Projects Root) -> `/mnt/d/projects` (Container) - *Changed to relative path for better WSL2 compatibility*
-  - `./backend/backend/data` -> `/app/backend/data` (Persists project metadata)
+**Quick Start:**
+1. Double-click `StartDashboard.vbs` (runs hidden in system tray)
+2. Right-click the tray icon for options
+3. Access dashboard at http://localhost:37453
 
-### Legacy Local Development
-**1. Backend (Port 37453)**
+**Debug Mode:**
 ```powershell
-cd backend
-uv venv
-.venv\Scripts\activate
-fastapi dev main.py --port 37453
+.\run_tray_debug.bat   # Shows console output for troubleshooting
 ```
 
-**2. Frontend (Port 37452)**
+### Manual Development Mode
+**Backend (Port 37453)**
+```powershell
+cd project-dashboard
+uv run --project backend uvicorn backend.main:app --port 37453 --reload
+```
+
+**Frontend Development (Port 37452)**
 ```powershell
 cd frontend
 npm run dev
 ```
 
-## Host Status Agent Integration (The "Command Bridge")
-Since the dashboard runs in a Docker container, it cannot directly launch applications or read files on the Windows host. We solve this by delegating these tasks to the **Host Status Agent**, a lightweight HTTP service running directly on the host machine.
+**Build Static Frontend:**
+```powershell
+cd frontend
+npm run build
+# Copy output to backend
+Copy-Item -Recurse -Force out ..\backend\frontend_dist
+```
 
-### 1. Architecture
-- **Agent URL**: `http://host.docker.internal:9876` (Configured via `HOST_AGENT_URL`).
-- **Agent Mode**: The agent must run as a **User Process** (via `start_agent.bat` or startup task), not a Windows Service, to support visible GUI launching.
+## Architecture
 
-### 2. Capabilities
-The dashboard backend proxies requests to the agent for:
-*   **Application Launching** (`POST /api/launch` -> Agent `/launch`):
-    *   Launches **VS Code**, **Windows Terminal**, **Explorer**, and **WSL** sessions directly on the host desktop.
-*   **File Content** (`GET /api/files/content` -> Agent `/files/content`):
-    *   Reads documentation files (e.g., `README.md`) from the host filesystem and serves them to the dashboard DocViewer.
-*   **Service Monitoring** (`GET /api/host-status` -> Agent `/status`):
-    *   Returns the status of critical host services (Docker, Tailscale, etc.).
+```
+project-dashboard/
+├── backend/
+│   ├── main.py            # FastAPI app + static file serving
+│   ├── tray.py            # System tray controller (pystray)
+│   ├── routers/
+│   │   ├── projects.py    # Project CRUD, file reading
+│   │   ├── monitor.py     # URL status checking
+│   │   └── platforms.py   # Custom links CRUD
+│   ├── services/
+│   │   ├── store.py       # Project data persistence
+│   │   ├── scanner.py     # Project type detection
+│   │   └── launcher.py    # VS Code/terminal launching
+│   └── frontend_dist/     # Built static frontend
+├── frontend/
+│   └── src/app/           # Next.js pages
+├── StartDashboard.vbs     # Windowless launcher
+└── install.ps1            # Setup script
+```
 
-## Path Handling & Cross-Platform Logic
-The application bridges the gap between the Linux-based container environment and the Windows host filesystem.
+### Key Components
 
-### Path Translation
-*   **Input (Adding Projects):** Windows paths (e.g., `D:\Projects\MyApp`) are automatically intercepted and converted to their WSL/Linux equivalent (e.g., `/mnt/d/Projects/MyApp`) before storage or scanning.
-*   **Output (Launching/Reading):** Stored Linux paths are converted back to Windows paths before being sent to the Host Agent.
+**System Tray Controller (`tray.py`)**
+- Uses `pystray` for Windows system tray integration
+- Manages uvicorn server lifecycle (start/stop)
+- Provides menu for dashboard access and server control
+- Green icon = server running, Gray icon = stopped
+
+**Static Frontend Serving**
+- Frontend is built to static HTML/JS/CSS via `next build`
+- FastAPI serves static files from `frontend_dist/`
+- No separate frontend server needed in production
+
+**Direct Launching (`launcher.py`)**
+- Launches VS Code, Windows Terminal, Explorer directly via `subprocess`
+- No external agent or Docker needed
+- Uses Windows-native commands
+
+## Path Handling
 
 ### Case Sensitivity Resolution
-Linux filesystems are case-sensitive, while Windows is not. To prevent errors when users input paths with incorrect casing (e.g., `D:\PROJECTS` vs `D:\projects`), the backend implements a **path resolution mechanism**:
-*   It walks the directory tree to find the exact on-disk casing for each path component.
-*   This ensures that `D:\PROJECTS\myApp` correctly resolves to `/mnt/d/projects/MyApp` if that is how it exists on the disk.
+Windows filesystems are case-insensitive but case-preserving. To prevent errors when users input paths with incorrect casing (e.g., `D:\PROJECTS` vs `D:\projects`), the backend implements path resolution:
+- Walks the directory tree to find exact on-disk casing
+- Ensures consistent path storage regardless of input casing
 
 ## Scanner Heuristics
-The `ProjectScanner` uses a waterfall approach to guess configuration without running the code.
+The `ProjectScanner` uses a waterfall approach to detect project type without running code.
 
 ### Tech Stack Detection
-1.  **Node.js/JS Frameworks:** Checks `package.json` for React, Vue, Next.js, NestJS, Tailwind, etc.
-2.  **Python:** Checks `requirements.txt`, `pyproject.toml`, etc., for FastAPI, Django, Flask, Pandas, PyTorch.
-3.  **Rust:** Checks `Cargo.toml` for Actix, Tokio, Axum.
-4.  **Static Web:** Checks for `index.html` in root or `public/`, and scans for `.css` and `.js` assets to identify static sites.
-5.  **Other Languages:**
-    *   **Java:** `pom.xml`, `build.gradle`
-    *   **Go:** `go.mod`, `*.go`
-    *   **Ruby:** `Gemfile`, `*.rb`
-    *   **PHP:** `*.php`
-6.  **Docker:** Checks `docker-compose.yml` or `Dockerfile`.
+1. **Node.js/JS Frameworks:** Checks `package.json` for React, Vue, Next.js, NestJS, etc.
+2. **Python:** Checks `requirements.txt`, `pyproject.toml` for FastAPI, Django, Flask, etc.
+3. **Rust:** Checks `Cargo.toml` for Actix, Tokio, Axum
+4. **Static Web:** Checks for `index.html` and `.css`/`.js` assets
+5. **Other Languages:**
+    - **Java:** `pom.xml`, `build.gradle`
+    - **Go:** `go.mod`, `*.go`
+    - **Ruby:** `Gemfile`, `*.rb`
+    - **PHP:** `*.php`
+6. **Docker:** Checks `docker-compose.yml` or `Dockerfile`
 
 ### Port Detection Priority
-1.  **Docker Compose:** `services.*.ports`. Highly reliable.
-2.  **Contextual Markdown:** Regex matches for `(Backend|API).*localhost:(\d+)`.
-3.  **Frontend Config:** `.env` or `constants.ts` matches for `API_URL`.
-4.  **Default:** `8000` (only if FastAPI is detected via `requirements.txt`).
+1. **Docker Compose:** `services.*.ports`
+2. **Contextual Markdown:** Regex matches for `(Backend|API).*localhost:(\d+)`
+3. **Frontend Config:** `.env` or `constants.ts` matches for `API_URL`
+4. **Default:** `8000` (only if FastAPI detected)
 
-## Known Issues / Quirks
-- **Focus Stealing:** Windows blocks background apps from forcing windows to the foreground. Launched apps (Explorer, Terminal) may open in the background or flash in the taskbar.
-- **Docker Path Translation:** The backend handles path translation internally (via `path_utils.py`), minimizing the need for the Host Agent to guess.
+## API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/health` | GET | Health check |
+| `/api/projects` | GET | List all projects |
+| `/api/projects` | POST | Add a project |
+| `/api/projects/{id}` | DELETE | Remove a project |
+| `/api/projects/{id}/refresh` | POST | Rescan project |
+| `/api/launch` | POST | Launch VS Code/terminal |
+| `/api/files/content` | GET | Read file content |
+| `/api/platforms` | GET/POST/DELETE | Manage custom links |
+| `/api/monitor/status` | GET | Check if URL is reachable |
+
+## Startup Options
+
+### Add to Windows Startup
+```powershell
+.\install.ps1 -WithStartup
+```
+This creates a shortcut in the Windows Startup folder.
+
+### Manual Shortcut
+1. Right-click `StartDashboard.vbs`
+2. Select "Create shortcut"
+3. Move shortcut to Startup folder (`shell:startup`)

@@ -1,0 +1,2973 @@
+[
+  {
+    "id": "48bb0d89-85b9-4fd9-9d07-d0a22e2ceb75",
+    "name": "horizon-of-steel",
+    "path": "D:\\PROJECTS\\horizon-of-steel",
+    "type": "node",
+    "tags": [
+      "html",
+      "node",
+      "git",
+      "react",
+      "javascript",
+      "typescript"
+    ],
+    "description": null,
+    "git_status": "Clean",
+    "docs": [
+      {
+        "name": "AGENTS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CLAUDE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GEMINI.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\CHANGELOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "E2E_TESTING_SETUP.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\E2E_TESTING_SETUP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "ENVIRONMENT.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\ENVIRONMENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "JSDOC_GUIDE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\JSDOC_GUIDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/00_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\00_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/01_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\01_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/build-snapshots.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\build-snapshots.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/core-passives.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\core-passives.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/mutation-api.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\mutation-api.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/positronic-grid.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\positronic-grid.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/roster-system.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\roster-system.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/skill-system.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\skill-system.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/stat-derivation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\stat-derivation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/state-consistency.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\state-consistency.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/character/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\character\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/combat/ai-behaviors.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\combat\\ai-behaviors.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/combat/damage-pipeline.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\combat\\damage-pipeline.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/combat/map-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\combat\\map-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/combat/replay-system.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\combat\\replay-system.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/combat/tick-simulation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\combat\\tick-simulation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/combat/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\combat\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/affix-system.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\affix-system.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/crafting.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\crafting.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/drop-pipeline.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\drop-pipeline.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/equipment-system.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\equipment-system.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/on-hit-damage-bonuses.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\on-hit-damage-bonuses.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/vendors.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\vendors.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/loot-economy/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\loot-economy\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/chronicle.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\chronicle.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/facilities.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\facilities.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/factions.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\factions.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/journey-queue.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\journey-queue.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/state-reducer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\state-reducer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/worker-pool.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\worker-pool.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/xp-and-leveling.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\xp-and-leveling.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/progression/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\progression\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/00_SPEC_OVERVIEW.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\00_SPEC_OVERVIEW.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/ARCHITECTURE_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\ARCHITECTURE_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/BALANCE_TARGETS_LAUNCH_CATALOG_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\BALANCE_TARGETS_LAUNCH_CATALOG_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/CLASS_SYSTEM_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\CLASS_SYSTEM_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/COMBAT_MATH_SCALING_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\COMBAT_MATH_SCALING_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/COMBAT_SIMULATION_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\COMBAT_SIMULATION_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/CORE_GAMEPLAY_LOOP_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\CORE_GAMEPLAY_LOOP_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/ITEMS_LOOT_ECONOMY_CRAFTING_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\ITEMS_LOOT_ECONOMY_CRAFTING_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/META_PROGRESSION_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\META_PROGRESSION_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/POSITRONIC_GRID_SYSTEM_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\POSITRONIC_GRID_SYSTEM_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/UX_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\UX_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/WORLD_BUILD_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\WORLD_BUILD_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "design/_specs/WORLD_PROGRESSION_CONTENT_STRUCTURE_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\design\\_specs\\WORLD_PROGRESSION_CONTENT_STRUCTURE_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/chronicle-system-fix-plan.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\chronicle-system-fix-plan.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/COMBAT_TESTING_PLAN.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\COMBAT_TESTING_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/CONSOLIDATED_IMPLEMENTATION_GAPS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\CONSOLIDATED_IMPLEMENTATION_GAPS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/CONTENT_AUTHORING.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\CONTENT_AUTHORING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/CRAFTING_SYSTEM_ANALYSIS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\CRAFTING_SYSTEM_ANALYSIS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/FACILITIES_SYSTEM.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\FACILITIES_SYSTEM.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/factions-analysis.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\factions-analysis.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/01_ROADMAP.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\01_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/02_ROADMAP.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\02_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/03_ROADMAP.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\03_ROADMAP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/BATTERY_IMPLEMENTATION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\BATTERY_IMPLEMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/BUGFIX-subpath-skills-not-showing.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\BUGFIX-subpath-skills-not-showing.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/BUILD_SNAPSHOT_IMPLEMENTATION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\BUILD_SNAPSHOT_IMPLEMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/camera-system-optimization.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\camera-system-optimization.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/CLASS_STATS_IMPLEMENTATION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\CLASS_STATS_IMPLEMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/CODEBASE_ARCHITECTURE_AUDIT.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\CODEBASE_ARCHITECTURE_AUDIT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/CONSUMABLES_IMPLEMENTATION_STATUS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\CONSUMABLES_IMPLEMENTATION_STATUS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/DESIGN_DOCS_CHECKLIST.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\DESIGN_DOCS_CHECKLIST.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/EQUIPMENT_SYSTEM_ENHANCEMENTS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\EQUIPMENT_SYSTEM_ENHANCEMENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/HANDOFF-state-consistency-refactor.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\HANDOFF-state-consistency-refactor.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/HANDOFF_SUBPATH.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\HANDOFF_SUBPATH.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/IMPLEMENTATION_COMPLETE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\IMPLEMENTATION_COMPLETE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/JOURNEYBATTLESCREEN_REFACTORING.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\JOURNEYBATTLESCREEN_REFACTORING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/JSDOC_HANDOFF.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\JSDOC_HANDOFF.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/MAP_COMBAT_ENGINE_INTEGRATION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\MAP_COMBAT_ENGINE_INTEGRATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/MAP_GENERATION_SYSTEM_SPEC.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\MAP_GENERATION_SYSTEM_SPEC.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/MOB_LOOT_DROP_SYSTEM.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\MOB_LOOT_DROP_SYSTEM.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/per-character-systems-investigation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\per-character-systems-investigation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/REACT_MIGRATION_PLAN.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\REACT_MIGRATION_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/REDUCER_REFACTORING.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\REDUCER_REFACTORING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/REVIEW-FINDINGS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\REVIEW-FINDINGS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/REVIEW-FIXES-APPLIED.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\REVIEW-FIXES-APPLIED.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SIMULATION_REFACTORING.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SIMULATION_REFACTORING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SKILL_SYSTEM_IMPLEMENTATION_PLAN.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SKILL_SYSTEM_IMPLEMENTATION_PLAN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_MASTER_SUMMARY.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_MASTER_SUMMARY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_ARCHITECTURE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_ARCHITECTURE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_BALANCE_TARGETS_LAUNCH_CATALOG.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_BALANCE_TARGETS_LAUNCH_CATALOG.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_CLASS_SYSTEM.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_CLASS_SYSTEM.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_COMBAT_MATH_SCALING.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_COMBAT_MATH_SCALING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_COMBAT_SIMULATION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_COMBAT_SIMULATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_CORE_GAMEPLAY_LOOP.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_CORE_GAMEPLAY_LOOP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_ITEMS_LOOT_ECONOMY_CRAFTING.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_ITEMS_LOOT_ECONOMY_CRAFTING.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_META_PROGRESSION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_META_PROGRESSION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_POSITRONIC_GRID.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_POSITRONIC_GRID.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_UX.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_UX.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_WORLD_BUILD.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_WORLD_BUILD.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SPEC_IMPLEMENTATION_STATUS_WORLD_PROGRESSION_CONTENT.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SPEC_IMPLEMENTATION_STATUS_WORLD_PROGRESSION_CONTENT.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/state-consistency-audit.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\state-consistency-audit.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/state-consistency-implementation-status.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\state-consistency-implementation-status.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/state-consistency-phase-b-summary.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\state-consistency-phase-b-summary.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/state-consistency-phase-c-summary.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\state-consistency-phase-c-summary.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/state-consistency-phase-d-summary.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\state-consistency-phase-d-summary.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/state-consistency-phase2-design.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\state-consistency-phase2-design.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/STAT_SYSTEM_GAPS_AND_FIXES.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\STAT_SYSTEM_GAPS_AND_FIXES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SUBPATH_IMPLEMENTATION.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SUBPATH_IMPLEMENTATION.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/SUBPATH_SYSTEM.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\SUBPATH_SYSTEM.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/WIRING_CHRONICLE_SCREEN.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\WIRING_CHRONICLE_SCREEN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/WIRING_EXPLORATION_KEYS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\WIRING_EXPLORATION_KEYS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/WIRING_FACILITIES_SCREEN.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\WIRING_FACILITIES_SCREEN.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/WIRING_INVENTORY_HUB.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\WIRING_INVENTORY_HUB.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/worker-pool-system.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\worker-pool-system.md",
+        "type": "markdown"
+      },
+      {
+        "name": "development/archive/_CHANGELOG_ARCHIVE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\development\\archive\\_CHANGELOG_ARCHIVE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/AGENTS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\AGENTS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/ALL_TYPES.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\ALL_TYPES.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/CLAUDE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\CLAUDE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/CONTENT_SUMMARY.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\CONTENT_SUMMARY.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/ENUMS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\ENUMS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/EXPORTS_APP.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\EXPORTS_APP.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/EXPORTS_CORE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\EXPORTS_CORE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/FILE_TREE.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\FILE_TREE.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/GEMINI.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\GEMINI.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/SYSTEMS.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\SYSTEMS.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/app.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\app.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/config/admin-config.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\config\\admin-config.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/config/admin-presets.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\config\\admin-presets.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/config/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\config\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/exports/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\exports\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/exports/operations.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\exports\\operations.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/exports/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\exports\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/exports/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\exports\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/auto-save.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\auto-save.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/compaction.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\compaction.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/local-store.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\local-store.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/migrations.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\migrations.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/retention.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\retention.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/persistence/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\persistence\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/app-context.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\app-context.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/catalog-service.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\catalog-service.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/clock.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\clock.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/consumable-manager.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\consumable-manager.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/entropy.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\entropy.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/queue.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\queue.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/rules-engine.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\rules-engine.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/scheduler.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\scheduler.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/state-coordinator.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\state-coordinator.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/vendor-actions.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\vendor-actions.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/worker-pool.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\worker-pool.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/worker.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\worker.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/history.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\history.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/offline-processor.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\offline-processor.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/subpath-enrichment.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\subpath-enrichment.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/visibility-handler.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\visibility-handler.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/services/game-loop/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\services\\game-loop\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/App.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\App.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/theme.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\theme.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/components/ContextMenu.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\components\\ContextMenu.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/components/OfflineSummaryModal.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\components\\OfflineSummaryModal.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/components/ToastContainer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\components\\ToastContainer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/context/AppContext.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\context\\AppContext.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/context/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\context\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/context/ToastContext.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\context\\ToastContext.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/context/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\context\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/layout/GameLayout.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\layout\\GameLayout.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/layout/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\layout\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/BattleReplayScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\BattleReplayScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/CharacterCreateScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\CharacterCreateScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/CharacterSelectScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\CharacterSelectScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/ChronicleScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\ChronicleScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/ErrorScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\ErrorScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/EventsScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\EventsScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/ImportExportScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\ImportExportScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/JourneyBattleScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\JourneyBattleScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/LoadingScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\LoadingScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/QueueConsoleScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\QueueConsoleScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/RunViewerScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\RunViewerScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/SubpathGridScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\SubpathGridScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/SubpathScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\SubpathScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/WorldMapScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\WorldMapScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/ArchiveRequisitionStation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\ArchiveRequisitionStation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/AscensionTerminalStation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\AscensionTerminalStation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/crafting-stations.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\crafting-stations.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/ExchangeTerminalStation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\ExchangeTerminalStation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/FacilitiesScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\FacilitiesScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/FacilitiesScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\FacilitiesScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/PactBrokerStation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\PactBrokerStation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/stubs.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\stubs.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/SupplyPortStation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\SupplyPortStation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/facilities/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\facilities\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/CharacterSheetTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\CharacterSheetTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/CharacterSheetTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\CharacterSheetTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/EquipmentTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\EquipmentTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/EquipmentTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\EquipmentTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/FactionsTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\FactionsTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/FactionsTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\FactionsTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/FrameScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\FrameScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/FrameScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\FrameScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/GridPlanner.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\GridPlanner.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/GridPlannerReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\GridPlannerReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/InventoryTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\InventoryTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/InventoryTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\InventoryTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/LoadoutsTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\LoadoutsTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/LoadoutsTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\LoadoutsTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/LootFilterTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\LootFilterTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/LootFilterTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\LootFilterTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/MaterialsTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\MaterialsTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/MaterialsTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\MaterialsTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/ModulesTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\ModulesTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/ModulesTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\ModulesTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/SkillsTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\SkillsTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/SkillsTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\SkillsTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/StrategyTab.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\StrategyTab.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/StrategyTabReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\StrategyTabReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/zustand-store.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\zustand-store.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/constants.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\constants.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/helpers.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\helpers.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/styles.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\styles.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/ConnectionsLayer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\ConnectionsLayer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/GridStatsPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\GridStatsPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/InfoPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\InfoPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/NodeElement.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\NodeElement.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/RingsLayer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\RingsLayer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/SVGDefs.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\SVGDefs.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/grid-planner/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\grid-planner\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/constants.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\constants.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/helpers.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\helpers.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/styles.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\styles.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/components/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\components\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/components/RuleCard.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\components\\RuleCard.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/components/RuleEditor.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\components\\RuleEditor.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/frame/loot-filter/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\frame\\loot-filter\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/animation-utils.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\animation-utils.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/biome-themes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\biome-themes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/rendering-utils.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\rendering-utils.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/styles.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\styles.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/camera/camera.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\camera\\camera.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/camera/culling.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\camera\\culling.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/camera/spatial-index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\camera\\spatial-index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/camera/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\camera\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/camera/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\camera\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/CollectedItemsPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\CollectedItemsPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/DropNotification.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\DropNotification.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/EventLog.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\EventLog.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/HUD.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\HUD.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/LiveMapRenderer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\LiveMapRenderer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/MapDropRenderer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\MapDropRenderer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/StatsPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\StatsPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/journey-battle/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\journey-battle\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/helpers.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\helpers.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/styles.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\styles.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/components/DeathAnalysisPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\components\\DeathAnalysisPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/components/EventLogPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\components\\EventLogPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/components/LootPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\components\\LootPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/components/MetricsPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\components\\MetricsPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/components/Panel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\components\\Panel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens/run-viewer/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens\\run-viewer\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/BattleReplayScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\BattleReplayScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/CharacterCreateScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\CharacterCreateScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/CharacterSelectScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\CharacterSelectScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/ChronicleScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\ChronicleScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/ErrorScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\ErrorScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/EventsScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\EventsScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/ImportExportScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\ImportExportScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/JourneyBattleScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\JourneyBattleScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/LoadingScreen.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\LoadingScreen.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/QueueConsoleScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\QueueConsoleScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/RunViewerScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\RunViewerScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/WorldMapScreenReact.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\WorldMapScreenReact.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/animation-utils.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\animation-utils.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/biome-themes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\biome-themes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/rendering-utils.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\rendering-utils.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/styles.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\styles.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/camera/camera.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\camera\\camera.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/camera/culling.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\camera\\culling.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/camera/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\camera\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/camera/spatial-index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\camera\\spatial-index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/camera/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\camera\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/camera/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\camera\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/components/EventLog.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\components\\EventLog.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/components/HUD.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\components\\HUD.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/components/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\components\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/components/LiveMapRenderer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\components\\LiveMapRenderer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/components/StatsPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\components\\StatsPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/journey-battle/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\journey-battle\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/helpers.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\helpers.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/styles.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\styles.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/DeathAnalysisPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\DeathAnalysisPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/EventLogPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\EventLogPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/LootPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\LootPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/MetricsPanel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\MetricsPanel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/Panel.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\Panel.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/screens-react/run-viewer/components/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\screens-react\\run-viewer\\components\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/utils/affix-display.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\utils\\affix-display.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/ui/utils/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\ui\\utils\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/workers/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\workers\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/app/workers/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\app\\workers\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/build/computed-state.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\build\\computed-state.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/build/derive.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\build\\derive.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/build/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\build\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/build/skills.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\build\\skills.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/build/snapshot-manager.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\build\\snapshot-manager.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/build/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\build\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/affinity-ring-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\affinity-ring-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/currency-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\currency-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/entanglement-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\entanglement-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/equipment-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\equipment-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/loadout-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\loadout-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/module-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\module-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/passive-skill-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\passive-skill-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/queue-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\queue-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/skill-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\skill-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/strategy-management.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\strategy-management.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/character/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\character\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/animation-archetypes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\animation-archetypes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/combat-bridge.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\combat-bridge.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/defaults.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\defaults.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/entity-factory.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\entity-factory.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-generator.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-generator.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/pathfinding.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\pathfinding.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/sim-snapshots.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\sim-snapshots.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/simulation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\simulation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/skill-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\skill-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/strategy-presets.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\strategy-presets.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/template-loader.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\template-loader.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/tick-phases.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\tick-phases.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/vision.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\vision.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/weather-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\weather-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/adapters/journey-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\adapters\\journey-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/adapters/mob-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\adapters\\mob-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/adapters/player-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\adapters\\player-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/adapters/skill-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\adapters\\skill-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/adapters/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\adapters\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/ai/drone-ai.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\ai\\drone-ai.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/ai/mob-ai-behaviors.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\ai\\mob-ai-behaviors.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/ai/player-ai.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\ai\\player-ai.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/ai/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\ai\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/boss-phases.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\boss-phases.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/elite-affixes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\elite-affixes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/movement-effect.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\movement-effect.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/player-aura-processor.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\player-aura-processor.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/status-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\status-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/trigger-processor.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\trigger-processor.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/triggered-skill-processor.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\triggered-skill-processor.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/effects/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\effects\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/animation-archetypes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\animation-archetypes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/combat-bridge.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\combat-bridge.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/defaults.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\defaults.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/entity-factory.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\entity-factory.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-generator.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-generator.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/pathfinding.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\pathfinding.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/sim-snapshots.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\sim-snapshots.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/simulation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\simulation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/skill-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\skill-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/strategy-presets.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\strategy-presets.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/template-loader.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\template-loader.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/tick-phases.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\tick-phases.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/vision.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\vision.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/weather-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\weather-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/adapters/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\adapters\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/adapters/journey-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\adapters\\journey-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/adapters/mob-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\adapters\\mob-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/adapters/player-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\adapters\\player-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/adapters/skill-adapter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\adapters\\skill-adapter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/adapters/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\adapters\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/ai/drone-ai.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\ai\\drone-ai.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/ai/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\ai\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/ai/mob-ai-behaviors.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\ai\\mob-ai-behaviors.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/ai/player-ai.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\ai\\player-ai.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/ai/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\ai\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/effects/boss-phases.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\effects\\boss-phases.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/effects/elite-affixes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\effects\\elite-affixes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/effects/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\effects\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/effects/status-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\effects\\status-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/effects/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\effects\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-generator/generator-factory.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-generator\\generator-factory.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-generator/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-generator\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-generator/post-process.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-generator\\post-process.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-generator/validation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-generator\\validation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-generator/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-generator\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/config.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\config.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/init.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\init.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/results.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\results.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/rewards.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\rewards.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/snapshot.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\snapshot.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/map-runner/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\map-runner\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/combat-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\combat-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/ground-skills-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\ground-skills-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/mob-ai-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\mob-ai-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/projectile-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\projectile-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/regeneration-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\regeneration-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/resource-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\resource-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/spawn-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\spawn-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/treasure-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\treasure-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/utility-skills-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\utility-skills-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/victory-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\victory-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/vision-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\vision-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/zone-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\zone-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-engine/phases/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-engine\\phases\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-generator/generator-factory.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-generator\\generator-factory.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-generator/post-process.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-generator\\post-process.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-generator/validation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-generator\\validation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-generator/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-generator\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/config.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\config.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/init.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\init.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/results.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\results.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/rewards.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\rewards.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/snapshot.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\snapshot.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/map-runner/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\map-runner\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/combat-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\combat-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/dash-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\dash-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/drop-pickup-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\drop-pickup-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/ground-skills-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\ground-skills-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/mob-ai-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\mob-ai-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/projectile-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\projectile-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/regeneration-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\regeneration-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/resource-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\resource-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/spawn-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\spawn-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/treasure-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\treasure-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/utility-skills-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\utility-skills-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/victory-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\victory-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/vision-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\vision-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/zone-phase.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\zone-phase.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/combat/phases/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\combat\\phases\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/crafting/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\crafting\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/crafting/operations.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\crafting\\operations.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/crafting/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\crafting\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/crafting/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\crafting\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/determinism/hash.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\determinism\\hash.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/determinism/rng.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\determinism\\rng.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/determinism/streams.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\determinism\\streams.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/determinism/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\determinism\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/economy/currency.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\economy\\currency.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/economy/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\economy\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/economy/vendor-stock.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\economy\\vendor-stock.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/economy/vendor-tiers.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\economy\\vendor-tiers.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/economy/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\economy\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/consumables.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\consumables.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/item-naming.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\item-naming.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/loot-filter.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\loot-filter.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/mob-drops.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\mob-drops.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/pity.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\pity.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/affix-rolling.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\affix-rolling.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/clause-application.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\clause-application.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/currency-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\currency-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/drop-calculation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\drop-calculation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/equipment-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\equipment-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/id-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\id-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/module-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\module-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/rarity-weights.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\rarity-weights.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/unique-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\unique-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/weighted-selection.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\weighted-selection.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/loot/drops/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\loot\\drops\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/affinity-progression.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\affinity-progression.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/affinity-rings.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\affinity-rings.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/biome-mastery.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\biome-mastery.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/chronicle-bonuses.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\chronicle-bonuses.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/chronicle-progression.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\chronicle-progression.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/constants.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\constants.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/currency-reducer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\currency-reducer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/endgame-slots.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\endgame-slots.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/excess-xp-conversion.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\excess-xp-conversion.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/faction-grids.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\faction-grids.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/inventory-reducer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\inventory-reducer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/keys.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\keys.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/ledger.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\ledger.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/reducer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\reducer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/subpath.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\subpath.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/unlock-reducer.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\unlock-reducer.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/weekly-events.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\weekly-events.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/world-boss.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\world-boss.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/xp-progression.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\xp-progression.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/progression/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\progression\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/affinity-thresholds.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\affinity-thresholds.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/audit-protocols.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\audit-protocols.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/catalog-loader.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\catalog-loader.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/combat-math.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\combat-math.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/constants.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\constants.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/curves.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\curves.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/geometry.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\geometry.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/load.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\load.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/resonance.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\resonance.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/state.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\state.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/subpath-state.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\subpath-state.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/rules/grid/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\rules\\grid\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/chronicle.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\chronicle.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/entity.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\entity.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/enums.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\enums.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/facilities.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\facilities.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/guards.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\guards.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/ledger.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\ledger.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/types.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\types.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/version.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\version.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/affinity-rings.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\affinity-rings.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/bosses.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\bosses.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/challenge.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\challenge.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/classes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\classes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/common.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\common.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/consumables.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\consumables.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/drones.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\drones.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/enemies.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\enemies.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/equipment.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\equipment.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/exploration.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\exploration.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/factions.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\factions.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/journeys.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\journeys.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/map-generation.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\map-generation.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/modules.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\modules.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/nodes.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\nodes.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/skills.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\skills.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/status-effects.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\status-effects.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/subpaths.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\subpaths.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/uniques.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\uniques.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/content/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\content\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/ledger/events.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\ledger\\events.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/ledger/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\ledger\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/ledger/state.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\ledger\\state.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/schema/ledger/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\schema\\ledger\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/state/active-character.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\state\\active-character.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/state/index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\state\\index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "GENERATED/src/core/state/_index.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\GENERATED\\src\\core\\state\\_index.md",
+        "type": "markdown"
+      },
+      {
+        "name": "STATIC_ANALYSIS/circular-deps.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\STATIC_ANALYSIS\\circular-deps.md",
+        "type": "markdown"
+      },
+      {
+        "name": "STATIC_ANALYSIS/code-smells.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\STATIC_ANALYSIS\\code-smells.md",
+        "type": "markdown"
+      },
+      {
+        "name": "STATIC_ANALYSIS/dead-exports.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\STATIC_ANALYSIS\\dead-exports.md",
+        "type": "markdown"
+      },
+      {
+        "name": "STATIC_ANALYSIS/doc-coverage.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\STATIC_ANALYSIS\\doc-coverage.md",
+        "type": "markdown"
+      },
+      {
+        "name": "STATIC_ANALYSIS/_SUMMARY.md",
+        "path": "D:\\PROJECTS\\horizon-of-steel\\docs\\STATIC_ANALYSIS\\_SUMMARY.md",
+        "type": "markdown"
+      }
+    ],
+    "custom_links": [],
+    "custom_docs": [],
+    "vscode_workspace_file": "D:\\PROJECTS\\horizon-of-steel\\horizon-of-steel.code-workspace",
+    "frontend_url": "http://localhost:4530",
+    "backend_port": null,
+    "frontend_port_override": null,
+    "backend_port_override": null,
+    "position": null
+  }
+]
