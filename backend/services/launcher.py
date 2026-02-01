@@ -183,7 +183,8 @@ class Launcher:
         else:
             # Use system default
             if IS_WINDOWS:
-                subprocess.Popen(["explorer", str(path)])
+                dopus_path = r"C:\Program Files\GPSoftware\Directory Opus\dopus.exe"
+                subprocess.Popen([dopus_path, str(path)])
             elif IS_LINUX:
                 subprocess.Popen(["xdg-open", str(path)])
             elif IS_MAC:

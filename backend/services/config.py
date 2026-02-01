@@ -8,9 +8,9 @@ from dataclasses import dataclass, field
 CONFIG_FILE = Path(__file__).parent.parent / "data" / "config.json"
 
 DEFAULT_LAUNCHERS = [
-    {"id": "vscode", "name": "Code", "command": "__vscode__", "hotkey": "enter", "enabled": True, "builtin": True},
-    {"id": "terminal", "name": "Terminal", "command": "__terminal__", "hotkey": "ctrl+enter", "enabled": True, "builtin": True},
-    {"id": "explorer", "name": "Folder", "command": "__explorer__", "hotkey": "shift+enter", "enabled": True, "builtin": True},
+    {"id": "vscode", "name": "Code", "command": "__vscode__", "hotkey": "alt+c", "enabled": True, "builtin": True},
+    {"id": "terminal", "name": "Terminal", "command": "__terminal__", "hotkey": "alt+t", "enabled": True, "builtin": True},
+    {"id": "explorer", "name": "Folder", "command": "__explorer__", "hotkey": "alt+f", "enabled": True, "builtin": True},
     {"id": "claude", "name": "Claude", "command": "claude", "hotkey": "ctrl+c", "enabled": True, "builtin": False},
     {"id": "codex", "name": "Codex", "command": "codex", "hotkey": "ctrl+x", "enabled": True, "builtin": False},
     {"id": "opencode", "name": "OpenCode", "command": "opencode", "hotkey": "ctrl+z", "enabled": True, "builtin": False},
