@@ -7,6 +7,7 @@ import threading
 from typing import List, Dict, Optional
 import time
 import ctypes
+import webbrowser
 
 # Direct store import for speed (bypasses HTTP)
 from .services.launcher import Launcher
@@ -298,6 +299,28 @@ class CommandPaletteUI:
                         ctk.CTkLabel(row2, text="   ", **hint_style).pack(side="left")
                     ctk.CTkLabel(row2, text=format_hotkey_display(hotkey), **key_style).pack(side="left")
                     ctk.CTkLabel(row2, text=f" {launcher['name']}", **hint_style).pack(side="left")
+
+        # Web button in bottom right corner
+        web_button = ctk.CTkButton(
+            container,
+            text="🌐",
+            width=40,
+            height=40,
+            font=("Segoe UI", 18),
+            fg_color="#1e293b",
+            hover_color="#6366f1",
+            border_width=2,
+            border_color="#334155",
+            corner_radius=8,
+            command=self._open_web_dashboard
+        )
+        web_button.place(relx=1.0, rely=1.0, x=-60, y=-60, anchor="se")
+
+    def _open_web_dashboard(self):
+        """Open the project dashboard in the default browser."""
+        port = self._config.config.port
+        url = f"http://localhost:{port}"
+        webbrowser.open(url)
 
     def _load_projects_sync(self):
         """Load projects directly from store (fast, no HTTP)."""
